@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Scanner scan;
-    private jsonIO jIO = new jsonIO();
+    private JSONInputOutput jIO = new JSONInputOutput();
     private CallWUAPI callWU = new CallWUAPI();
     private NWSWeatherWebservice callNWS = new NWSWeatherWebservice();
     private DailyForecast fiveDay4cast = new DailyForecast();
@@ -223,7 +223,7 @@ public class UserInterface {
      * Value = ArrayList of DailyForecast - for the location and weather service indicated by Key
      */
     public HashMap<String, ArrayList<DailyForecast>> useExistingList(String filename) {
-        ArrayList<location> locsArray = jIO.fileReader(filename);
+        ArrayList<Location> locsArray = jIO.fileReader(filename);
         System.out.println("\n\nLet's get the forecasts for your locations in <" + filename + ">\n");
 
         // Create HashMap to store the multiple location forecasts from WUnderground.
@@ -234,7 +234,7 @@ public class UserInterface {
         // Each location is surrounded (top & bottom) by a row of stars
         // For each location the weather service is named with a  starred row
         int num = 1;
-        for (location location : locsArray) {
+        for (Location location : locsArray) {
             System.out.print("**************************************************************************************");
             System.out.println("\nLocation #" + num + ": " + location.getDisplayName());
             System.out.println("At a latitude/longitude of " + location.getLatitude() + "/" + location.getLongitude());

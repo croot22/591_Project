@@ -13,7 +13,7 @@ import org.json.*;
  *
  */
 
-public class jsonIO {
+public class JSONInputOutput {
 	
 	private JSONArray savedSearch = new JSONArray();
 	
@@ -24,7 +24,7 @@ public class jsonIO {
 	 * @param locations
 	 * @param filename
 	 */
-	public void fileWriter(ArrayList<location> locations, String filename) {
+	public void fileWriter(ArrayList<Location> locations, String filename) {
 		
 		//Setup a directory called SavedSearches in the current directory if it doesn't exist
 		String directoryPath = System.getProperty("user.dir") + "/SavedSearches/";
@@ -35,7 +35,7 @@ public class jsonIO {
 		
 		//For the locations input, put them into a JSON object and then put that JSON object into a json array
 		int i = 0;
-		for (location address : locations) {
+		for (Location address : locations) {
 			try {
 				JSONObject jobj = new JSONObject();
 			
@@ -74,7 +74,7 @@ public class jsonIO {
 	 * @param filename
 	 * @return
 	 */
-	public ArrayList<location> fileReader(String filename){
+	public ArrayList<Location> fileReader(String filename){
 		//Get the current directory and make a "SavedSearches" folder if it doesn't exist
 		String directoryPath = System.getProperty("user.dir") + "/SavedSearches/";
 		File directory = new File(directoryPath);
@@ -85,7 +85,7 @@ public class jsonIO {
 		//Read in the specified file
 		File f = new File(directoryPath + filename);
 		String jsonText = "";
-		ArrayList<location> locations = new ArrayList<location>();
+		ArrayList<Location> locations = new ArrayList<Location>();
 		
 		try {
 			Scanner fileReader = new Scanner(f);
@@ -97,7 +97,7 @@ public class jsonIO {
 			JSONArray array = new JSONArray(jsonText);
 			for (int i = 0; i < array.length(); i++) {
 				JSONObject b = array.getJSONObject(i);
-				location l = new location();
+				Location l = new Location();
 				l.setDisplayName(b.getString("locationName"));
 				l.setLatitude(b.getString("lat"));
 				l.setLongitude(b.getString("longitude"));
@@ -152,7 +152,7 @@ public class jsonIO {
 	
 	/**
 	 * A public class that parses the forecast for the NWS API taking in the responses of the 
-	 * two pieces of forecast data APIs. Returns an arraylist of Forecasts
+	 * two pieces of forecast data APIs. Returns an arraylist of DailyForecasts for the relevant days
 	 * @param forecastResponseBody
 	 * @param forecastGridDataResponseBody
 	 * @return
@@ -270,6 +270,7 @@ public class jsonIO {
 	/**
 	 * Method to parse the GPS data to return the 2 URLs at NWS
 	 * meant to get the 2 full URLs for getting the complete forecast data
+	 * returns an arraylist of 2 urls
 	 * @param responseBody
 	 * @return
 	 */
@@ -288,7 +289,8 @@ public class jsonIO {
 	/**
 	 * parsing function for various "keys" from the forecastDataPoints webservice
 	 * this is used to get a few extra values not in the regular forecast call and 
-	 * put them into a format usable in the weather object
+	 * put them into a format usable in the weather object.
+	 * Contains a flag to average or sum the values
 	 * @param object
 	 * @param startTime
 	 * @param endTime

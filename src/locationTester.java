@@ -9,11 +9,11 @@ class locationTester {
 
 	@Test
 	void getLocationCandidatesTest() {
-		location lone = new location();
-		location ltwo = new location();
-		location lthree = new location();
-		location lfour = new location();
-		location lfive = new location();
+		Location lone = new Location();
+		Location ltwo = new Location();
+		Location lthree = new Location();
+		Location lfour = new Location();
+		Location lfive = new Location();
 		
 		HashMap<Integer, String> answer1 = lone.getLocationCandidates("11787");
 		try {

@@ -16,7 +16,7 @@ import org.json.JSONObject;
  * @author Bryan Rogers
  *
  */
-public class location {
+public class Location {
 	
 	private String latitude;
 	private String longitude;
@@ -84,7 +84,7 @@ public class location {
 	 * parses an address from an indicated location. Function takes in 
 	 * the index in the HashMap returned by the getLocationCandidates()
 	 * method of this class
-	 * PLAN: Potentially move this to jsonIO class to keep all json Handling consistent
+	 * PLAN: Potentially move this to jsonIO class to keep all json Handling cohesive
 	 * @param index
 	 */
 	public void parseAddress(int index) {

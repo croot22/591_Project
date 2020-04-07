@@ -8,13 +8,13 @@ class jsonIOtester {
 
 	@Test
 	void fileReadWriteTest() {
-		jsonIO jio = new jsonIO();
-		ArrayList<location> writeLocations = new ArrayList<location>();
-		ArrayList<location> readLocations = new ArrayList<location>();
+		JSONInputOutput jio = new JSONInputOutput();
+		ArrayList<Location> writeLocations = new ArrayList<Location>();
+		ArrayList<Location> readLocations = new ArrayList<Location>();
 		String testFile = "testfile.json";
 		
 		for (int i = 0; i < 10; i++) {
-			writeLocations.add(new location());
+			writeLocations.add(new Location());
 			writeLocations.get(i).setDisplayName("Display Name " + i);
 			writeLocations.get(i).setLatitude(Integer.toString(i));
 			writeLocations.get(i).setLongitude(Integer.toString(i));
@@ -221,7 +221,7 @@ class jsonIOtester {
 				"        \"radarStation\": \"KFTG\"\r\n" + 
 				"    }\r\n" + 
 				"}";
-		jsonIO jio = new jsonIO();
+		JSONInputOutput jio = new JSONInputOutput();
 		ArrayList<String> urls = jio.parseGPS(responseBody);
 		ArrayList<String> urls2 = jio.parseGPS(responseBody2);
 		
@@ -6949,7 +6949,7 @@ class jsonIOtester {
 				"    }\r\n" + 
 				"}";
 				
-		jsonIO jio = new jsonIO();
+		JSONInputOutput jio = new JSONInputOutput();
 		ArrayList<DailyForecast> fivedays = jio.parseNWSForecast(forecastResponseBody, forecastGridDataResponseBody);
 		
 		assertEquals(fivedays.get(0).getDayOfWeek(),"WEDNESDAY");

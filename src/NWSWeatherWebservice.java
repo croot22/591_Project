@@ -26,7 +26,7 @@ public class NWSWeatherWebservice {
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
 		ArrayList<String> gridLocation = new ArrayList<String>();
-		jsonIO parser = new jsonIO();
+		JSONInputOutput parser = new JSONInputOutput();
 		
 		try {
 			//System.out.println("Making a call to " + url);
@@ -86,7 +86,7 @@ public class NWSWeatherWebservice {
 		HttpRequest requestForecast = HttpRequest.newBuilder().uri(URI.create(url.get(0))).timeout(Duration.ofSeconds(5)).build();
 		HttpRequest requestForecastGridData = HttpRequest.newBuilder().uri(URI.create(url.get(1))).timeout(Duration.ofSeconds(5)).build();
 		ArrayList<DailyForecast> weatherData = new ArrayList<DailyForecast>();
-		jsonIO parseWeather = new jsonIO();
+		JSONInputOutput parseWeather = new JSONInputOutput();
 		
 		try {
 			//try to get the weather from the API, if status code says server is unavailable indicate that and return null
