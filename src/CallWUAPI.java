@@ -129,6 +129,8 @@ public class CallWUAPI {
             String dow = jADayWeek.getString(i);
             String nar = jANarrMain.getString(i);
             
+            String wSer = "WUnderground";
+            
             /*
              * Temperature max becomes 'null' after 3pm
              * local time. To avoid errors with a null value 
@@ -371,7 +373,7 @@ public class CallWUAPI {
                 windPhN = jAWindPhrase.getString(10);
             }
 
-            DailyForecast fdf = new DailyForecast(date, dow, nar, tMax, tMin,
+            DailyForecast fdf = new DailyForecast(wSer, date, dow, nar, tMax, tMin,
                     dayPrtD, dayPrtN, narrDay, narrNight, precipD, precipN, cloudD, cloudN,
                     precipTypeD, precipTypeN, qpfD, qpfN, snowD, snowN, 
                     heatIdxD, heatIdxN, windChlD, windChlN, windPhD, windPhN);

@@ -1,6 +1,7 @@
 
 public class DailyForecast{
-	private String date;
+	private String weatherService;
+    private String date;
 	private String dayOfWeek;
 	private String narrative;
 	private Integer temperatureMax;
@@ -35,7 +36,7 @@ public class DailyForecast{
 
 	}
 
-	public DailyForecast(String date, String dayOfWeek, String narrative, Integer temperatureMax, 
+	public DailyForecast(String weatherService, String date, String dayOfWeek, String narrative, Integer temperatureMax, 
 			Integer temperatureMin, String daypartNameD, String daypartNameN, String narrativeD, 
 			String narrativeN, Integer precipChanceD, Integer precipChanceN, Integer cloudCoverD, 
 			Integer cloudCoverN, String precipTypeD, String precipTypeN, Double qpfD, Double qpfN,
@@ -43,7 +44,8 @@ public class DailyForecast{
 			Integer temperatureWindChillD, Integer temperatureWindChillN, String windPhraseD, String windPhraseN) {
 
 
-		this.date = date;
+		this.weatherService = weatherService;
+	    this.date = date;
 		this.dayOfWeek = dayOfWeek;
 		this.narrative = narrative;
 		this.temperatureMax = temperatureMax;
@@ -72,7 +74,9 @@ public class DailyForecast{
 
 
 
-	/**
+
+
+    /**
 	 * Takes in the DailyForecast object and prints out a narrative of the collected 
 	 * data points, in a human readable display.
 	 * @param dayF (DailyForecast) - Take in an instance
@@ -120,6 +124,10 @@ public class DailyForecast{
 		System.out.println("\n\n");
 
 
+	}
+	
+	public String getWeatherService() {
+	    return weatherService;
 	}
 
 	public String getDate() {
