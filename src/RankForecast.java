@@ -19,7 +19,12 @@ public class RankForecast {
 		this.weatherList = weatherList;
 		this.activity = activity;
 	}
-
+	
+	/**
+ 	* This method takes in the class array list and activity and ranks the list according to the activity parameters.
+ 	* @param
+ 	*
+ 	*/
 	public ArrayList<DailyForecast> rankItems(){
 		
 		ArrayList<DailyForecast> rankedList = new ArrayList<DailyForecast>();
