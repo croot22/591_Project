@@ -22,7 +22,7 @@ public class RankForecast {
 	
 	/**
  	* This method takes in the class array list and activity and ranks the list according to the activity parameters.
- 	* @param
+ 	* @param 
  	*
  	*/
 	public ArrayList<DailyForecast> rankItems(){
@@ -60,7 +60,7 @@ public class RankForecast {
 			day.setAverage(dayAverage);
 			rankedList.add(day);
 		}
-		
+		//need to figure out how to order
 		
 		return rankedList;
 	}
