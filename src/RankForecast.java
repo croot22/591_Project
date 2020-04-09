@@ -64,7 +64,10 @@ public class RankForecast{
 		
 		return rankedList;
 	}
-
-
-
+	
+	private double getAverage() {
+		
+		
+	}
 }
+
