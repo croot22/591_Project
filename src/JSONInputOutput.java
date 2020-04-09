@@ -208,7 +208,7 @@ public class JSONInputOutput {
 				//parses out the values needed from the gridData API
 				precipProbAm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "probabilityOfPrecipitation", 1));
 				precipAmountAm = parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "quantitativePrecipitation", 0) / 25.4;
-				cloudCoverAm = parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "skyCover", 1).intValue();
+				cloudCoverAm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "skyCover", 1));
 				precipTypeAm = "";
 				snowfallAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "snowfallAmount", 0)) / 25.4;
 				heatIndexAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "heatIndex", 1) * 9.0 / 5.0) + 32;
@@ -226,7 +226,7 @@ public class JSONInputOutput {
 					
 					precipProbPm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "probabilityOfPrecipitation", 1));
 					precipAmountPm = parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "quantitativePrecipitation", 0) / 25.4;
-					cloudCoverPm = parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "skyCover", 1).intValue();
+					cloudCoverPm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "skyCover", 1));
 					precipTypePm = "";
 					snowfallPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "snowfallAmount", 0)) / 25.4;
 					heatIndexPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "heatIndex", 1) * 9 / 5) + 32;
@@ -235,7 +235,7 @@ public class JSONInputOutput {
 					narrativePm = c.getString("detailedForecast");
 					namePm = c.getString("name");
 					
-					DailyForecast tempWeather = new DailyForecast(date.toString(), date.getDayOfWeek().toString(), b.getString("detailedForecast"),  
+					DailyForecast tempWeather = new DailyForecast("NWS", date.toString(), date.getDayOfWeek().toString(), b.getString("detailedForecast"),  
 							(int)Math.round(highTemp), (int)Math.round(lowTemp), nameAm, namePm, narrativeAm, narrativePm, precipProbAm, precipProbPm, 
 							cloudCoverAm, cloudCoverPm,	"XX", "XX", precipAmountAm, precipAmountPm, snowfallAm, snowfallPm, (int)Math.round(heatIndexAm), 
 							(int)Math.round(heatIndexPm),(int)Math.round(windChillAm), (int)Math.round(windChillPm), windPhraseAm, windPhrasePm);
@@ -253,7 +253,7 @@ public class JSONInputOutput {
 					Double lowTemp = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "minTemperature", 1) * 9.0 / 5.0) + 32;
 
 					//call the fivedayforecast but with the "AM" values (i.e. the first object) in the PM spot
-					DailyForecast tempWeather = new DailyForecast(date.toString(), date.getDayOfWeek().toString(), b.getString("detailedForecast"),
+					DailyForecast tempWeather = new DailyForecast("NWS", date.toString(), date.getDayOfWeek().toString(), b.getString("detailedForecast"),
 							(int)Math.round(highTemp), (int)Math.round(lowTemp), namePm, nameAm, narrativePm, narrativeAm, precipProbPm, precipProbAm, 
 							cloudCoverPm, cloudCoverAm, "XX", "XX", precipAmountPm, precipAmountAm, snowfallPm, snowfallAm, (int)Math.round(heatIndexPm), 
 							(int)Math.round(heatIndexAm),(int)Math.round(windChillPm), (int)Math.round(windChillAm), windPhrasePm, windPhraseAm); //25

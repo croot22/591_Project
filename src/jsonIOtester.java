@@ -6985,6 +6985,20 @@ class jsonIOtester {
 		assertEquals(1, fivedays.get(5).getPrecipChanceD());
 		assertEquals(989, fivedays.get(0).getPrecipChanceD());
 		
+		assertEquals(989, fivedays.get(0).getCloudCoverD());
+		assertEquals(74, fivedays.get(1).getCloudCoverD());
+		assertEquals(71, fivedays.get(2).getCloudCoverD());
+		assertEquals(41, fivedays.get(3).getCloudCoverD());
+		assertEquals(38, fivedays.get(4).getCloudCoverD());
+		
+
+		assertEquals(61, fivedays.get(0).getCloudCoverN());
+		assertEquals(85, fivedays.get(1).getCloudCoverN());
+		assertEquals(49, fivedays.get(2).getCloudCoverN());
+		assertEquals(48, fivedays.get(3).getCloudCoverN());
+		assertEquals(41, fivedays.get(4).getCloudCoverN());
+
+		
 		assertEquals(0, fivedays.get(0).getQpfN());
 		assertEquals(.16999999999999998, fivedays.get(1).getQpfN());
 		assertEquals(0, fivedays.get(2).getQpfN());

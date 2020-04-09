@@ -1,5 +1,5 @@
 
-public class DailyForecast{
+public class DailyForecast implements Comparable{
 	private String weatherService;
     private String date;
 	private String dayOfWeek;
@@ -229,6 +229,14 @@ public class DailyForecast{
 	public void setAverage(Double average) {
 		this.average = average;
 	}
-
+	
+	@Override
+	public int compareTo(Object otherDay) {
+		DailyForecast myOtherDay = (DailyForecast) otherDay;
+		if (myOtherDay.getAverage() == average) return 0;
+		if (average - myOtherDay.getAverage() < 0) return -1;
+		return 1;
+	}
+	
 }
 
