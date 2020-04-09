@@ -7,7 +7,7 @@ import java.util.Collections;
  * @author Cayde.Roothoff
  *
  */
-public class RankForecast {
+public class RankForecast implements Comparable{
 	private ArrayList<DailyForecast> weatherList = new ArrayList<DailyForecast>();
 	private Activity activity = new Activity();
 
@@ -63,6 +63,12 @@ public class RankForecast {
 		//need to figure out how to order
 		
 		return rankedList;
+	}
+
+	@Override
+	public int compareTo(Object otherDay) {
+		DailyForecast myOtherDay = (DailyForecast) otherDay;
+		if (myOtherDay.getAverage() == average) return 0;
 	}
 
 }
