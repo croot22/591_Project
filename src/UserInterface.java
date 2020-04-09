@@ -24,7 +24,14 @@ public class UserInterface {
     public void welcome() {
         System.out.println("Welcome to the Weather-matic 3000!\n\n");
         
-        System.out.println("This application will provide you weather forecasts"
+        art.asciiArt("Weather-");
+        System.out.println();
+        art.asciiArt("      matic");
+        System.out.println("\n");
+        art.asciiArt("          3000");
+        System.out.println();
+        
+        System.out.println("\nThis application will provide you weather forecasts"
                 + " for multiple locations, \rfrom multiple weather services.\n");
         
         System.out.println("You can maintain a 'Location List' of your favorite places "
@@ -116,7 +123,7 @@ public class UserInterface {
             
             System.out.println("This part is still under contruction! "
                     + "\nIf you see this, please add the .json files to a sub-fold named: Saved Searches");
-            art.notYet();
+            art.asciiArt("Not yet!");
 
          // ******************************** Temporary ********************************
             
@@ -174,7 +181,7 @@ public class UserInterface {
                 // ******************************** Temporary ********************************
                 
                 System.out.println("\n This part is still under contruction! Select a List. Bye now!!");
-                art.notYet();
+                art.asciiArt("Not yet!");
                 
                 
              // ******************************** Temporary ********************************
@@ -192,7 +199,7 @@ public class UserInterface {
                 // ******************************** Temporary ********************************
                 
                 System.out.println("This part is still under contruction!");
-                art.notYet();
+                art.asciiArt("Not yet!");
 
              // ******************************** Temporary ********************************
                 validCheck = 1; // switched to '1' to exit while loop
