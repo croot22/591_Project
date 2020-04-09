@@ -4,25 +4,20 @@ import java.awt.image.BufferedImage;
 
 public class ASCIIArt {
 
-    public void notYet() {
+    public void asciiArt(String message) {
 
         int width = 100;
         int height = 30;
 
-        //BufferedImage image = ImageIO.read(new File("/Users/mkyong/Desktop/logo.jpg"));
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics g = image.getGraphics();
-        g.setFont(new Font("SansSerif", Font.BOLD, 24));
+        g.setFont(new Font("SansSerif", Font.PLAIN, 14));
 
         Graphics2D graphics = (Graphics2D) g;
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        graphics.drawString("Not Yet!", 5, 20);
+        graphics.drawString(message, 5, 20);
 
-
-
-        //save this image
-        //ImageIO.write(image, "png", new File("/users/mkyong/ascii-art.png"));
 
         for (int y = 0; y < height; y++) {
             StringBuilder sb = new StringBuilder();
@@ -38,6 +33,10 @@ public class ASCIIArt {
 
             System.out.println(sb);
         }
+        
+        /*
+         * Primary code borrowed from: https://mkyong.com/java/ascii-art-java-example/
+         */
 
 
     }
