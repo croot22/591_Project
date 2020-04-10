@@ -310,9 +310,46 @@ public class UserInterface {
     /**
      * Method to handle when user input is to edit an existing Location List
      */
-    public void editList() {
-        
+    public void editList(String filename) {
+    	
+    	ArrayList<Location> editLocation = jIO.fileReader(filename);
+    	Location tempLocation = new Location();
+    	String replaceLocation = "";
+    	int choice2 = 0;
+    	Scanner s = new Scanner(System.in);
+    	Scanner sint = new Scanner (System.in);
+    	
+    	System.out.println("Which location would you like to edit?");
+    	for (int i = 0; i < editLocation.size(); i++) {
+    		System.out.println(i+1 + ". " + editLocation.get(i).getDisplayName());
+    	}
+    	
+    	int choice = sint.nextInt();
+    	System.out.println("What location would you like to replace " + editLocation.get(choice-1).getDisplayName() + " with?");
+    	String input = s.nextLine();
+    	HashMap<Integer, String> candidates = tempLocation.getLocationCandidates(input);
+    	
+    	if (candidates.size() > 1) {
+    		System.out.println("There were a few options for that location, which one would you like?");
+        	for (Integer key : candidates.keySet()) {
+        		System.out.println(key + ". " + candidates.get(key));
+        	}
+        	choice2 = sint.nextInt();
+    	}
+    	else {
+    		choice2 = 1;
+    	}
+    	tempLocation.parseAddress(choice2);
+    	editLocation.remove(choice-1);
+    	editLocation.add(tempLocation);
+    	
+    	for (Location l : editLocation) {
+    		System.out.println(l.getDisplayName());
+    	}
+        jIO.fileWriter(editLocation, filename);
     }
+    
+
     
     /**
      * Method looks into Working Directory for files with .txt or .json
