@@ -18,10 +18,10 @@ import org.json.JSONObject;
  */
 public class Location {
 	
+	//Setup variables for location object.
 	private String latitude;
 	private String longitude;
 	private String displayName;
-	private int statusCode = 201;
 	private String limit = "10";
 	private JSONArray locationResponse;
 
@@ -41,7 +41,7 @@ public class Location {
 		String country = "us";
 		HashMap<Integer, String> locationCandidates = new HashMap<Integer, String>();
 		
-
+			//Limit is the max number of returns we want for the location candidates
 			userInput = userInput.replace(" ", "+");
 			String url = String.format("https://us1.locationiq.com/v1/search.php?key=%1$s&q=%2$s&format=json&countrycodes=%3$s&limit=%4$s", token, userInput, country, limit);
 
@@ -55,7 +55,6 @@ public class Location {
 				//System.out.println("response code is: " + response.statusCode());
 				if (response.statusCode() > 200) {
 					System.out.println("Sorry, that location cannot be found. Please enter a different location:");
-					this.statusCode = response.statusCode();
 					return null;
 
 				}
