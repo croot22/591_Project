@@ -8,7 +8,8 @@ class UItest {
 	void test() {
 		
 		UserInterface ui = new UserInterface();
-		ui.editList("weather.json");
+		//ui.editList("weather.json");
+		ui.createNewList();
 		assertEquals(1, 1);
 		
 	}
