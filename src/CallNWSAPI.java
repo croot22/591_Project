@@ -1,7 +1,13 @@
 
 import java.util.ArrayList;
 
-
+/**
+ * A class that is used to call the National Weather Service API to get forecast information
+ * for a user provided location (GPS coordinates). The main class, getNWSForecast takes in a GPS location
+ * and returns an arraylist of the available forecast data for that location.
+ * @author Bryan Rogers
+ *
+ */
 public class CallNWSAPI {
 
 	
