@@ -1,8 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashMap;
-
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 class locationTester {

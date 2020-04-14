@@ -2,7 +2,6 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 import org.json.*;
@@ -303,9 +302,6 @@ public class JSONInputOutput {
 		double counter = 0;
 		double values = 0;
 		
-		//gets the dateTime of start/finish
-		//LocalDateTime startDatetime = LocalDateTime.parse(startTime);
-		//LocalDateTime endDatetime = LocalDateTime.parse(endTime);
 		
 		//for all the entries in the array, gets the values within the start/end time and adds them up
 		for (int i = 0; i < keyData.length(); i++) {

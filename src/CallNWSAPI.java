@@ -1,16 +1,8 @@
-import java.io.IOException;
-import java.net.ConnectException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.nio.channels.UnresolvedAddressException;
-import java.time.Duration;
+
 import java.util.ArrayList;
 
 
-public class NWSWeatherWebservice {
+public class CallNWSAPI {
 
 	
 	/**
@@ -23,47 +15,13 @@ public class NWSWeatherWebservice {
 		
 		//setup the url to get the gridpoints from the request and return them for the next call
 		String url = "https://api.weather.gov/points/" + coordinates;
-		HttpClient client = HttpClient.newHttpClient();
-		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
 		ArrayList<String> gridLocation = new ArrayList<String>();
+		String response = GetResponseFromURL.makeRequest(url);
 		JSONInputOutput parser = new JSONInputOutput();
-		
-		try {
-			//System.out.println("Making a call to " + url);
-			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-			if (response.statusCode() > 200) {
-				
-				System.out.println("Help, I'm trapped in a computer! Status code is: " + response.statusCode());
-				
-				//handle a redirect
-				if (response.statusCode() >= 300 && response.statusCode() < 400) {
-					//System.out.println(response.headers().map().get("location").size());
-					String url2 = "https://api.weather.gov" + response.headers().map().get("location").get(0);
-					HttpRequest request2 = HttpRequest.newBuilder().uri(URI.create(url2)).timeout(Duration.ofSeconds(5)).build();
-					response = client.send(request2, BodyHandlers.ofString());
-					//System.out.println(response.body());
-					gridLocation = parser.parseGPS(response.body());
-					
-				}
-				else {
-					return null;
-				}
-			}
-			else {
-				gridLocation = parser.parseGPS(response.body());
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("NWS Webservice Unavailable");
-			return null;
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnresolvedAddressException e) {
-			System.out.println("NWS webservice unavailable");
+		if (response == null) {
 			return null;
 		}
-		
+		gridLocation = parser.parseGPS(response);
 		
 		return gridLocation;
 	}
@@ -82,11 +40,71 @@ public class NWSWeatherWebservice {
 		if (url == null) {
 			return null;
 		}
+		ArrayList<DailyForecast> weatherData = new ArrayList<DailyForecast>();
+		JSONInputOutput parseWeather = new JSONInputOutput();
+		String requestForecast = GetResponseFromURL.makeRequest(url.get(0));
+		String requestForecastGridData = GetResponseFromURL.makeRequest(url.get(1));
+
+		if (requestForecast == null || requestForecastGridData == null) {
+			return null;
+		}
+
+		weatherData = parseWeather.parseNWSForecast(requestForecast, requestForecastGridData);
+
+		return weatherData;
+	}
+
+}
+
+
+
+
+/*
+HttpClient client = HttpClient.newHttpClient();
+HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
+
+
+
+try {
+	//System.out.println("Making a call to " + url);
+	HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+	if (response.statusCode() > 200) {
+		
+		System.out.println("Help, I'm trapped in a computer! Status code is: " + response.statusCode());
+		
+		//handle a redirect
+		if (response.statusCode() >= 300 && response.statusCode() < 400) {
+			System.out.println(response.headers());//.map().get("location").size());
+			String url2 = "https://api.weather.gov" + response.headers().map().get("location").get(0);
+			HttpRequest request2 = HttpRequest.newBuilder().uri(URI.create(url2)).timeout(Duration.ofSeconds(5)).build();
+			response = client.send(request2, BodyHandlers.ofString());
+			//System.out.println(response.body());
+			gridLocation = parser.parseGPS(response.body());
+			
+		}
+		else {
+			return null;
+		}
+	}
+	else {
+		gridLocation = parser.parseGPS(response.body());
+	}
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	System.out.println("NWS Webservice Unavailable");
+	return null;
+} catch (InterruptedException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+} catch (UnresolvedAddressException e) {
+	System.out.println("NWS webservice unavailable");
+	return null;
+}
+
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest requestForecast = HttpRequest.newBuilder().uri(URI.create(url.get(0))).timeout(Duration.ofSeconds(5)).build();
 		HttpRequest requestForecastGridData = HttpRequest.newBuilder().uri(URI.create(url.get(1))).timeout(Duration.ofSeconds(5)).build();
-		ArrayList<DailyForecast> weatherData = new ArrayList<DailyForecast>();
-		JSONInputOutput parseWeather = new JSONInputOutput();
+
 		
 		try {
 			//try to get the weather from the API, if status code says server is unavailable indicate that and return null
@@ -111,11 +129,5 @@ public class NWSWeatherWebservice {
 			System.out.println("NWS webservice unavailable");
 			return null;
 		}
-		
-		return weatherData;
-	}
-	
-	
-	
+		*/
 
-}

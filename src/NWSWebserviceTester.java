@@ -12,7 +12,7 @@ class NWSWebserviceTester {
 
 	@Test
 	void NWSCalltest() {
-		NWSWeatherWebservice nws = new NWSWeatherWebservice();
+		CallNWSAPI nws = new CallNWSAPI();
 		LocalDate today = LocalDate.now();
 		
 		String[] coordinates = {"39.734,-104.904561045", "40.748,-73.98", "40.843,-73.20", ""};

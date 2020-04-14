@@ -12,7 +12,7 @@ public class UserInterface {
     private Scanner scan;
     private JSONInputOutput jIO = new JSONInputOutput();
     private CallWUAPI callWU = new CallWUAPI();
-    private NWSWeatherWebservice callNWS = new NWSWeatherWebservice();
+    private CallNWSAPI callNWS = new CallNWSAPI();
     private DailyForecast fiveDay4cast = new DailyForecast();
     private ASCIIArt art = new ASCIIArt();
     //private location loc = new location();
@@ -344,13 +344,9 @@ public class UserInterface {
     public void editList(String filename) {
     	
     	ArrayList<Location> editLocation = jIO.fileReader(filename);
-    	    	
-    	Scanner s = new Scanner(System.in);
-    	
+    	Scanner s = new Scanner(System.in);	
     	String useriInput = "";
     	
-    	System.out.println("hello!");
-
     	while (!useriInput.toLowerCase().contentEquals("n")) {
     		Location newLocation = null;
     		System.out.println("Which location would you like to edit? Press N to exit");
@@ -411,6 +407,9 @@ public class UserInterface {
     	while (candidates == null) {
     		newInput = scanstring.nextLine();
     		candidates = tempLocation.getLocationCandidates(newInput);
+    		if (candidates == null) {
+    			System.out.println("That location could not be found, please select another.");
+    		}
     	}
     	
     	/*
@@ -439,7 +438,7 @@ public class UserInterface {
         	}
     	}
     	/*
-    	 * If there is only 1 locaiton candidate, confirm the user wanted that one
+    	 * If there is only 1 location candidate, confirm the user wanted that one
     	 */
     	else {
     		System.out.println("You would like to get the weather for " + candidates.get(1)+ "correct? Y/N");
