@@ -1,3 +1,4 @@
+package application;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,7 +14,7 @@ public class UserInterface {
     private JSONInputOutput jIO = new JSONInputOutput();
     private CallWUAPI callWU = new CallWUAPI();
     private CallNWSAPI callNWS = new CallNWSAPI();
-    private DailyForecast fiveDay4cast = new DailyForecast();
+    private DailyForecast dailyForecast = new DailyForecast();
     private ASCIIArt art = new ASCIIArt();
     //private location loc = new location();
     
@@ -100,6 +101,7 @@ public class UserInterface {
         return numsList;
     }
     
+    
     /**
      * Prompts the user to select if they would like to use an existing 'Location List',
      * create a new list, or edit an existing list.
@@ -177,11 +179,12 @@ public class UserInterface {
                 System.out.println("\nSelected 'N' for New");
                 
                 // GO TO: create new Location List method
+                this.createNewList();
                 
                 // ******************************** Temporary ********************************
                 
-                System.out.println("\n This part is still under contruction! Select a List. Bye now!!");
-                art.asciiArt("Not yet!");
+//                System.out.println("\n This part is still under contruction! Select a List. Bye now!!");
+//                art.asciiArt("Not yet!");
                 
                 
              // ******************************** Temporary ********************************
@@ -219,6 +222,16 @@ public class UserInterface {
             // TEST PRINT
             //System.out.println("\n\n**Out of While Loop!!**");
         }
+    }
+    
+    public ArrayList<String> selectedFileLocationList (String filename) {
+        ArrayList<String> locationList = new ArrayList<String>();
+        ArrayList<Location> locsArray = jIO.fileReader(filename);
+        for (Location location : locsArray) {
+            locationList.add(location.getDisplayName());
+        }
+        return locationList;
+        
     }
     
     /**
@@ -264,7 +277,7 @@ public class UserInterface {
 
                 // PRINTS NARRATIVE
                 for (int i = 0; i < value.size(); i++) {
-                    fiveDay4cast.weatherNarrative(value.get(i)); 
+                    dailyForecast.weatherNarrative(value.get(i)); 
                 }
 
             } catch (IOException e) {
@@ -286,7 +299,7 @@ public class UserInterface {
 
                 // PRINTS NARRATIVE
                 for (int i = 0; i < value2.size(); i++) {
-                    fiveDay4cast.weatherNarrative(value2.get(i));  
+                    dailyForecast.weatherNarrative(value2.get(i));  
                 }
 
             }
@@ -452,7 +465,6 @@ public class UserInterface {
     	//scanstring.close();
     	return tempLocation;
     }
-
     
     /**
      * Method looks into Working Directory for files with .txt or .json
