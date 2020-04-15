@@ -5,7 +5,7 @@
  * @author Cayde.Roothoff
  *
  */
-public class Activity {
+public class OutdoorActivity {
 	private Integer bestTemperatureMax;
 	private Integer bestTemperatureMin;
 
@@ -54,7 +54,7 @@ public class Activity {
 		return bestWindPhrase;
 	}
 
-	public Activity() {
+	public OutdoorActivity() {
 
 		this.bestTemperatureMax = 0;
 		this.bestTemperatureMin = 0;
