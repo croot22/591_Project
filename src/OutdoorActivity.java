@@ -18,6 +18,21 @@ public class OutdoorActivity {
 	private Integer bestTemperatureWindChill;
 	private String bestWindPhrase;
 
+	public OutdoorActivity() {
+
+		this.bestTemperatureMax = 0;
+		this.bestTemperatureMin = 0;
+
+		// day part
+		this.bestPrecipChance = 0;
+		this.bestCloudCover = 0;
+		this.bestQpf = 0.0;
+		this.bestQpfSnow = 0.0;
+		this.bestTemperatureHeatIndex = 0;
+		this.bestTemperatureWindChill = 0;
+		this.bestWindPhrase = "";
+	}
+	
 	public Integer getBestTemperatureMax() {
 		return bestTemperatureMax;
 	}
@@ -52,21 +67,6 @@ public class OutdoorActivity {
 
 	public String getBestWindPhrase() {
 		return bestWindPhrase;
-	}
-
-	public OutdoorActivity() {
-
-		this.bestTemperatureMax = 0;
-		this.bestTemperatureMin = 0;
-
-		// day part
-		this.bestPrecipChance = 0;
-		this.bestCloudCover = 0;
-		this.bestQpf = 0.0;
-		this.bestQpfSnow = 0.0;
-		this.bestTemperatureHeatIndex = 0;
-		this.bestTemperatureWindChill = 0;
-		this.bestWindPhrase = "";
 	}
 
 	/**
