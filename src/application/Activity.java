@@ -1,3 +1,4 @@
+package application;
 
 /**
  * This class is responsible for knowing activities and knowing parameters

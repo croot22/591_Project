@@ -1,3 +1,4 @@
+package application;
 
 import java.util.HashMap;
 
@@ -54,6 +55,8 @@ public class Location {
 			return locationCandidates;
 		
 	}
+	
+
 	
 	/**
 	 * parses an address from an indicated location. Function takes in 

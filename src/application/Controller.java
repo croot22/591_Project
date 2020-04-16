@@ -1,3 +1,4 @@
+package application;
 
 public class Controller {
     UserInterface ui = new UserInterface();
