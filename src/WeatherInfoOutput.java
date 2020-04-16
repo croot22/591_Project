@@ -1,7 +1,7 @@
 
 
 /**
- * Outputs the weather information into a PDF style
+ * Outputs the weather information into txt file
  * @author Cayde.Roothoff
  *
  */
