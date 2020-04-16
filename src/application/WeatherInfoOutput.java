@@ -1,5 +1,6 @@
 package application;
 
+
 import java.util.ArrayList;
 
 /**
@@ -20,7 +21,8 @@ public class WeatherInfoOutput {
 	public void outputWeatherInfo() {
 		RankForecast rank = new RankForecast(weatherOutputList, chosenActivity);
 		this.weatherOutputList = rank.getRankedList();
-		
+		System.out.println("Here are the best days to go " + chosenActivity.getActivityType());
 	}
 	
 }
+
