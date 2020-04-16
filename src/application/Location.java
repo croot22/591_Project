@@ -56,6 +56,8 @@ public class Location {
 		
 	}
 	
+
+	
 	/**
 	 * parses an address from an indicated location. Function takes in 
 	 * the index in the HashMap returned by the getLocationCandidates()

@@ -395,76 +395,147 @@ public class UserInterface {
         jIO.fileWriter(editLocation, filename);
 
     }
+//    
+//    /**
+//     * Method that is used to get a Location object based on a user input
+//     * describing a physical location they would like to get the information for.
+//     * User input is passed in as text and a call is made to get the GPS coordinates for 
+//     * the users input and also to handle the case where there are multiple possible matches for 
+//     * where the user was looking
+//     * @param input
+//     * @return
+//     */
+//    public Location getLocation(String input) {
+//    	Location tempLocation = new Location();
+//    	Scanner scanstring = new Scanner(System.in);
+//    	String newInput;
+//    	int choice2 = 0;
+//    	
+//    	/*
+//    	 * Makes a call to get the list of candidates for the users input. If there is
+//    	 * only 1 match for the location or none of the returns match where the user wanted to look, 
+//    	 * gives the user an option to try a different selection and returns null.
+//    	 */
+//    	HashMap<Integer, String> candidates = tempLocation.getLocationCandidates(input);
+//    	while (candidates == null) {
+//    		newInput = scanstring.nextLine();
+//    		candidates = tempLocation.getLocationCandidates(newInput);
+//    		if (candidates == null) {
+//    			System.out.println("That location could not be found, please select another.");
+//    		}
+//    	}
+//    	
+//    	/*
+//    	 * if there are more than 1 location candidate, prompt the user to select
+//    	 * which candidate they want to get the weather for
+//    	 */
+//    	if (candidates.size() > 1) {
+//    		System.out.println("There were a few options for that location, which one would you like?");
+//        	for (Integer key : candidates.keySet()) {
+//        		System.out.println(key + ". " + candidates.get(key));
+//        	}
+//        	System.out.println(candidates.size()+ 1 + ". Try a different search");
+//        	
+//        	
+//        	while (choice2 > candidates.size() || choice2 < 1) {
+//        		newInput = scanstring.nextLine();
+//        		try {
+//        			choice2 = Integer.parseInt(newInput);
+//
+//        			if (choice2 == candidates.size()+1) {
+//        				return null;
+//        			}
+//        		} catch(NumberFormatException e) {
+//        			System.out.println("Invalid Input!");
+//        		}
+//        	}
+//    	}
+//    	/*
+//    	 * If there is only 1 location candidate, confirm the user wanted that one
+//    	 */
+//    	else {
+//    		System.out.println("You would like to get the weather for " + candidates.get(1)+ "correct? Y/N");
+//    		String confirm = scanstring.next();
+//    		if (!confirm.toLowerCase().contentEquals("y")) {
+//    			return null;
+//    		}
+//    		choice2 = 1;
+//    	}
+//    	tempLocation.parseAddress(choice2);
+//    	//scanstring.close();
+//    	return tempLocation;
+//    }
     
-    /**
-     * Method that is used to get a Location object based on a user input
-     * describing a physical location they would like to get the information for.
-     * User input is passed in as text and a call is made to get the GPS coordinates for 
-     * the users input and also to handle the case where there are multiple possible matches for 
-     * where the user was looking
-     * @param input
-     * @return
+  
+  /**
+   * Method that is used to get a Location object based on a user input
+   * describing a physical location they would like to get the information for.
+   * User input is passed in as text and a call is made to get the GPS coordinates for 
+   * the users input and also to handle the case where there are multiple possible matches for 
+   * where the user was looking
+   * @param input
+   * @return
+   */
+  public Location getLocation(String input) {
+    Location tempLocation = new Location();
+    Scanner scanstring = new Scanner(System.in);
+    String newInput;
+    int choice2 = 0;
+    
+    /*
+     * Makes a call to get the list of candidates for the users input. If there is
+     * only 1 match for the location or none of the returns match where the user wanted to look, 
+     * gives the user an option to try a different selection and returns null.
      */
-    public Location getLocation(String input) {
-    	Location tempLocation = new Location();
-    	Scanner scanstring = new Scanner(System.in);
-    	String newInput;
-    	int choice2 = 0;
-    	
-    	/*
-    	 * Makes a call to get the list of candidates for the users input. If there is
-    	 * only 1 match for the location or none of the returns match where the user wanted to look, 
-    	 * gives the user an option to try a different selection and returns null.
-    	 */
-    	HashMap<Integer, String> candidates = tempLocation.getLocationCandidates(input);
-    	while (candidates == null) {
-    		newInput = scanstring.nextLine();
-    		candidates = tempLocation.getLocationCandidates(newInput);
-    		if (candidates == null) {
-    			System.out.println("That location could not be found, please select another.");
-    		}
-    	}
-    	
-    	/*
-    	 * if there are more than 1 location candidate, prompt the user to select
-    	 * which candidate they want to get the weather for
-    	 */
-    	if (candidates.size() > 1) {
-    		System.out.println("There were a few options for that location, which one would you like?");
-        	for (Integer key : candidates.keySet()) {
-        		System.out.println(key + ". " + candidates.get(key));
-        	}
-        	System.out.println(candidates.size()+ 1 + ". Try a different search");
-        	
-        	
-        	while (choice2 > candidates.size() || choice2 < 1) {
-        		newInput = scanstring.nextLine();
-        		try {
-        			choice2 = Integer.parseInt(newInput);
-
-        			if (choice2 == candidates.size()+1) {
-        				return null;
-        			}
-        		} catch(NumberFormatException e) {
-        			System.out.println("Invalid Input!");
-        		}
-        	}
-    	}
-    	/*
-    	 * If there is only 1 location candidate, confirm the user wanted that one
-    	 */
-    	else {
-    		System.out.println("You would like to get the weather for " + candidates.get(1)+ "correct? Y/N");
-    		String confirm = scanstring.next();
-    		if (!confirm.toLowerCase().contentEquals("y")) {
-    			return null;
-    		}
-    		choice2 = 1;
-    	}
-    	tempLocation.parseAddress(choice2);
-    	//scanstring.close();
-    	return tempLocation;
+    HashMap<Integer, String> candidates = tempLocation.getLocationCandidates(input);
+    while (candidates == null) {
+        newInput = scanstring.nextLine();
+        candidates = tempLocation.getLocationCandidates(newInput);
+        if (candidates == null) {
+            System.out.println("That location could not be found, please select another.");
+        }
     }
+    
+    /*
+     * if there are more than 1 location candidate, prompt the user to select
+     * which candidate they want to get the weather for
+     */
+    if (candidates.size() > 1) {
+        System.out.println("There were a few options for that location, which one would you like?");
+        for (Integer key : candidates.keySet()) {
+            System.out.println(key + ". " + candidates.get(key));
+        }
+        System.out.println(candidates.size()+ 1 + ". Try a different search");
+        
+        
+        while (choice2 > candidates.size() || choice2 < 1) {
+            newInput = scanstring.nextLine();
+            try {
+                choice2 = Integer.parseInt(newInput);
+
+                if (choice2 == candidates.size()+1) {
+                    return null;
+                }
+            } catch(NumberFormatException e) {
+                System.out.println("Invalid Input!");
+            }
+        }
+    }
+    /*
+     * If there is only 1 location candidate, confirm the user wanted that one
+     */
+    else {
+        System.out.println("You would like to get the weather for " + candidates.get(1)+ "correct? Y/N");
+        String confirm = scanstring.next();
+        if (!confirm.toLowerCase().contentEquals("y")) {
+            return null;
+        }
+        choice2 = 1;
+    }
+    tempLocation.parseAddress(choice2);
+    //scanstring.close();
+    return tempLocation;
+  }
     
     /**
      * Method looks into Working Directory for files with .txt or .json
