@@ -1,4 +1,4 @@
-package application;
+package src.application;
 
 
 /**
@@ -7,5 +7,6 @@ package application;
  *
  */
 public class WeatherInfoOutput {
+	
 	
 }

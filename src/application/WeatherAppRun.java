@@ -1,12 +1,12 @@
-package application;
+package src.application;
 
 public class WeatherAppRun {
     
 
-//    public static void main(String[] args) {
-//        Controller runapp = new Controller();
-//        runapp.run();
-//
-//    }
+    public static void main(String[] args) {
+        Controller runapp = new Controller();
+        runapp.run();
+
+    }
 
 }
