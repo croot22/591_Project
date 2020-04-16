@@ -1,4 +1,4 @@
-package src.application;
+package application;
 
 
 /**
