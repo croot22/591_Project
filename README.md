@@ -1,8 +1,30 @@
 Welcome to WeatherMatic 3000! To begin, please ensure you setup your Eclipse environment correctly for optimal results:
 
-1. Please setup your Java build path to use JRE System Library [jdk-13.0.2]
-2. Please add JUnit 5 to the classpath
-3. Please also add json-20190722.jar to the classpath as well
-	3a. This can be done by downloading the jar following the instructions here: https://github.com/stleary/JSON-java
-	3b. Once done, go to Project > Properties > Java Build Path > Classpath > Add External Jars... this will prompt you to find the .jar file adn add it to your classpath
-4. This project is still under construction, you can run the program and see a temporary output using an existing list of locations. If you create a sub-folder called SavedSearches and place the 3 json files from piazza in it, you can actually call the weather forecast.
+Dependencies:
+1. Please setup your Java build path to use JRE JavaSE-11 or above. This can be done on a new Project by choosing Execution environment JRE JavaSE-11
+
+If the project already exists, the JRE execution environment can be configured by Right Clicking on your project in the Eclipse Project Explorer and Selecting "Properties." Once in properties, select "Java Bulid Path" in the left hand menu and go to the Libraries tab as shown below.
+
+Click on Modulepath and click "Add Library..."
+
+This will open a window to Add a library, select JRE System Library and Click Next
+
+Choose "Execution Environment" and select "JavaSE-11 (jdk-XZY)" in the dropdown and Click finish. This will add the correct JavaSE to your buildpath.
+
+
+If JavaSE-11 is not available in your libraries, you will have to download it from Oracle here: https://www.oracle.com/java/technologies/javase-jdk11-downloads.html following the instructions for your Operating system.
+
+2. While in the Project Properties, please add JUnit 5 to the classpath by selecting classpath and clicking "Add Library..." This will open a Window where you should select JUnit and click next.
+
+From the dropdown, select JUnit5 and click finish. JUnit will be added to your classpath.
+3. There are also some dependencies on external jars for this project. These jar files are included in the github submission, but can also be found at the referenced links below:
+json-20190722.jar - https://github.com/stleary/JSON-java
+jfxswt.jar https://github.com/jdrich79/WeatherApp_wFX/tree/master/JavaFX_Jar
+
+In the Project Properties menu, select Classpath and Click "Add External Jars..."
+
+This opens a file explorer window were you can navigate to the folder where the above .jar files are stored. Shift select the indicated .jar files and click "Open".
+
+These files will now be on the classpath. CLick "Apply and Close" to exit the properties menu and have these changes take effect.
+
+
