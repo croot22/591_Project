@@ -1,3 +1,4 @@
+package application;
 
 public class DailyForecast implements Comparable{
 	private String weatherService;

@@ -1,3 +1,4 @@
+package application;
 
 /**
  * This class is responsible for knowing activities and knowing parameters
@@ -5,7 +6,7 @@
  * @author Cayde.Roothoff
  *
  */
-public class Activity {
+public class OutdoorActivity {
 	private Integer bestTemperatureMax;
 	private Integer bestTemperatureMin;
 
@@ -17,7 +18,23 @@ public class Activity {
 	private Integer bestTemperatureHeatIndex;
 	private Integer bestTemperatureWindChill;
 	private String bestWindPhrase;
+	private String activityType;
 
+	public OutdoorActivity() {
+
+		this.bestTemperatureMax = 0;
+		this.bestTemperatureMin = 0;
+
+		// day part
+		this.bestPrecipChance = 0;
+		this.bestCloudCover = 0;
+		this.bestQpf = 0.0;
+		this.bestQpfSnow = 0.0;
+		this.bestTemperatureHeatIndex = 0;
+		this.bestTemperatureWindChill = 0;
+		this.bestWindPhrase = "";
+	}
+	
 	public Integer getBestTemperatureMax() {
 		return bestTemperatureMax;
 	}
@@ -53,20 +70,8 @@ public class Activity {
 	public String getBestWindPhrase() {
 		return bestWindPhrase;
 	}
-
-	public Activity() {
-
-		this.bestTemperatureMax = 0;
-		this.bestTemperatureMin = 0;
-
-		// day part
-		this.bestPrecipChance = 0;
-		this.bestCloudCover = 0;
-		this.bestQpf = 0.0;
-		this.bestQpfSnow = 0.0;
-		this.bestTemperatureHeatIndex = 0;
-		this.bestTemperatureWindChill = 0;
-		this.bestWindPhrase = "";
+	public String getActivityType() {
+		return activityType;
 	}
 
 	/**
@@ -86,6 +91,7 @@ public class Activity {
 			this.bestTemperatureHeatIndex = 78;
 			this.bestTemperatureWindChill = 77;
 			this.bestWindPhrase = "";
+			this.activityType = "Sailing";
 		}
 		else if (activity == "hiking") {
 			this.bestTemperatureMax = 68;
@@ -99,6 +105,7 @@ public class Activity {
 			this.bestTemperatureHeatIndex = 70;
 			this.bestTemperatureWindChill = 70;
 			this.bestWindPhrase = "";
+			this.activityType = "Hiking";
 		}
 		else if (activity == "climbing") {
 			this.bestTemperatureMax = 72;
@@ -112,6 +119,7 @@ public class Activity {
 			this.bestTemperatureHeatIndex = 74;
 			this.bestTemperatureWindChill = 73;
 			this.bestWindPhrase = "";
+			this.activityType = "Climbing";
 		}
 		else if (activity == "skiing") {
 			this.bestTemperatureMax = 25;
@@ -125,6 +133,7 @@ public class Activity {
 			this.bestTemperatureHeatIndex = 25;
 			this.bestTemperatureWindChill = 25;
 			this.bestWindPhrase = "";
+			this.activityType = "Skiing";
 		}
 		else if (activity == "biking") {
 			this.bestTemperatureMax = 72;
@@ -138,6 +147,7 @@ public class Activity {
 			this.bestTemperatureHeatIndex = 74;
 			this.bestTemperatureWindChill = 72;
 			this.bestWindPhrase = "";
+			this.activityType = "Biking";
 		}
 	}
 }

@@ -1,3 +1,4 @@
+package application;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,13 +10,13 @@ import java.util.Collections;
  */
 public class RankForecast{
 	private ArrayList<DailyForecast> weatherList = new ArrayList<DailyForecast>();
-	private Activity activity = new Activity();
+	private OutdoorActivity activity = new OutdoorActivity();
 
 	public ArrayList<DailyForecast> getRankedList() {
 		return weatherList;
 	}
 
-	public RankForecast(ArrayList<DailyForecast> weatherList, Activity activity) {
+	public RankForecast(ArrayList<DailyForecast> weatherList, OutdoorActivity activity) {
 		this.weatherList = weatherList;
 		this.activity = activity;
 	}
