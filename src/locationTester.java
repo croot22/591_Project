@@ -51,8 +51,8 @@ class locationTester {
 		
 		assertEquals(5, answer1.size());
 		assertEquals(2, answer2.size());
-		assertEquals(10, answer3.size());
-		assertEquals(4, answer4.size());
+		assertEquals(5, answer3.size());
+		assertEquals(5, answer4.size());
 		assertEquals(null, answer5);
 		
 		lone.parseAddress(2);
