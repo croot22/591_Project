@@ -18,6 +18,7 @@ public class OutdoorActivity {
 	private Integer bestTemperatureHeatIndex;
 	private Integer bestTemperatureWindChill;
 	private String bestWindPhrase;
+	private String activityType;
 
 	public OutdoorActivity() {
 
@@ -69,6 +70,9 @@ public class OutdoorActivity {
 	public String getBestWindPhrase() {
 		return bestWindPhrase;
 	}
+	public String getActivityType() {
+		return activityType;
+	}
 
 	/**
 	 * selectActivity sets the parameters for the chosen activity. This method does not return anything.
@@ -87,6 +91,7 @@ public class OutdoorActivity {
 			this.bestTemperatureHeatIndex = 78;
 			this.bestTemperatureWindChill = 77;
 			this.bestWindPhrase = "";
+			this.activityType = "Sailing";
 		}
 		else if (activity == "hiking") {
 			this.bestTemperatureMax = 68;
@@ -100,6 +105,7 @@ public class OutdoorActivity {
 			this.bestTemperatureHeatIndex = 70;
 			this.bestTemperatureWindChill = 70;
 			this.bestWindPhrase = "";
+			this.activityType = "Hiking";
 		}
 		else if (activity == "climbing") {
 			this.bestTemperatureMax = 72;
@@ -113,6 +119,7 @@ public class OutdoorActivity {
 			this.bestTemperatureHeatIndex = 74;
 			this.bestTemperatureWindChill = 73;
 			this.bestWindPhrase = "";
+			this.activityType = "Climbing";
 		}
 		else if (activity == "skiing") {
 			this.bestTemperatureMax = 25;
@@ -126,6 +133,7 @@ public class OutdoorActivity {
 			this.bestTemperatureHeatIndex = 25;
 			this.bestTemperatureWindChill = 25;
 			this.bestWindPhrase = "";
+			this.activityType = "Skiing";
 		}
 		else if (activity == "biking") {
 			this.bestTemperatureMax = 72;
@@ -139,6 +147,7 @@ public class OutdoorActivity {
 			this.bestTemperatureHeatIndex = 74;
 			this.bestTemperatureWindChill = 72;
 			this.bestWindPhrase = "";
+			this.activityType = "Biking";
 		}
 	}
 }
