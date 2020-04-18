@@ -9,16 +9,27 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.channels.UnresolvedAddressException;
 import java.time.Duration;
-
+/**
+ * Class that is meant to get a HTTP response from a URL and pass
+ * back that response as String text to other classes
+ * @author Bryan Rogers
+ *
+ */
 public class GetResponseFromURL {
 	
+	/**
+	 * static method to make HTTP request to a URL
+	 * @param url
+	 * @return
+	 */
 	public static String makeRequest(String url) {
 		
+		//Setup HTTPClient and Request
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
 		String responseBody = "";
 		
-		
+		//Try to call the URL and return null if it fails for anything but a redirect
 		try {
 
 			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());

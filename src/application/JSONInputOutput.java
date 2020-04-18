@@ -49,13 +49,13 @@ public class JSONInputOutput {
 		int i = 0;
 		for (Location address : locations) {
 			try {
-				JSONObject jobj = new JSONObject();
-			
-			jobj.put("lat", address.getLatitude());
-			jobj.put("longitude", address.getLongitude());
-			jobj.put("locationName", address.getDisplayName());
-			savedSearch.put(i, jobj);
-			i++;
+				JSONObject tempJsonObject = new JSONObject();
+
+				tempJsonObject.put("lat", address.getLatitude());
+				tempJsonObject.put("longitude", address.getLongitude());
+				tempJsonObject.put("locationName", address.getDisplayName());
+				savedSearch.put(i, tempJsonObject);
+				i++;
 			}
 			catch (JSONException e) {
 				e.printStackTrace();
@@ -107,7 +107,7 @@ public class JSONInputOutput {
 		//Read in the specified file
 		File f = new File(directoryPath + filename);
 		String jsonText = "";
-		ArrayList<Location> locations = new ArrayList<Location>();
+		ArrayList<Location> locationsRead = new ArrayList<Location>();
 		
 		try {
 			Scanner fileReader = new Scanner(f);
@@ -124,7 +124,7 @@ public class JSONInputOutput {
 				l.setLatitude(b.getString("lat"));
 				l.setLongitude(b.getString("longitude"));
 				
-				locations.add(l);
+				locationsRead.add(l);
 			}
 			
 		} catch (FileNotFoundException e) {
@@ -137,7 +137,7 @@ public class JSONInputOutput {
 			return null;
 		}
 
-		return locations;
+		return locationsRead;
 	}
 	
 	
@@ -333,13 +333,13 @@ public class JSONInputOutput {
 		//for all the entries in the array, gets the values within the start/end time and adds them up
 		for (int i = 0; i < keyData.length(); i++) {
 			
-			JSONObject o = keyData.getJSONObject(i);
+			JSONObject tempObject = keyData.getJSONObject(i);
 			
-			LocalDateTime t = LocalDateTime.parse(o.getString("validTime").subSequence(0, 16));
-			if ((t.isBefore(endTime)) && (t.isAfter(startTime) || t.isEqual(startTime))) {
+			LocalDateTime tempDateTime = LocalDateTime.parse(tempObject.getString("validTime").subSequence(0, 16));
+			if ((tempDateTime.isBefore(endTime)) && (tempDateTime.isAfter(startTime) || tempDateTime.isEqual(startTime))) {
 				
 				try {
-					values += o.getDouble("value");
+					values += tempObject.getDouble("value");
 				}
 				catch (JSONException e) {
 					values += 0;
