@@ -34,11 +34,10 @@ public class GetResponseFromURL {
 
 			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 			if (response.statusCode() > 200) {
-				
-				System.out.println("Help, I'm trapped in a computer! Status code is: " + response.statusCode());
-				
+							
 				//handle a redirect by sending another request URL endpoint indicated in the headers
 				if (response.statusCode() >= 300 && response.statusCode() < 400) {
+					//System.out.println("Status code was " + response.statusCode() + " handling redirect");
 					String url2 = "https://api.weather.gov" + response.headers().map().get("location").get(0);
 					HttpRequest request2 = HttpRequest.newBuilder().uri(URI.create(url2)).timeout(Duration.ofSeconds(5)).build();
 					response = client.send(request2, BodyHandlers.ofString());
@@ -46,6 +45,7 @@ public class GetResponseFromURL {
 					
 				}
 				else {
+					System.out.println("The HTTP Request failed, status code is: " + response.statusCode());
 					return null;
 				}
 			}
