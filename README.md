@@ -69,7 +69,7 @@ These files will now be on the classpath. CLick "Apply and Close" to exit the pr
   ![alt text](/ReadMeImages/AddUserLib.PNG "Properties")
   22.	Click apply and close
   23.	Finally, you need to add the path to the jar files to your run configuration. Right click the “main” class that runs the project    (Main_Weather.java) and select Run As > Run Configuration. Ensure that the correct Class is selected and go to the arguments tab
-    ![alt text](/ReadMeImages/RunConfig.PNG "Properties")
+    ![alt text](/ReadMeImages/RunConfig.PNG "Properties") 
     24.	In the VM Arguments section, enter the below text with the /path/to/files/lib replaced with the location of the downloaded gluon          files on your local desktop.
     a.	--module-path "\path\to\javafx-sdk-14\lib" --add-modules javafx.controls,javafx.fxml
     b.	Ex: --module-path "C:\Users\Bryan Rogers\Dropbox\MCIT\CIT 591\Final Project\openjfx-14_windows-x64_bin-sdk\javafx-sdk-14\lib" --        add-modules javafx.controls,javafx.fxml
