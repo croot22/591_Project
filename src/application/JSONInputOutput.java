@@ -131,11 +131,12 @@ public class JSONInputOutput {
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.out.println("No file to read");
+			//System.out.println("No file to read");
 			return null;
 		}
 		catch (JSONException e) {
-			System.out.println("JSON exception");
+			//System.out.println("JSON exception");
+			return null;
 		}
 
 		return locations;
@@ -171,7 +172,7 @@ public class JSONInputOutput {
 			}
 		}
 		if(jsonFiles.size() == 0) {
-			System.out.println("Warning, no valid files in this directory!");
+			//System.out.println("Warning, no valid files in this directory!");
 		}
 		
 		return jsonFiles;
