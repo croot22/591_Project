@@ -33,19 +33,18 @@ public class Location {
 
 
 	public ArrayList<String> getLocationCandidates(String userInput) {
+		//include the API token and the country we want to default location info for
 		String token = "e543fdd48f150b";
 		String country = "us";
 		ArrayList<String> locationCandidates = new ArrayList<String>();
-		//HashMap<Integer, String> locationCandidates = new HashMap<Integer, String>();
 		
 			//Limit is the max number of returns we want for the location candidates. Defined as a global variable to allow user to change it in future expansion.
 			userInput = userInput.replace(" ", "+");
 			String url = String.format("https://us1.locationiq.com/v1/search.php?key=%1$s&q=%2$s&format=json&countrycodes=%3$s&limit=%4$s", token, userInput, country, limit);
-			System.out.println(url);
 			String response = GetResponseFromURL.makeRequest(url);
 			
 			if (response == null) {
-				System.out.println();
+				//System.out.println();
 				return null;
 			}
 			this.locationResponse = new JSONArray(response);
@@ -70,6 +69,7 @@ public class Location {
 	 */
 	public void parseAddress(String locationName) {
 		
+		//for each entry in location response, check if it matches the user selected location and if so set the lat, long, name
 		for (int index = 0; index < locationResponse.length(); index++) {
 			JSONObject object = locationResponse.getJSONObject(index);
 			if (object.getString("display_name").contentEquals(locationName)) {
@@ -78,13 +78,14 @@ public class Location {
 				this.displayName = object.getString("display_name");
 			}
 			
-			//this.savedLocations.put(object.toString());
 		}
 		
 
 	}
 	
-	
+	/**
+	 *Getters and setters for all the instance variables 
+	 */
 	public String getLatitude() {
 		if (latitude.length() > 6) {
 			return latitude.substring(0, 6);
@@ -116,43 +117,8 @@ public class Location {
 	public void setLimit(String limit) {
 		this.limit = limit;
 	}
-	
-	
-	
 
 }
 
-/*
-HttpClient client = HttpClient.newHttpClient();
-HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
-
-try {
-	System.out.println(url);
-	HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-	//System.out.println("response code is: " + response.statusCode());
-	if (response.statusCode() > 200) {
-		System.out.println("Sorry, that location cannot be found. Please enter a different location:");
-		return null;
-
-	}
-	else {
-		this.locationResponse = new JSONArray(response.body());
-		for (int i = 0; i < locationResponse.length(); i++) {
-			locationCandidates.put(i+1, locationResponse.getJSONObject(i).getString("display_name"));
-		}
-		
-		
-	}
-} catch (IOException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-} catch (InterruptedException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
-
-//}
-* 
-*/
 
 

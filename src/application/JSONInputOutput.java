@@ -42,9 +42,7 @@ public class JSONInputOutput {
 				for (Location l : locationsAlreadyInFile) {
 					locations.add(l);
 				}
-			}
-
-					
+			}			
 		}
 		
 		//For the locations input, put them into a JSON object and then put that JSON object into a json array
@@ -81,7 +79,7 @@ public class JSONInputOutput {
 	}
 	
 	/**
-	 * Overloaded class defualting to overwriting the file if it already exists vs. appending values to it
+	 * Overloaded class defaulting to overwriting the file if it already exists vs. appending values to it
 	 * @param locations
 	 * @param filename
 	 */
