@@ -1,5 +1,6 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -22,7 +23,7 @@ public class Location {
 
 	/**
 	 * takes a street address as an input and makes a call to get a bunch of location candidates
-	 * from locationiq.com returns a HashMap of indexes and candidates
+	 * from locationiq.com returns an arraylist of the names of the location candidates
 	 * will return null if there is no location data available and prints out an error
 	 * to the console in that case.
 	 * Throttle at no more than 2 per second.
@@ -31,14 +32,16 @@ public class Location {
 	 */
 
 
-	public HashMap<Integer, String> getLocationCandidates(String userInput) {
+	public ArrayList<String> getLocationCandidates(String userInput) {
 		String token = "e543fdd48f150b";
 		String country = "us";
-		HashMap<Integer, String> locationCandidates = new HashMap<Integer, String>();
+		ArrayList<String> locationCandidates = new ArrayList<String>();
+		//HashMap<Integer, String> locationCandidates = new HashMap<Integer, String>();
 		
 			//Limit is the max number of returns we want for the location candidates. Defined as a global variable to allow user to change it in future expansion.
 			userInput = userInput.replace(" ", "+");
 			String url = String.format("https://us1.locationiq.com/v1/search.php?key=%1$s&q=%2$s&format=json&countrycodes=%3$s&limit=%4$s", token, userInput, country, limit);
+			System.out.println(url);
 			String response = GetResponseFromURL.makeRequest(url);
 			
 			if (response == null) {
@@ -48,7 +51,8 @@ public class Location {
 			this.locationResponse = new JSONArray(response);
 			
 			for (int i = 0; i < locationResponse.length(); i++) {
-				locationCandidates.put(i+1, locationResponse.getJSONObject(i).getString("display_name"));
+				locationCandidates.add(locationResponse.getJSONObject(i).getString("display_name"));
+				
 			}
 
 
@@ -60,18 +64,23 @@ public class Location {
 	
 	/**
 	 * parses an address from an indicated location. Function takes in 
-	 * the index in the HashMap returned by the getLocationCandidates()
-	 * method of this class
-	 * PLAN: Potentially move this to jsonIO class to keep all json Handling cohesive
-	 * @param index
+	 * the desired location name from the getLocationCandidates() method and
+	 * puts the proper name, lat, long into the instance variables for the class
+	 * 	 * @param index
 	 */
-	public void parseAddress(int index) {
+	public void parseAddress(String locationName) {
 		
-		JSONObject object = locationResponse.getJSONObject(index-1);
-		this.latitude = object.getString("lat");
-		this.longitude = object.getString("lon");
-		this.displayName = object.getString("display_name");
-		//this.savedLocations.put(object.toString());
+		for (int index = 0; index < locationResponse.length(); index++) {
+			JSONObject object = locationResponse.getJSONObject(index);
+			if (object.getString("display_name").contentEquals(locationName)) {
+				this.latitude = object.getString("lat");
+				this.longitude = object.getString("lon");
+				this.displayName = object.getString("display_name");
+			}
+			
+			//this.savedLocations.put(object.toString());
+		}
+		
 
 	}
 	

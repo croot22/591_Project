@@ -32,6 +32,20 @@ class jsonIOtester {
 			assertEquals(writeLocations.get(j).getLongitude(), readLocations.get(j).getLongitude());
 		}
 		
+		//Test the append function
+		jio.fileWriter(writeLocations, testFile, true);
+		readLocations = jio.fileReader(testFile);
+		//System.out.println(readLocations.size());
+		
+		for (int j = 10; j < 20; j++) {
+			assertEquals(writeLocations.get(j-10).getDisplayName(), readLocations.get(j).getDisplayName());
+			assertEquals(writeLocations.get(j-10).getLatitude(), readLocations.get(j).getLatitude());
+			assertEquals(writeLocations.get(j-10).getLongitude(), readLocations.get(j).getLongitude());
+		}
+		
+		
+		readLocations = jio.fileReader("missingfile.json");
+		assertEquals(null, readLocations);
 	}
 	
 	@Test

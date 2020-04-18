@@ -1,6 +1,7 @@
 package application;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 
@@ -14,35 +15,35 @@ class locationTester {
 		Location lfour = new Location();
 		Location lfive = new Location();
 		
-		HashMap<Integer, String> answer1 = lone.getLocationCandidates("11787");
+		ArrayList<String> answer1 = lone.getLocationCandidates("11787");
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HashMap<Integer, String> answer2 = ltwo.getLocationCandidates("Empire State Building");
+		ArrayList<String> answer2 = ltwo.getLocationCandidates("Empire State Building");
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HashMap<Integer, String> answer3 = lthree.getLocationCandidates("1600 Pennsylvania Ave NW");
+		ArrayList<String> answer3 = lthree.getLocationCandidates("1600 Pennsylvania Ave NW");
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HashMap<Integer, String> answer4 = lfour.getLocationCandidates("Denver, CO");
+		ArrayList<String> answer4 = lfour.getLocationCandidates("Denver, CO");
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HashMap<Integer, String> answer5 =  lfive.getLocationCandidates("");
+		ArrayList<String> answer5 =  lfive.getLocationCandidates("");
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
@@ -56,20 +57,20 @@ class locationTester {
 		assertEquals(5, answer4.size());
 		assertEquals(null, answer5);
 		
-		lone.parseAddress(2);
-		ltwo.parseAddress(1);
-		lthree.parseAddress(4);
-		lfour.parseAddress(2);
+		lone.parseAddress("Hauppauge, Hauppauge, Suffolk County, New York, 11787, USA");
+		ltwo.parseAddress("Empire State Building, 350, 5th Avenue, Korea Town, Manhattan, New York, New York County, New York, 10001, USA");
+		lthree.parseAddress("The Oval Office, 1600, Pennsylvania Avenue Northwest, Golden Triangle, Penn Quarter, Washington D.C., Washington, Washington, D.C., 20006, USA");
+		lfour.parseAddress("Denver County, Colorado, USA");
 		
 		assertEquals("Hauppauge, Hauppauge, Suffolk County, New York, 11787, USA", lone.getDisplayName());
-		assertEquals("40.843", lone.getLatitude());
+		assertEquals("40.844", lone.getLatitude());
 		assertEquals("-73.20", lone.getLongitude());
 		assertEquals("Empire State Building, 350, 5th Avenue, Korea Town, Manhattan, New York, New York County, New York, 10001, USA", ltwo.getDisplayName());
 		assertEquals("-73.98", ltwo.getLongitude());
 		assertEquals("40.748", ltwo.getLatitude());
-		assertEquals("Pennsylvania Avenue Northwest, West End, Penn Quarter, Washington D.C., Washington, Washington, D.C., 20037, USA", lthree.getDisplayName());
-		assertEquals("38.902", lthree.getLatitude());
-		assertEquals("-77.05", lthree.getLongitude());
+		assertEquals("The Oval Office, 1600, Pennsylvania Avenue Northwest, Golden Triangle, Penn Quarter, Washington D.C., Washington, Washington, D.C., 20006, USA", lthree.getDisplayName());
+		assertEquals("38.897", lthree.getLatitude());
+		assertEquals("-77.03", lthree.getLongitude());
 		assertEquals("Denver County, Colorado, USA", lfour.getDisplayName());
 		assertEquals("-104.9", lfour.getLongitude());
 		assertEquals("39.734", lfour.getLatitude());

@@ -15,22 +15,36 @@ import org.json.*;
 
 public class JSONInputOutput {
 	
-	private JSONArray savedSearch = new JSONArray();
+
 	
 	/**
 	 * The fileWriter method takes in an arraylist of locations
 	 * and a filename and saves these files in a directory called
 	 * "SavedSearches" in the current file path where this program is executing from
+	 * Also has a boolean value for append or not appending the input into the file.
 	 * @param locations
 	 * @param filename
 	 */
-	public void fileWriter(ArrayList<Location> locations, String filename) {
+	public void fileWriter(ArrayList<Location> locations, String filename, Boolean append) {
 		
 		//Setup a directory called SavedSearches in the current directory if it doesn't exist
 		String directoryPath = System.getProperty("user.dir") + "/SavedSearches/";
+		JSONArray savedSearch = new JSONArray();
 		File directory = new File(directoryPath);
 		if (!directory.exists()) {
 			directory.mkdir();
+		}
+		
+		//If the append flag is passed in, read in the locations in the file and add them to the locations passed in.
+		if (append) {
+			ArrayList<Location> locationsAlreadyInFile = fileReader(filename);
+			if (locationsAlreadyInFile != null) {
+				for (Location l : locationsAlreadyInFile) {
+					locations.add(l);
+				}
+			}
+
+					
 		}
 		
 		//For the locations input, put them into a JSON object and then put that JSON object into a json array
@@ -67,6 +81,15 @@ public class JSONInputOutput {
 	}
 	
 	/**
+	 * Overloaded class defualting to overwriting the file if it already exists vs. appending values to it
+	 * @param locations
+	 * @param filename
+	 */
+	public void fileWriter(ArrayList<Location> locations, String filename) {
+		fileWriter(locations, filename, false);
+	}
+	
+	/**
 	 * The fileReader method takes in a fileName and returns
 	 * an ArrayList of locations stored in the JSON file.
 	 * The file imported must be in the "SavedSearches" directory
@@ -78,6 +101,7 @@ public class JSONInputOutput {
 		//Get the current directory and make a "SavedSearches" folder if it doesn't exist
 		String directoryPath = System.getProperty("user.dir") + "/SavedSearches/";
 		File directory = new File(directoryPath);
+
 		if (!directory.exists()) {
 			directory.mkdir();
 		}
@@ -94,9 +118,9 @@ public class JSONInputOutput {
 			}
 			
 			//intake the file contents as a JSONArray and then create a location and add them to array list of locations
-			JSONArray array = new JSONArray(jsonText);
-			for (int i = 0; i < array.length(); i++) {
-				JSONObject b = array.getJSONObject(i);
+			JSONArray readerArray = new JSONArray(jsonText);
+			for (int i = 0; i < readerArray.length(); i++) {
+				JSONObject b = readerArray.getJSONObject(i);
 				Location l = new Location();
 				l.setDisplayName(b.getString("locationName"));
 				l.setLatitude(b.getString("lat"));
@@ -107,13 +131,16 @@ public class JSONInputOutput {
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("No file to read");
+			return null;
 		}
 		catch (JSONException e) {
 			System.out.println("JSON exception");
 		}
+
 		return locations;
 	}
+	
 	
 	/**
 	 * This returns an ArrayList of files from the
