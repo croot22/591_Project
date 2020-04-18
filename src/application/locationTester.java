@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 
 class locationTester {
 
+	/**
+	 * class that testse the getLocationCandidates method in Location
+	 */
 	@Test
 	void getLocationCandidatesTest() {
 		Location lone = new Location();
@@ -15,6 +18,8 @@ class locationTester {
 		Location lfour = new Location();
 		Location lfive = new Location();
 		
+		
+		//5 locations to get information about known locations
 		ArrayList<String> answer1 = lone.getLocationCandidates("11787");
 		try {
 			Thread.sleep(500);
@@ -51,17 +56,21 @@ class locationTester {
 			e.printStackTrace();
 		}
 		
+		//Assert the known size of each locations candidates
 		assertEquals(5, answer1.size());
 		assertEquals(2, answer2.size());
 		assertEquals(5, answer3.size());
 		assertEquals(5, answer4.size());
+		//for answer5, I passed garbage and am confirming it reutrns null as expected
 		assertEquals(null, answer5);
 		
+		//Parse a specific pre-determined address for each of the 4 valid locations
 		lone.parseAddress("Hauppauge, Hauppauge, Suffolk County, New York, 11787, USA");
 		ltwo.parseAddress("Empire State Building, 350, 5th Avenue, Korea Town, Manhattan, New York, New York County, New York, 10001, USA");
 		lthree.parseAddress("The Oval Office, 1600, Pennsylvania Avenue Northwest, Golden Triangle, Penn Quarter, Washington D.C., Washington, Washington, D.C., 20006, USA");
 		lfour.parseAddress("Denver County, Colorado, USA");
 		
+		//AsserEquals the values of each known location, name, late, long
 		assertEquals("Hauppauge, Hauppauge, Suffolk County, New York, 11787, USA", lone.getDisplayName());
 		assertEquals("40.844", lone.getLatitude());
 		assertEquals("-73.20", lone.getLongitude());

@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 
 class jsonIOtester {
 
+	/**
+	 * Test case for fileWriter and FileReader methods
+	 * Effectively tests that data written is the same as data read
+	 */
 	@Test
 	void fileReadWriteTest() {
 		JSONInputOutput jio = new JSONInputOutput();
@@ -14,6 +18,7 @@ class jsonIOtester {
 		ArrayList<Location> readLocations = new ArrayList<Location>();
 		String testFile = "testfile.json";
 		
+		//Instantiate 10 locations
 		for (int i = 0; i < 10; i++) {
 			writeLocations.add(new Location());
 			writeLocations.get(i).setDisplayName("Display Name " + i);
@@ -22,9 +27,11 @@ class jsonIOtester {
 			
 		}
 		
+		//Write those 10 locations to a file and then read them back
 		jio.fileWriter(writeLocations, testFile);
 		readLocations = jio.fileReader(testFile);
 		
+		//Confirm that the 10 locations written are the same as teh 10 locations read
 		for (int j = 0; j < 10; j++) {
 			
 			assertEquals(writeLocations.get(j).getDisplayName(), readLocations.get(j).getDisplayName());
@@ -32,22 +39,26 @@ class jsonIOtester {
 			assertEquals(writeLocations.get(j).getLongitude(), readLocations.get(j).getLongitude());
 		}
 		
-		//Test the append function
+		//Test the append function by adding the locations again to the file
 		jio.fileWriter(writeLocations, testFile, true);
 		readLocations = jio.fileReader(testFile);
-		//System.out.println(readLocations.size());
 		
+		//confirm that the locations were written again at the end of the file
 		for (int j = 10; j < 20; j++) {
 			assertEquals(writeLocations.get(j-10).getDisplayName(), readLocations.get(j).getDisplayName());
 			assertEquals(writeLocations.get(j-10).getLatitude(), readLocations.get(j).getLatitude());
 			assertEquals(writeLocations.get(j-10).getLongitude(), readLocations.get(j).getLongitude());
 		}
 		
-		
+		//Test that readLocaitons returns null for a missing file
 		readLocations = jio.fileReader("missingfile.json");
 		assertEquals(null, readLocations);
 	}
 	
+	/**
+	 * Test parseGPS method by passing in static data and comparing the compute method against
+	 * known data
+	 */
 	@Test
 	void parseGPSTest() {
 		
@@ -240,12 +251,17 @@ class jsonIOtester {
 		ArrayList<String> urls = jio.parseGPS(responseBody);
 		ArrayList<String> urls2 = jio.parseGPS(responseBody2);
 		
+		//enter urls from text and make sure they are shown properly in return
 		assertEquals("https://api.weather.gov/gridpoints/TOP/31,80/forecast", urls.get(0));
 		assertEquals("https://api.weather.gov/gridpoints/TOP/31,80", urls.get(1));
 		assertEquals("https://api.weather.gov/gridpoints/BOU/96,58/forecast", urls2.get(0));
 		assertEquals("https://api.weather.gov/gridpoints/BOU/96,58", urls2.get(1));
 	}
 	
+	/**
+	 * test the parseWeather method by using a known dataset with known values adn comparing
+	 * what the method returns to what is computed manually
+	 */
 	@Test
 	void parseWeatherTest() {
 		
@@ -6964,15 +6980,18 @@ class jsonIOtester {
 				"    }\r\n" + 
 				"}";
 				
+		//get the weather from known data
 		JSONInputOutput jio = new JSONInputOutput();
 		ArrayList<DailyForecast> fivedays = jio.parseNWSForecast(forecastResponseBody, forecastGridDataResponseBody);
 		
+		//Test that the day of the week is computed correct
 		assertEquals(fivedays.get(0).getDayOfWeek(),"WEDNESDAY");
 		assertEquals(fivedays.get(1).getDayOfWeek(),"THURSDAY");
 		assertEquals(fivedays.get(2).getDayOfWeek(),"FRIDAY");
 		assertEquals(fivedays.get(3).getDayOfWeek(),"SATURDAY");
 		assertEquals(fivedays.get(4).getDayOfWeek(),"SUNDAY");
 		
+		//cehck max temp is computed correct
 		assertEquals(fivedays.get(0).getTemperatureMax(),72);
 		assertEquals(fivedays.get(1).getTemperatureMax(),38);
 		assertEquals(fivedays.get(2).getTemperatureMax(),41);
@@ -6980,6 +6999,7 @@ class jsonIOtester {
 		assertEquals(fivedays.get(4).getTemperatureMax(),69);
 		assertEquals(fivedays.get(5).getTemperatureMax(),71);
 	
+		//check min temp is computed correct
 		assertEquals(fivedays.get(0).getTemperatureMin(),30);
 		assertEquals(fivedays.get(1).getTemperatureMin(),16);
 		assertEquals(fivedays.get(2).getTemperatureMin(),26);
@@ -6987,6 +7007,7 @@ class jsonIOtester {
 		assertEquals(fivedays.get(4).getTemperatureMin(),36);
 		assertEquals(fivedays.get(5).getTemperatureMin(),39);
 		
+		//check precipChance is computed correct
 		assertEquals(6, fivedays.get(0).getPrecipChanceN());
 		assertEquals(40, fivedays.get(1).getPrecipChanceN());
 		assertEquals(8, fivedays.get(2).getPrecipChanceN());
@@ -7000,20 +7021,20 @@ class jsonIOtester {
 		assertEquals(1, fivedays.get(5).getPrecipChanceD());
 		assertEquals(989, fivedays.get(0).getPrecipChanceD());
 		
+		//check cloudCover is computed correct
 		assertEquals(989, fivedays.get(0).getCloudCoverD());
 		assertEquals(74, fivedays.get(1).getCloudCoverD());
 		assertEquals(71, fivedays.get(2).getCloudCoverD());
 		assertEquals(41, fivedays.get(3).getCloudCoverD());
 		assertEquals(38, fivedays.get(4).getCloudCoverD());
 		
-
 		assertEquals(61, fivedays.get(0).getCloudCoverN());
 		assertEquals(85, fivedays.get(1).getCloudCoverN());
 		assertEquals(49, fivedays.get(2).getCloudCoverN());
 		assertEquals(48, fivedays.get(3).getCloudCoverN());
 		assertEquals(41, fivedays.get(4).getCloudCoverN());
 
-		
+		//check qpf is computed correct
 		assertEquals(0, fivedays.get(0).getQpfN());
 		assertEquals(.16999999999999998, fivedays.get(1).getQpfN());
 		assertEquals(0, fivedays.get(2).getQpfN());

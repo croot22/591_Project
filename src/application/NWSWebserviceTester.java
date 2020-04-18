@@ -11,11 +11,17 @@ import org.junit.jupiter.api.Test;
 
 class NWSWebserviceTester {
 
+	/**
+	 * Test the calls to NWS API by calling known GPS coordinates and confirming basic information
+	 * 
+	 * 
+	 */
 	@Test
 	void NWSCalltest() {
 		CallNWSAPI nws = new CallNWSAPI();
 		LocalDate today = LocalDate.now();
 		
+		//setup some known GPS coordinates and get the forecast for them
 		String[] coordinates = {"39.734,-104.904561045", "40.748,-73.98", "40.843,-73.20", ""};
 		
 		
@@ -42,16 +48,19 @@ class NWSWebserviceTester {
 		}
 		ArrayList<DailyForecast> forecast4 = nws.getNWSForecast(coordinates[3]);
 		
+		//Check that date for each forecast matches today's date
 		assertEquals(today.toString(), forecast1.get(0).getDate());
 		assertEquals(today.toString(), forecast2.get(0).getDate());
 		assertEquals(today.toString(), forecast3.get(0).getDate());
 		
+		//Check that the forecast for tomorrow's date matches tomorrows date
 		assertEquals(today.plusDays(1).toString(), forecast1.get(1).getDate());
 		assertEquals(today.plusDays(1).toString(), forecast2.get(1).getDate());
 		assertEquals(today.plusDays(1).toString(), forecast3.get(1).getDate());
 		
 		System.out.println(forecast1.get(0).getNarrativeN());
 		
+		//check forecast4 returns null as expected
 		assertEquals(null, forecast4);
 		
 	}
