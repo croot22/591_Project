@@ -25,7 +25,7 @@ public class JSONInputOutput {
 	 * @param locations
 	 * @param filename
 	 */
-	public void fileWriter(ArrayList<Location> locations, String filename, Boolean append) {
+	public void fileWriter(ArrayList<Location> locations, String filename, Boolean overwrite) {
 		
 		//Setup a directory called SavedSearches in the current directory if it doesn't exist
 		String directoryPath = System.getProperty("user.dir") + "/SavedSearches/";
@@ -36,7 +36,7 @@ public class JSONInputOutput {
 		}
 		
 		//If the append flag is passed in, read in the locations in the file and add them to the locations passed in.
-		if (append) {
+		if (!overwrite) {
 			ArrayList<Location> locationsAlreadyInFile = fileReader(filename);
 			if (locationsAlreadyInFile != null) {
 				for (Location l : locationsAlreadyInFile) {
@@ -84,7 +84,7 @@ public class JSONInputOutput {
 	 * @param filename
 	 */
 	public void fileWriter(ArrayList<Location> locations, String filename) {
-		fileWriter(locations, filename, false);
+		fileWriter(locations, filename, true);
 	}
 	
 	/**
