@@ -86,5 +86,5 @@ Running the Program:
 ![alt text](/ReadMeImages/NewLocationSetup.PNG "Properties")
 5. In this window, a location can be searched for and matches will appear in the left menu and can be added to the list on the right
 ![alt text](/ReadMeImages/LocationSearch.PNG "Properties")
-6. Once a series of locations are added to the right hand list, these locations can be added to either a new file of locations by typing in a new name, or to an existing file shown in the dropdown menu. The selected locations will be appended to the locations in the file unless the "Override" tick box is selected, in which case the file will be overwriten with the new locations.
+6. Once a series of locations are added to the right hand list, these locations can be added to either a new file of locations by typing in a new name and clicking enter, or to an existing file shown in the dropdown menu. The selected locations will be appended to the locations in the file unless the "Override" tick box is selected, in which case the file will be overwriten with the new locations.
 7. Once done adding a new list, the refresh button on the WeatherMatic Home Page will allow the newly created or edited files to be selected from the menu.
