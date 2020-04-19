@@ -3,16 +3,38 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainContollerFX">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-border-width: 5; -fx-border-color: orange;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainContollerFX">
    <children>
-      <Button fx:id="selectFileBtn" layoutX="117.0" layoutY="352.0" mnemonicParsing="false" onAction="#Button1Action" text="Select Locations File" />
-      <Button fx:id="multiLocalSelectBtn" disable="true" layoutX="318.0" layoutY="352.0" mnemonicParsing="false" onAction="#Button2Action" text="Select Multi Locations" />
-      <ListView fx:id="jsonFileListview" layoutX="40.0" layoutY="177.0" prefHeight="163.0" prefWidth="200.0" />
+      <Button fx:id="selectFileBtn" layoutX="117.0" layoutY="352.0" mnemonicParsing="false" onAction="#Button1Action" text="Select Locations File">
+         <tooltip>
+            <Tooltip text="Select an existing file to populate the Locations list." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+      <Button fx:id="multiLocalSelectBtn" disable="true" layoutX="335.0" layoutY="352.0" mnemonicParsing="false" onAction="#Button2Action" text="Selected Locations">
+         <tooltip>
+            <Tooltip text="Only get weather forecast for you selected locations." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+      <ListView fx:id="jsonFileListview" layoutX="40.0" layoutY="177.0" prefHeight="163.0" prefWidth="200.0">
+         <tooltip>
+            <Tooltip text="Existing Saved Locations List found on your computer." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></ListView>
       <Label layoutX="43.0" layoutY="21.0" prefHeight="59.0" prefWidth="414.0" text=" Weather-matic 3000" textAlignment="CENTER" textFill="#c94707">
          <font>
             <Font name="Berlin Sans FB" size="44.0" />
@@ -28,13 +50,61 @@
             <Image url="@../img/Capture2.JPG" />
          </image>
       </ImageView>
-      <ListView fx:id="locationsListview" layoutX="250.0" layoutY="177.0" prefHeight="163.0" prefWidth="200.0" />
+      <ListView fx:id="locationsListview" layoutX="250.0" layoutY="177.0" prefHeight="163.0" prefWidth="200.0">
+         <tooltip>
+            <Tooltip text="Multi-Select allowed. Use [Ctrl] to select multiples. Or Select All using button below." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></ListView>
       <Label layoutX="40.0" layoutY="157.0" prefHeight="17.0" prefWidth="200.0" text="Saved Locations List Files:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="newLocsBtn" layoutX="50.0" layoutY="437.0" mnemonicParsing="false" onAction="#ButtonNewLocsAction" text="Create New Locations List" />
-      <Button fx:id="selectAllBtn" disable="true" layoutX="384.0" layoutY="384.0" mnemonicParsing="false" onAction="#selectAllBtnAction" text="Select All" />
+      <Button fx:id="newLocsBtn" layoutX="186.0" layoutY="422.0" mnemonicParsing="false" onAction="#ButtonNewLocsAction" prefHeight="50.0" prefWidth="123.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/new.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <tooltip>
+            <Tooltip text="Start Fresh! - Create your own file with all new locations." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+      <Button fx:id="selectAllBtn" disable="true" layoutX="384.0" layoutY="384.0" mnemonicParsing="false" onAction="#selectAllBtnAction" text="Select All">
+         <tooltip>
+            <Tooltip text="Get the weather for all the locations." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+      <Button fx:id="refreshList" layoutX="40.0" layoutY="352.0" mnemonicParsing="false" onAction="#refreshList" prefHeight="36.0" prefWidth="42.0">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/refresh_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <tooltip>
+            <Tooltip text="Refresh the Saved Locations List Files." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+      <Label layoutX="136.0" layoutY="481.0" text="Create New File with New Locations" textFill="#c94707">
+         <font>
+            <Font name="Rockwell Condensed" size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

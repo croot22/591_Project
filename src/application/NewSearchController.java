@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
@@ -28,14 +29,15 @@ public class NewSearchController implements Initializable {
     private UserInterface UIBackEnd = new UserInterface();
     private AlertBox alertBox = new AlertBox();
     private JSONInputOutput jIO = new JSONInputOutput();
+    private MainContollerFX mainCon = new MainContollerFX();
     //private JSONArray locationResponse;
 
     @FXML
     private TextField searchTxtBox;
     // User input TextField for entering location search term
     
-//    @FXML
-//    private TextField searchLocationEntry;
+    @FXML
+    private TextField newFileName;
     
     @FXML
     private ListView<String> searchResultsListview;
@@ -57,10 +59,15 @@ public class NewSearchController implements Initializable {
     // selected in the ChoiceBox, drop-down menu
     // Disabled until the first use of the 'addToListBtn'
     
+    
     @FXML
     private ChoiceBox<String> fileListChoiceBox;
     // Drop-down menu of all json files in the SavedSearches sub-folder
     // Defaults to the first file in the list of files.
+    
+    @FXML
+    private CheckBox overWrite;
+    Boolean overWriteExisting = false;
     
     
     //String selectedCandidate = ""; // to take in the users select location from candidate list
@@ -137,6 +144,7 @@ public class NewSearchController implements Initializable {
         searchResultsListview.setItems(returnedSearchResults);
         // setting the selection mode to single selection
         searchResultsListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        searchResultsListview.getSelectionModel().select(0);
         // Enabling the 'addToListBtn' as there are now values in the ListView (Error handling purposes)
         addToListBtn.setDisable(false);
         }
@@ -193,6 +201,7 @@ public class NewSearchController implements Initializable {
         System.out.println("\n\nselectedLocalsArray\n");
         for (Location loc : selectedLocalsArray) {
             System.out.println(loc.getDisplayName());
+            System.out.println("Overwrite status: " + overWriteExisting);
         }
         
         // Displays locations in the ListView
@@ -237,7 +246,10 @@ public class NewSearchController implements Initializable {
     
     public void addToFile() {
         String fileSelected = this.choiceBoxSelection();
-        jIO.fileWriter(selectedLocalsArray, fileSelected, false);
+        jIO.fileWriter(selectedLocalsArray, fileSelected, overWriteExisting);
+        AlertBox.display("ADDED! - Congrats", "You added your Selected Locations to file!!"
+                + "\nYou can now close this window and Refresh the Saved Locations List Files.");
+        
         
         for (Location local : selectedLocalsArray) {
             System.out.println(local.getDisplayName());
@@ -249,6 +261,34 @@ public class NewSearchController implements Initializable {
         this.addToFile();
         System.out.println("Click! Adding to File :)");
 
+
+    }
+    
+    public void newFile(ActionEvent event) {
+        String userNewFileName = newFileName.getText();
+        // System.out.println("User Search Entry:  " + userSearchEntry);
+
+        if (userNewFileName.equals("")) {
+            // System.out.println("Nothing was entered, please enter something");
+            AlertBox.display("Alert", "You did not enter a search term... \n  Are you messing with me??");
+        } else {
+            this.writeNewFile(userNewFileName);
+        }
+    }
+    
+    public void writeNewFile(String newFileName) {
+        ArrayList<Location> locations = new ArrayList<Location>();
+        String completeFileName = newFileName + ".json";
+        jIO.fileWriter(locations, completeFileName);
+        System.out.println("New File [Enter]");
+        this.fileChoiceBox(); // updates choicebox list with new file
+        //mainCon.setFilesList(); // updates main window files list
+        
+        
+    }
+    
+    public void overWrite(ActionEvent event) {
+        overWriteExisting = true;
     }
     
 }

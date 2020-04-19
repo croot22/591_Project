@@ -45,6 +45,9 @@ public class MainContollerFX implements Initializable {
     
     @FXML 
     private Button selectAllBtn;
+    
+    @FXML
+    private Button refreshList;
         
     @FXML
     private ListView<String> jsonFileListview; // to display the list of available Location List json files
@@ -75,13 +78,35 @@ public class MainContollerFX implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        this.setFilesList();
         
-        
+//        // If there are existing files in the SaveSearch sub-folder, they are listed for single selection
+//        if (jsonFilesList.size() != 0) {
+//            jsonFileListview.setItems(jsonFilesList);
+//            jsonFileListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+//            jsonFileListview.getSelectionModel().select(0);
+//            
+//            
+//        } 
+//        // If no files are found in SavedSearch sub-folder, No files found is displayed and list selection is disabled
+//        else {
+//            ObservableList<String> noContent = FXCollections.observableArrayList("No files found");
+//            jsonFileListview.setItems(noContent);
+//            jsonFileListview.setDisable(true); // disables the ListView so no selection can be made
+//            selectFileBtn.setDisable(true);     // disables selectFileBtn so that is cannot be 'clicked'
+//        }
+
+    }
+    
+    public void setFilesList() {
+        jsonFilesList = FXCollections.observableArrayList(jIO.getFiles());
         // If there are existing files in the SaveSearch sub-folder, they are listed for single selection
         if (jsonFilesList.size() != 0) {
             jsonFileListview.setItems(jsonFilesList);
             jsonFileListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-            
+            jsonFileListview.getSelectionModel().select(0);
+
+
         } 
         // If no files are found in SavedSearch sub-folder, No files found is displayed and list selection is disabled
         else {
@@ -90,9 +115,15 @@ public class MainContollerFX implements Initializable {
             jsonFileListview.setDisable(true); // disables the ListView so no selection can be made
             selectFileBtn.setDisable(true);     // disables selectFileBtn so that is cannot be 'clicked'
         }
-
     }
-
+    
+    public void refreshBtn(ActionEvent event) {
+        this.refreshList();
+    }
+    
+    public void refreshList() {
+        this.setFilesList();
+    }
 
     /**
      * ActionEvent Button that gets the user selected file from the ListView options. 
@@ -218,6 +249,8 @@ public class MainContollerFX implements Initializable {
 
         
     }
+    
+
         
 
     public void btn2HelperAPICalls(String coordinates) {
