@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class locationTester {
 
 	/**
-	 * class that testse the getLocationCandidates method in Location
+	 * class that tests the getLocationCandidates and the parse address method in Location
 	 */
 	@Test
 	void getLocationCandidatesTest() {
@@ -84,6 +84,24 @@ class locationTester {
 		assertEquals("-104.9", lfour.getLongitude());
 		assertEquals("39.734", lfour.getLatitude());
 		
+		
+	}
+	
+	@Test
+	void cloneTest() {
+		Location l = new Location();
+		Location tempLocation = new Location();
+		ArrayList<String> answer1 = l.getLocationCandidates("11787");
+		l.parseAddress("Hauppauge, Hauppauge, Suffolk County, New York, 11787, USA");
+		
+		tempLocation.clone(l);
+		
+		assertEquals(l.getDisplayName(), tempLocation.getDisplayName());
+		assertEquals(l.getLatitude(), tempLocation.getLatitude());
+		assertEquals(l.getLongitude(), tempLocation.getLongitude());
+		
+		tempLocation.setDisplayName("False");
+		assertNotEquals(l.getDisplayName(), tempLocation.getDisplayName());
 		
 	}
 

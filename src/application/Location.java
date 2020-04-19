@@ -85,6 +85,12 @@ public class Location {
 
 	}
 	
+	public void clone (Location l) {
+		this.displayName = l.getDisplayName();
+		this.latitude = l.getLatitude();
+		this.longitude = l.getLongitude();
+	}
+	
 	/**
 	 *Getters and setters for all the instance variables 
 	 */

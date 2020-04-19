@@ -183,9 +183,7 @@ public class NewSearchController implements Initializable {
         //Location local = new Location();
         location.parseAddress(selectedLocal);
         Location local = new Location();
-        local.setDisplayName(location.getDisplayName());
-        local.setLatitude(location.getLatitude());
-        local.setLongitude(location.getLongitude());
+        local.clone(location);
         this.addLocation(local);
         
         //selectedLocalsArray.add(location); // ArrayList of Type Location
