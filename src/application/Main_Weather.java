@@ -21,11 +21,11 @@ import javafx.scene.layout.BorderPane;
 
 public class Main_Weather extends Application {
     
-    JSONInputOutput jIO = new JSONInputOutput();
-    private UserInterface UIBackEnd = new UserInterface();
+    //JSONInputOutput jIO = new JSONInputOutput();
+    //private UserInterface UIBackEnd = new UserInterface();
     
     // Declaring the TextArea for Logging
-    TextArea logging;
+    //TextArea logging;
     
 	@Override
 	public void start(Stage primaryStage) {
