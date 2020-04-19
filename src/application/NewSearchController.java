@@ -182,7 +182,11 @@ public class NewSearchController implements Initializable {
         // ArrayList of Locations to be used to write to json file
         //Location local = new Location();
         location.parseAddress(selectedLocal);
-        this.addLocation(location);
+        Location local = new Location();
+        local.setDisplayName(location.getDisplayName());
+        local.setLatitude(location.getLatitude());
+        local.setLongitude(location.getLongitude());
+        this.addLocation(local);
         
         //selectedLocalsArray.add(location); // ArrayList of Type Location
         System.out.println(location.getDisplayName());

@@ -41,6 +41,7 @@ public class Location {
 			//Limit is the max number of returns we want for the location candidates. Defined as a global variable to allow user to change it in future expansion.
 			userInput = userInput.replace(" ", "+");
 			String url = String.format("https://us1.locationiq.com/v1/search.php?key=%1$s&q=%2$s&format=json&countrycodes=%3$s&limit=%4$s", token, userInput, country, limit);
+			//System.out.println(url);
 			String response = GetResponseFromURL.makeRequest(url);
 			
 			if (response == null) {
@@ -73,6 +74,7 @@ public class Location {
 		for (int index = 0; index < locationResponse.length(); index++) {
 			JSONObject object = locationResponse.getJSONObject(index);
 			if (object.getString("display_name").contentEquals(locationName)) {
+				
 				this.latitude = object.getString("lat");
 				this.longitude = object.getString("lon");
 				this.displayName = object.getString("display_name");

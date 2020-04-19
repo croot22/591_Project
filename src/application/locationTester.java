@@ -61,7 +61,7 @@ class locationTester {
 		assertEquals(2, answer2.size());
 		assertEquals(5, answer3.size());
 		assertEquals(5, answer4.size());
-		//for answer5, I passed garbage and am confirming it reutrns null as expected
+		//for answer5, I passed garbage and am confirming it returns null as expected
 		assertEquals(null, answer5);
 		
 		//Parse a specific pre-determined address for each of the 4 valid locations
