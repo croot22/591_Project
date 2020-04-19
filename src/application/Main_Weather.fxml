@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-border-width: 5; -fx-border-color: orange;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainContollerFX">
    <children>
-      <Button fx:id="selectFileBtn" layoutX="117.0" layoutY="352.0" mnemonicParsing="false" onAction="#Button1Action" text="Select Locations File">
+      <Button fx:id="selectFileBtn" layoutX="117.0" layoutY="352.0" mnemonicParsing="false" onAction="#selectionLocationsFile" text="Select Locations File">
          <tooltip>
             <Tooltip text="Select an existing file to populate the Locations list." wrapText="true">
                <font>
@@ -19,7 +19,7 @@
                </font>
             </Tooltip>
          </tooltip></Button>
-      <Button fx:id="multiLocalSelectBtn" disable="true" layoutX="335.0" layoutY="352.0" mnemonicParsing="false" onAction="#Button2Action" text="Selected Locations">
+      <Button fx:id="multiLocalSelectBtn" disable="true" layoutX="335.0" layoutY="352.0" mnemonicParsing="false" onAction="#selectedLocations" text="Selected Locations">
          <tooltip>
             <Tooltip text="Only get weather forecast for you selected locations." wrapText="true">
                <font>
@@ -78,7 +78,7 @@
                </font>
             </Tooltip>
          </tooltip></Button>
-      <Button fx:id="selectAllBtn" disable="true" layoutX="384.0" layoutY="384.0" mnemonicParsing="false" onAction="#selectAllBtnAction" text="Select All">
+      <Button fx:id="selectAllBtn" disable="true" layoutX="384.0" layoutY="384.0" mnemonicParsing="false" onAction="#selectAll" text="Select All">
          <tooltip>
             <Tooltip text="Get the weather for all the locations." wrapText="true">
                <font>
