@@ -63,7 +63,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="newLocsBtn" layoutX="186.0" layoutY="422.0" mnemonicParsing="false" onAction="#ButtonNewLocsAction" prefHeight="50.0" prefWidth="123.0">
+      <Button fx:id="newLocsBtn" layoutX="43.0" layoutY="422.0" mnemonicParsing="false" onAction="#ButtonNewLocsAction" prefHeight="50.0" prefWidth="123.0">
          <graphic>
             <ImageView fitHeight="50.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -73,6 +73,21 @@
          </graphic>
          <tooltip>
             <Tooltip text="Start Fresh! - Create your own file with all new locations." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Tooltip>
+         </tooltip></Button>
+      <Button fx:id="chooseActivityBtn" layoutX="320.0" layoutY="422.0" mnemonicParsing="false" onAction="#ButtonSelectActivityAction" prefHeight="50.0" prefWidth="123.0">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/new.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <tooltip>
+            <Tooltip text="Choose your activity!" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
@@ -101,7 +116,12 @@
                </font>
             </Tooltip>
          </tooltip></Button>
-      <Label layoutX="136.0" layoutY="481.0" text="Create New File with New Locations" textFill="#c94707">
+      <Label layoutX="10.0" layoutY="481.0" text="Create New File with New Locations" textFill="#c94707">
+         <font>
+            <Font name="Rockwell Condensed" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="290.0" layoutY="481.0" text="Choose an Outdoor Activity" textFill="#c94707">
          <font>
             <Font name="Rockwell Condensed" size="19.0" />
          </font>

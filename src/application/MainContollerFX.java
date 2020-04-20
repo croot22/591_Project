@@ -347,4 +347,16 @@ public class MainContollerFX implements Initializable {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    public void ButtonSelectActivityAction(ActionEvent event) throws Exception {
+        // Create a new Stage object
+        Stage primaryStage = new Stage();
+        // Copied from the Main_Java (boilerplate) 
+        Parent root = FXMLLoader.load(getClass().getResource("/application/NewLocation.fxml")); 
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        primaryStage.setTitle("Outdoor Activity Selection"); // Set the title of the stage/window.
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 }
