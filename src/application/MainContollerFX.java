@@ -168,33 +168,14 @@ public class MainContollerFX implements Initializable {
     public void selectionLocationsFile() {
         if (jsonFilesList.size() != 0) {
             String selectedFile = jsonFileListview.getSelectionModel().getSelectedItem();
-<<<<<<< HEAD
-            System.out.println("Selected File: " + selectedFile);
-            
-            // Once a file is selected, the location selection button are Enabled
-            multiLocalSelectBtn.setDisable(false);
-            selectAllBtn.setDisable(false);
-            
-            // UIBackEnd.useExistingList(selectedFile);
-            try {
-            	this.listLocationsFromFile(selectedFile);
-            }
-            catch (NullPointerException e) {
-            	
-            }
-            //return selectedFile;  
-
-        } else {
-            selectFileBtn.disableProperty();
-
-        }
-        //return null;
-=======
             multiLocalSelectBtn.setDisable(false); // enables button "Selected Locations"
             selectAllBtn.setDisable(false); // enables button "Select All"
-            this.listLocationsFromFile(selectedFile);
+            try {
+            	this.listLocationsFromFile(selectedFile);
+            } catch (NullPointerException e) {
+            	
+            }
         } else {selectFileBtn.disableProperty();}
->>>>>>> dabac7598f68429e8a7f0089acc3eb056b84d6e8
     }
     
     /**
