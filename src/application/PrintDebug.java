@@ -30,7 +30,7 @@ public class PrintDebug {
 		File f = new File(directoryPath + "syslog.txt");
 		try {
 			FileWriter fw = new FileWriter(f, true);
-			fw.write(LocalDateTime.now() + ": " + message);
+			fw.write(LocalDateTime.now() + ": " + message + "\n");
 			fw.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

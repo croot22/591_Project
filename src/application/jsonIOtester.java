@@ -40,7 +40,7 @@ class jsonIOtester {
 		}
 		
 		//Test the append function by adding the locations again to the file
-		jio.fileWriter(writeLocations, testFile, true);
+		jio.fileWriter(writeLocations, testFile, false);
 		readLocations = jio.fileReader(testFile);
 		
 		//confirm that the locations were written again at the end of the file
