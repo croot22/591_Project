@@ -1,7 +1,7 @@
 package application;
 
 /**
- * This method is the JavaFX Controller for the Main App page. 
+ * This class is the JavaFX Controller for the Main App page. 
  * It controls the ListViews, Buttons, etc. and the associated methods that makes
  * ActionEvents of those objects complete the designated tasks. 
  */
@@ -33,7 +33,6 @@ import javafx.stage.Stage;
 
 /**
  * JavaFX class required for JavaFx functionality to run.
- *
  */
 public class MainContollerFX implements Initializable {
     
