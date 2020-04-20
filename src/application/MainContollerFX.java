@@ -65,6 +65,9 @@ public class MainContollerFX implements Initializable {
     @FXML
     private ListView<String> jsonFileListview; 
     // ListView "Saved Locations List Files"
+    @FXML
+    private ListView<String> activitySelectListview;
+    // ListView "Preset activity selection"
     
     @FXML
     private ListView<String> locationsListview; 
