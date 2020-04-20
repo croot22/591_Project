@@ -85,6 +85,10 @@ public class Location {
 
 	}
 	
+	/**
+	 * Method to clone a location
+	 * @param l
+	 */
 	public void clone (Location l) {
 		this.displayName = l.getDisplayName();
 		this.latitude = l.getLatitude();

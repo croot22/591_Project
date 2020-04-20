@@ -87,6 +87,9 @@ class locationTester {
 		
 	}
 	
+	/**
+	 * Test case for clone that makes sure that the new location equals the old location
+	 */
 	@Test
 	void cloneTest() {
 		Location l = new Location();
@@ -95,11 +98,11 @@ class locationTester {
 		l.parseAddress("Hauppauge, Hauppauge, Suffolk County, New York, 11787, USA");
 		
 		tempLocation.clone(l);
-		
+		//assert that the new location parameters equal the old location parameters
 		assertEquals(l.getDisplayName(), tempLocation.getDisplayName());
 		assertEquals(l.getLatitude(), tempLocation.getLatitude());
 		assertEquals(l.getLongitude(), tempLocation.getLongitude());
-		
+		//test that changing the displayName for one location only changes that location
 		tempLocation.setDisplayName("False");
 		assertNotEquals(l.getDisplayName(), tempLocation.getDisplayName());
 		
