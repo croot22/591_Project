@@ -1,6 +1,10 @@
 package application;
 
-
+/**
+ * Class to use the AlertBox functionality of JavaFX
+ * Has a single method to allow for easy incorporation into any
+ * part of the application.
+ */
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,6 +15,17 @@ import javafx.stage.*;
 
 public class AlertBox {
     
+    /**
+     * Display method allows for easy incorporation of an AlertBox throughout
+     * the application. It takes in two parameters, which gives the AlertBox
+     * a title and a message.<p>
+     * The AlertBox is configured to require the user to deal with it so at to
+     * better ensure the message is being delivered. The other application windows 
+     * are effectively disabled until the user clicks the button in the AlertBox or 
+     * closes its window.
+     * @param title (String) - The title message of the stage/window.
+     * @param message (String) - The message of the stage/window.
+     */
     public static void display(String title, String message) {
         Stage window = new Stage();
         

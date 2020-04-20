@@ -26,6 +26,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * JavaFX class required for JavaFx functionality to run.
@@ -35,7 +36,7 @@ public class NewSearchController implements Initializable {
     //private UserInterface UIBackEnd = new UserInterface();
     //private AlertBox alertBox = new AlertBox();
     private JSONInputOutput jIO = new JSONInputOutput();
-    //private MainContollerFX mainCon = new MainContollerFX();
+    private MainContollerFX mainCon = new MainContollerFX();
     //private JSONArray locationResponse;
 
 
@@ -259,7 +260,13 @@ public class NewSearchController implements Initializable {
         String fileSelected = this.choiceBoxSelection();
         jIO.fileWriter(selectedLocalsArray, fileSelected, overWriteExisting);
         AlertBox.display("ADDED! - Congrats", "You added your Selected Locations to file!!"
-                + "\nYou can now close this window and Refresh the Saved Locations List Files.");
+                + "\nYou will now be returned to the Main window.\n\n"
+                + "***Refresh the 'Saved Locations List Files' if you created a new file***.");
+        
+        // This sets it up to automatically close the New Search Window, once the user has
+        // added new locations to a file. Effectively returning them to the Main window.
+        Stage tempStage = (Stage) addToFile.getScene().getWindow();
+        tempStage.close();
     }
     
 
