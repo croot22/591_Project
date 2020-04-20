@@ -170,7 +170,7 @@ public class JSONInputOutput {
 			}
 		}
 		if(jsonFiles.size() == 0) {
-			//System.out.println("Warning, no valid files in this directory!");
+			PrintDebug.printDebug("warning, no files in this directory");
 		}
 		
 		return jsonFiles;
@@ -188,105 +188,112 @@ public class JSONInputOutput {
 		JSONObject forecastObject = new JSONObject(forecastResponseBody);
 		JSONObject forecastGridDataObject = new JSONObject(forecastGridDataResponseBody);
 		ArrayList<DailyForecast> weatherData = new ArrayList<DailyForecast>();
-		JSONArray array = forecastObject.getJSONObject("properties").getJSONArray("periods");
 		
-	
+		
+
 		//gets forecast for each entry in the array
-		for (int i = 0; i < array.length()-1; i++) {
-			JSONObject b = array.getJSONObject(i);
-			JSONObject c = array.getJSONObject(i+1);
-			LocalDateTime startTimeOne = LocalDateTime.parse(b.getString("startTime").subSequence(0, 19));
-			LocalDateTime endTimeOne = LocalDateTime.parse(b.getString("endTime").subSequence(0, 19));
-			LocalDateTime startTimeTwo = LocalDateTime.parse(c.getString("startTime").subSequence(0, 19));
-			LocalDateTime endTimeTwo = LocalDateTime.parse(c.getString("endTime").subSequence(0, 19));
-			
+		try {
+			JSONArray array = forecastObject.getJSONObject("properties").getJSONArray("periods");
+			for (int i = 0; i < array.length()-1; i++) {
+				JSONObject b = array.getJSONObject(i);
+				JSONObject c = array.getJSONObject(i+1);
+				LocalDateTime startTimeOne = LocalDateTime.parse(b.getString("startTime").subSequence(0, 19));
+				LocalDateTime endTimeOne = LocalDateTime.parse(b.getString("endTime").subSequence(0, 19));
+				LocalDateTime startTimeTwo = LocalDateTime.parse(c.getString("startTime").subSequence(0, 19));
+				LocalDateTime endTimeTwo = LocalDateTime.parse(c.getString("endTime").subSequence(0, 19));
 
-			LocalDate date = startTimeOne.toLocalDate();
-			LocalDate dateTwo = startTimeTwo.toLocalDate();
-			
-			/*for the first day or if the start date of the current object is the same as the next object
-			 * create a DailyForecast object and add it to the arraylist
-			 * 
-			 */
-			if (i == 0 || date.equals(dateTwo)) {
-				//Init AM & PM variables to default values that will be "ignored" if not changed
-				Integer precipProbAm = 989;
-				Double precipAmountAm = 989.0;
-				Integer cloudCoverAm = 989;
-				String precipTypeAm = "";
-				Double snowfallAm = 989.0;
-				Double heatIndexAm = 989.0;
-				Double windChillAm = 989.0;
-				String windPhraseAm = "XX";
-				String narrativeAm = "XX";
-				String nameAm = "XX";
-				Integer precipProbPm = 989;
-				Double precipAmountPm = 989.0;
-				Integer cloudCoverPm = 989;
-				String precipTypePm = "";
-				Double snowfallPm = 989.0;
-				Double heatIndexPm = 989.0;
-				Double windChillPm = 989.0;
-				String windPhrasePm = "XX";
-				String narrativePm = "XX";
-				String namePm = "XX";
 
-				//parses out the values needed from the gridData API
-				precipProbAm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "probabilityOfPrecipitation", 1));
-				precipAmountAm = parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "quantitativePrecipitation", 0) / 25.4;
-				cloudCoverAm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "skyCover", 1));
-				precipTypeAm = "";
-				snowfallAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "snowfallAmount", 0)) / 25.4;
-				heatIndexAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "heatIndex", 1) * 9.0 / 5.0) + 32;
-				windChillAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "windChill", 1) * 9.0 / 5.0) + 32;
-				windPhraseAm = b.getString("windDirection");
-				narrativeAm = b.getString("detailedForecast");
-				nameAm = b.getString("name");
-				
-				//checks if the 2 objects are from the same start date and if so fill out the "PM" variables
-				if (date.isEqual(dateTwo)) {
-					
-					Double highTemp = parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeTwo, "maxTemperature", 1);
-					highTemp = (highTemp * 9.0 / 5.0) + 32.0;
-					Double lowTemp = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeTwo, "minTemperature", 1) * 9 / 5) + 32;
-					
-					precipProbPm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "probabilityOfPrecipitation", 1));
-					precipAmountPm = parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "quantitativePrecipitation", 0) / 25.4;
-					cloudCoverPm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "skyCover", 1));
-					precipTypePm = "";
-					snowfallPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "snowfallAmount", 0)) / 25.4;
-					heatIndexPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "heatIndex", 1) * 9 / 5) + 32;
-					windChillPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "windChill", 1) * 9 / 5) + 32;
-					windPhrasePm = c.getString("windDirection");
-					narrativePm = c.getString("detailedForecast");
-					namePm = c.getString("name");
-					
-					DailyForecast tempWeather = new DailyForecast("NWS", date.toString(), date.getDayOfWeek().toString(), b.getString("detailedForecast"),  
-							(int)Math.round(highTemp), (int)Math.round(lowTemp), nameAm, namePm, narrativeAm, narrativePm, precipProbAm, precipProbPm, 
-							cloudCoverAm, cloudCoverPm,	"XX", "XX", precipAmountAm, precipAmountPm, snowfallAm, snowfallPm, (int)Math.round(heatIndexAm), 
-							(int)Math.round(heatIndexPm),(int)Math.round(windChillAm), (int)Math.round(windChillPm), windPhraseAm, windPhrasePm);
-					weatherData.add(tempWeather);
-					
-					
-				}
-				/*if the dates are not equal it means we are in the first object and there is
-				 * no AM forecast for the time period this was called and the DailyForecast should be setup as such
+				LocalDate date = startTimeOne.toLocalDate();
+				LocalDate dateTwo = startTimeTwo.toLocalDate();
+
+				/*for the first day or if the start date of the current object is the same as the next object
+				 * create a DailyForecast object and add it to the arraylist
+				 * 
 				 */
-				else {
-					//Typically in this case the highTemp already occurred before the start time so we should knock that back to get it 
-					Double highTemp = parseForecastGridData(forecastGridDataObject, startTimeOne.minusDays(1), endTimeOne, "maxTemperature", 1);
-					highTemp = (highTemp * 9.0 / 5.0) + 32.0;
-					Double lowTemp = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "minTemperature", 1) * 9.0 / 5.0) + 32;
+				if (i == 0 || date.equals(dateTwo)) {
+					//Init AM & PM variables to default values that will be "ignored" if not changed
+					Integer precipProbAm = 989;
+					Double precipAmountAm = 989.0;
+					Integer cloudCoverAm = 989;
+					String precipTypeAm = "";
+					Double snowfallAm = 989.0;
+					Double heatIndexAm = 989.0;
+					Double windChillAm = 989.0;
+					String windPhraseAm = "XX";
+					String narrativeAm = "XX";
+					String nameAm = "XX";
+					Integer precipProbPm = 989;
+					Double precipAmountPm = 989.0;
+					Integer cloudCoverPm = 989;
+					String precipTypePm = "";
+					Double snowfallPm = 989.0;
+					Double heatIndexPm = 989.0;
+					Double windChillPm = 989.0;
+					String windPhrasePm = "XX";
+					String narrativePm = "XX";
+					String namePm = "XX";
 
-					//call the fivedayforecast but with the "AM" values (i.e. the first object) in the PM spot
-					DailyForecast tempWeather = new DailyForecast("NWS", date.toString(), date.getDayOfWeek().toString(), b.getString("detailedForecast"),
-							(int)Math.round(highTemp), (int)Math.round(lowTemp), namePm, nameAm, narrativePm, narrativeAm, precipProbPm, precipProbAm, 
-							cloudCoverPm, cloudCoverAm, "XX", "XX", precipAmountPm, precipAmountAm, snowfallPm, snowfallAm, (int)Math.round(heatIndexPm), 
-							(int)Math.round(heatIndexAm),(int)Math.round(windChillPm), (int)Math.round(windChillAm), windPhrasePm, windPhraseAm); //25
-					weatherData.add(tempWeather);
+					//parses out the values needed from the gridData API
+					precipProbAm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "probabilityOfPrecipitation", 1));
+					precipAmountAm = parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "quantitativePrecipitation", 0) / 25.4;
+					cloudCoverAm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "skyCover", 1));
+					precipTypeAm = "";
+					snowfallAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "snowfallAmount", 0)) / 25.4;
+					heatIndexAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "heatIndex", 1) * 9.0 / 5.0) + 32;
+					windChillAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "windChill", 1) * 9.0 / 5.0) + 32;
+					windPhraseAm = b.getString("windDirection");
+					narrativeAm = b.getString("detailedForecast");
+					nameAm = b.getString("name");
 
+					//checks if the 2 objects are from the same start date and if so fill out the "PM" variables
+					if (date.isEqual(dateTwo)) {
+
+						Double highTemp = parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeTwo, "maxTemperature", 1);
+						highTemp = (highTemp * 9.0 / 5.0) + 32.0;
+						Double lowTemp = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeTwo, "minTemperature", 1) * 9 / 5) + 32;
+
+						precipProbPm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "probabilityOfPrecipitation", 1));
+						precipAmountPm = parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "quantitativePrecipitation", 0) / 25.4;
+						cloudCoverPm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "skyCover", 1));
+						precipTypePm = "";
+						snowfallPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "snowfallAmount", 0)) / 25.4;
+						heatIndexPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "heatIndex", 1) * 9 / 5) + 32;
+						windChillPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "windChill", 1) * 9 / 5) + 32;
+						windPhrasePm = c.getString("windDirection");
+						narrativePm = c.getString("detailedForecast");
+						namePm = c.getString("name");
+
+						DailyForecast tempWeather = new DailyForecast("NWS", date.toString(), date.getDayOfWeek().toString(), b.getString("detailedForecast"),  
+								(int)Math.round(highTemp), (int)Math.round(lowTemp), nameAm, namePm, narrativeAm, narrativePm, precipProbAm, precipProbPm, 
+								cloudCoverAm, cloudCoverPm,	"XX", "XX", precipAmountAm, precipAmountPm, snowfallAm, snowfallPm, (int)Math.round(heatIndexAm), 
+								(int)Math.round(heatIndexPm),(int)Math.round(windChillAm), (int)Math.round(windChillPm), windPhraseAm, windPhrasePm);
+						weatherData.add(tempWeather);
+
+
+					}
+					/*if the dates are not equal it means we are in the first object and there is
+					 * no AM forecast for the time period this was called and the DailyForecast should be setup as such
+					 */
+					else {
+						//Typically in this case the highTemp already occurred before the start time so we should knock that back to get it 
+						Double highTemp = parseForecastGridData(forecastGridDataObject, startTimeOne.minusDays(1), endTimeOne, "maxTemperature", 1);
+						highTemp = (highTemp * 9.0 / 5.0) + 32.0;
+						Double lowTemp = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "minTemperature", 1) * 9.0 / 5.0) + 32;
+
+						//call the fivedayforecast but with the "AM" values (i.e. the first object) in the PM spot
+						DailyForecast tempWeather = new DailyForecast("NWS", date.toString(), date.getDayOfWeek().toString(), b.getString("detailedForecast"),
+								(int)Math.round(highTemp), (int)Math.round(lowTemp), namePm, nameAm, narrativePm, narrativeAm, precipProbPm, precipProbAm, 
+								cloudCoverPm, cloudCoverAm, "XX", "XX", precipAmountPm, precipAmountAm, snowfallPm, snowfallAm, (int)Math.round(heatIndexPm), 
+								(int)Math.round(heatIndexAm),(int)Math.round(windChillPm), (int)Math.round(windChillAm), windPhrasePm, windPhraseAm); //25
+						weatherData.add(tempWeather);
+
+					}
 				}
-		}
+			} 
+
+		}catch (JSONException e) {
+			PrintDebug.printDebug("JSON Exception line 294 JSONIO");
+			
 			
 		}
 		//return the weatherData arraylist
@@ -348,6 +355,7 @@ public class JSONInputOutput {
 					values += tempObject.getDouble("value");
 				}
 				catch (JSONException e) {
+					PrintDebug.printDebug("No value in passed object in forecast grid data");
 					values += 0;
 				}
 				counter++;
