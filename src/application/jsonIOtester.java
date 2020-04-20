@@ -61,7 +61,7 @@ class jsonIOtester {
 	 */
 	@Test
 	void parseGPSTest() {
-		
+		//Passing in a raw API response with known values
 		String responseBody = "{\r\n" + 
 				"    \"@context\": [\r\n" + 
 				"        \"https://raw.githubusercontent.com/geojson/geojson-ld/master/contexts/geojson-base.jsonld\",\r\n" + 

@@ -9,11 +9,10 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-class NWSWebserviceTester {
+class CallNWSAPITester {
 
 	/**
 	 * Test the calls to NWS API by calling known GPS coordinates and confirming basic information
-	 * 
 	 * 
 	 */
 	@Test
