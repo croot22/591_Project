@@ -179,7 +179,7 @@ public class UserInterface {
                 System.out.println("\nSelected 'N' for New");
                 
                 // GO TO: create new Location List method
-                this.createNewList();
+               // this.createNewList();
                 
                 // ******************************** Temporary ********************************
                 
@@ -227,6 +227,9 @@ public class UserInterface {
     public ArrayList<String> selectedFileLocationList (String filename) {
         ArrayList<String> locationList = new ArrayList<String>();
         ArrayList<Location> locsArray = jIO.fileReader(filename);
+        if (locsArray == null) {
+        	return null;
+        }
         for (Location location : locsArray) {
             locationList.add(location.getDisplayName());
         }
@@ -312,89 +315,6 @@ public class UserInterface {
     }
 
 
-    
-    /**
-     * Method to handle when user input is to create a new Location List
-     */
-    public ArrayList<Location> createNewList() {
-        Scanner scanner = new Scanner(System.in);
-        String filename;
-        String userInput = "";
-        ArrayList<Location> locations = new ArrayList<Location>();
-        Location tempLocation = new Location();
-        System.out.println("What location would you like to get the weather for?");
-        while (locations.size() < 3) {
-        	userInput = scanner.nextLine();
-        	if (userInput.toLowerCase().contentEquals("d")) {
-        		break;
-        	}
-        	tempLocation = getLocation(userInput);
-        	if (tempLocation != null) {
-        		locations.add(tempLocation);
-        	}
-        	if (locations.size() == 3) {
-        		break;
-        	}
-        	System.out.println("Enter another location to get the weather for or press D to stop adding locations");
-        }
-        
-        System.out.println("Would you like to save this list for a future search? Y/N");
-        if (scanner.nextLine().toLowerCase().contentEquals("y")) {
-        	System.out.println("Enter the name this search should be saved as: ");
-        	filename = scanner.nextLine();
-        	jIO.fileWriter(locations, filename+".json");
-        }
-        return locations;
-        
-    }
-    
-    /**
-     * Method to allow user to input an existing list. The input is the filename of the list to 
-     * be edited and this method handles displaying the contents of the list and having the user
-     * select which location(s) in the list to replace one at a time. Once the user is done editing the list,
-     * this method writes it back to the file.
-     */
-    public void editList(String filename) {
-    	
-    	ArrayList<Location> editLocation = jIO.fileReader(filename);
-    	Scanner s = new Scanner(System.in);	
-    	String useriInput = "";
-    	
-    	while (!useriInput.toLowerCase().contentEquals("n")) {
-    		Location newLocation = null;
-    		System.out.println("Which location would you like to edit? Press N to exit");
-    		for (int i = 0; i < editLocation.size(); i++) {
-    			System.out.println(i+1 + ". " + editLocation.get(i).getDisplayName());
-    		}
-
-    		useriInput = s.nextLine();
-
-    		try {
-    			int choice = Integer.parseInt(useriInput);
-    			if (choice < editLocation.size()+1) {
-    				while(newLocation == null) {
-    					System.out.println("What location would you like to replace " + editLocation.get(choice-1).getDisplayName() + " with?");
-    					useriInput = s.nextLine();
-    					newLocation = getLocation(useriInput);
-
-    				}
-
-    				editLocation.remove(choice-1);
-    				editLocation.add(newLocation);
-    			}
-    			else {
-    				System.out.println("Input out of range!");
-    			}
-    		} catch (NumberFormatException e) {
-    			if (!useriInput.toLowerCase().contentEquals("n")) {
-    				System.out.println("Not a valid input! Please enter a number");
-    			}
-    		}
-    		
-    	}
-        jIO.fileWriter(editLocation, filename);
-
-    }
 //    
 //    /**
 //     * Method that is used to get a Location object based on a user input
@@ -467,76 +387,7 @@ public class UserInterface {
 //    }
     
   
-  /**
-   * Method that is used to get a Location object based on a user input
-   * describing a physical location they would like to get the information for.
-   * User input is passed in as text and a call is made to get the GPS coordinates for 
-   * the users input and also to handle the case where there are multiple possible matches for 
-   * where the user was looking
-   * @param input
-   * @return
-   */
-  public Location getLocation(String input) {
-    Location tempLocation = new Location();
-    Scanner scanstring = new Scanner(System.in);
-    String newInput;
-    int choice2 = 0;
-    
-    /*
-     * Makes a call to get the list of candidates for the users input. If there is
-     * only 1 match for the location or none of the returns match where the user wanted to look, 
-     * gives the user an option to try a different selection and returns null.
-     */
-    HashMap<Integer, String> candidates = tempLocation.getLocationCandidates(input);
-    while (candidates == null) {
-        newInput = scanstring.nextLine();
-        candidates = tempLocation.getLocationCandidates(newInput);
-        if (candidates == null) {
-            System.out.println("That location could not be found, please select another.");
-        }
-    }
-    
-    /*
-     * if there are more than 1 location candidate, prompt the user to select
-     * which candidate they want to get the weather for
-     */
-    if (candidates.size() > 1) {
-        System.out.println("There were a few options for that location, which one would you like?");
-        for (Integer key : candidates.keySet()) {
-            System.out.println(key + ". " + candidates.get(key));
-        }
-        System.out.println(candidates.size()+ 1 + ". Try a different search");
-        
-        
-        while (choice2 > candidates.size() || choice2 < 1) {
-            newInput = scanstring.nextLine();
-            try {
-                choice2 = Integer.parseInt(newInput);
-
-                if (choice2 == candidates.size()+1) {
-                    return null;
-                }
-            } catch(NumberFormatException e) {
-                System.out.println("Invalid Input!");
-            }
-        }
-    }
-    /*
-     * If there is only 1 location candidate, confirm the user wanted that one
-     */
-    else {
-        System.out.println("You would like to get the weather for " + candidates.get(1)+ "correct? Y/N");
-        String confirm = scanstring.next();
-        if (!confirm.toLowerCase().contentEquals("y")) {
-            return null;
-        }
-        choice2 = 1;
-    }
-    tempLocation.parseAddress(choice2);
-    //scanstring.close();
-    return tempLocation;
-  }
-    
+ 
     /**
      * Method looks into Working Directory for files with .txt or .json
      * files. Print a numbered list of the those files. 

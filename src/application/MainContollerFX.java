@@ -141,7 +141,12 @@ public class MainContollerFX implements Initializable {
             selectAllBtn.setDisable(false);
             
             // UIBackEnd.useExistingList(selectedFile);
-            this.listLocationsFromFile(selectedFile);
+            try {
+            	this.listLocationsFromFile(selectedFile);
+            }
+            catch (NullPointerException e) {
+            	
+            }
             //return selectedFile;  
 
         } else {
