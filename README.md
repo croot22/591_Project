@@ -77,12 +77,14 @@ These files will now be on the classpath. CLick "Apply and Close" to exit the pr
 
 
 Running the Program:
-1. When the Main_Weather.java program runs, it will open a JavaFX controller.
+1. When the Main_Weather.java program runs, it will open a JavaFX controller. Additional instructions describing each button can be found in the hover over text in the controller.
 ![alt text](/ReadMeImages/WeatherMaticHome.PNG "Properties") 
 2. This page gives the option to select a file with saved locations in it, or select a new set of locations.
-3. If a file is selected and the button Select Locations File is pressed, the list of locations will appear in the right hand screen. From there, any or all of the locations can be selected and the "Select" button will get the forecast for the selected locations.
+3. If a file is selected and the button Select Locations File is pressed, the list of locations will appear in the right hand screen. From there, any combination of the locations can be selected and the "Select" button will get the forecast for the selected locations."Select All" will get the forecast for all locations in the right hand menu.
 ![alt text](/ReadMeImages/WeatherMaticSelectedLocations.PNG "Properties")
 4. If the "Create New Locations List" button is pressed, a new window for searching for locations to get the forecast from will open.
 ![alt text](/ReadMeImages/NewLocationSetup.PNG "Properties")
 5. In this window, a location can be searched for and matches will appear in the left menu and can be added to the list on the right
 ![alt text](/ReadMeImages/LocationSearch.PNG "Properties")
+6. Once a series of locations are added to the right hand list, these locations can be added to either a new file of locations by typing in a new name and clicking enter, or to an existing file shown in the dropdown menu. The selected locations will be appended to the locations in the file unless the "Override" tick box is selected, in which case the file will be overwriten with the new locations.
+7. Once done adding a new list, the refresh button on the WeatherMatic Home Page will allow the newly created or edited files to be selected from the menu.
