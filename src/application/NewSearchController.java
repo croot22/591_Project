@@ -18,6 +18,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 //import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -119,7 +121,8 @@ public class NewSearchController implements Initializable {
 
         if (userSearchEntry.equals("")) {
             // Generates an AlertBox if the user enters nothing; error handling purposes (and coder amusement)
-            AlertBox.display("Alert", "You did not enter a search term... \n  Are you messing with me??");
+        	Alert a = new Alert(AlertType.ERROR,"You did not enter a search term... \n  Are you messing with me??");
+            a.show();
         } else {
             this.listPotentialSearchResult(userSearchEntry);
         }
@@ -142,8 +145,9 @@ public class NewSearchController implements Initializable {
         // Check for a null return
         if (localCandidatesArray == null) {
             // AlertBox called when the search results did not return a result; error handling purposes.
-            AlertBox.display("Alert", "No locations could be found for that entry! "
+           Alert c = new Alert(AlertType.WARNING, "No locations could be found for that entry! "
                     + "\n             Please try something else.");
+           c.show();
         } else {
         // populating the ListView with potential location candidates
         ObservableList<String> returnedSearchResults = FXCollections.observableArrayList(localCandidatesArray);
@@ -258,8 +262,9 @@ public class NewSearchController implements Initializable {
     public void addToFile() {
         String fileSelected = this.choiceBoxSelection();
         jIO.fileWriter(selectedLocalsArray, fileSelected, overWriteExisting);
-        AlertBox.display("ADDED! - Congrats", "You added your Selected Locations to file!!"
+        Alert b = new Alert(AlertType.INFORMATION, "You added your Selected Locations to file!!"
                 + "\nYou can now close this window and Refresh the Saved Locations List Files.");
+        b.show();
     }
     
 
@@ -272,7 +277,8 @@ public class NewSearchController implements Initializable {
     public void newFile(ActionEvent event) {
         String userNewFileName = newFileName.getText();
         if (userNewFileName.equals("")) {
-            AlertBox.display("Alert", "You did not enter a search term... \n  Are you messing with me??");
+            Alert a = new Alert(AlertType.ERROR,"You did not enter a search term... \n  Are you messing with me??");
+            a.show();
         } else {
             this.writeNewFile(userNewFileName);
         }
