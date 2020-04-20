@@ -58,7 +58,7 @@ public class JSONInputOutput {
 				i++;
 			}
 			catch (JSONException e) {
-				e.printStackTrace();
+				PrintDebug.printDebug("JSONException line 61 JSONIO");
 			}
 		}
 		//write the JSON to the file specified
@@ -70,10 +70,10 @@ public class JSONInputOutput {
 			fw.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			PrintDebug.printDebug("IOException line 73 JSONIO");
 		}
 		catch (JSONException e) {
-			e.printStackTrace();
+			PrintDebug.printDebug("JSONException line 76 JSONIO");
 		}
 		
 	}
@@ -129,11 +129,11 @@ public class JSONInputOutput {
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			//System.out.println("No file to read");
+			PrintDebug.printDebug("No file to read");
 			return null;
 		}
 		catch (JSONException e) {
-			//System.out.println("JSON exception");
+			PrintDebug.printDebug("JSONException line 136 JSONIO");
 			return null;
 		}
 
@@ -310,6 +310,7 @@ public class JSONInputOutput {
 			locationUrl.add(object.getJSONObject("properties").getString("forecast"));
 			locationUrl.add(object.getJSONObject("properties").getString("forecastGridData"));
 		} catch (JSONException e) {
+			PrintDebug.printDebug("JSONException line 313 JSONIO");
 			return null;
 		}
 		
