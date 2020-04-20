@@ -305,9 +305,14 @@ public class JSONInputOutput {
 		//sets up a list of urls as strings, and then gets those urls from the json response of the first API
 		ArrayList<String> locationUrl = new ArrayList<String>();
 
-		JSONObject object = new JSONObject(responseBody);
-		locationUrl.add(object.getJSONObject("properties").getString("forecast"));
-		locationUrl.add(object.getJSONObject("properties").getString("forecastGridData"));
+		try {
+			JSONObject object = new JSONObject(responseBody);
+			locationUrl.add(object.getJSONObject("properties").getString("forecast"));
+			locationUrl.add(object.getJSONObject("properties").getString("forecastGridData"));
+		} catch (JSONException e) {
+			return null;
+		}
+		
 		
 		return locationUrl;
 	}

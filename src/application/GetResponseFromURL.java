@@ -28,7 +28,7 @@ public class GetResponseFromURL {
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
 		String responseBody = "";
-		
+		System.out.println(url);
 		//Try to call the URL and return null if it fails for anything but a redirect
 		try {
 
