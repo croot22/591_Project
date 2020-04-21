@@ -12,25 +12,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="484.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OutdoorActivityController">
+<AnchorPane prefHeight="400.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OutdoorActivityController">
    <children>
-      <ImageView fitHeight="511.0" fitWidth="398.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="400.0" fitWidth="398.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/skiing.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="24.0" layoutY="100.0" prefHeight="38.0" prefWidth="167.0" text="Outdoor Activity Selection" textAlignment="CENTER" textFill="#3911d6" underline="true">
+      <Label layoutX="40.0" layoutY="100.0" prefHeight="38.0" prefWidth="200.0" text="Outdoor Activity Selection" textAlignment="CENTER" textFill="#3911d6" underline="false">
          <font>
-            <Font name="Bookman Old Style Bold" size="18.0" />
+            <Font name="Bookman Old Style Bold" size="14.0" />
          </font>
       </Label>
-      <ListView fx:id="newSelectedActivity" layoutX="40.0" layoutY="177.0" prefHeight="163.0" prefWidth="200.0">
+      <ListView fx:id="outdoorActivityListview" layoutX="40.0" layoutY="143.0" prefHeight="163.0" prefWidth="200.0">
+           <font>
+              <Font size="14.0" />
+           </font>
+		</ListView> 
+      <Button fx:id="chooseSelectedActivity" layoutX="40.0" layoutY="316.0" mnemonicParsing="false" onAction="#chooseSelectedActivity" text="Choose Selected Activity">
          <tooltip>
-            <Tooltip text="Existing Saved Locations List found on your computer." wrapText="true">
+            <Tooltip text="Chooses your selected activity." wrapText="true">
                <font>
-                  <Font size="14.0" />
+                  <Font size="12.0" />
                </font>
             </Tooltip>
-         </tooltip></ListView>    
+         </tooltip></Button>   
    </children>
 </AnchorPane>
