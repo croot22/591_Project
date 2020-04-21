@@ -1,5 +1,8 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class is responsible for knowing activities and knowing parameters
  * It does not collaborate with any other classes
@@ -19,6 +22,7 @@ public class OutdoorActivity {
 	private Integer bestTemperatureWindChill;
 	private String bestWindPhrase;
 	private String activityType;
+	public ArrayList<String> outdoorActivityCandidateList = new ArrayList<String>();
 
 	public OutdoorActivity() {
 
@@ -33,6 +37,11 @@ public class OutdoorActivity {
 		this.bestTemperatureHeatIndex = 0;
 		this.bestTemperatureWindChill = 0;
 		this.bestWindPhrase = "";
+		this.outdoorActivityCandidateList.add("Sailing");
+		this.outdoorActivityCandidateList.add("Hiking");
+		this.outdoorActivityCandidateList.add("Climing");
+		this.outdoorActivityCandidateList.add("Skiing");
+		this.outdoorActivityCandidateList.add("Biking");
 	}
 	
 	public Integer getBestTemperatureMax() {

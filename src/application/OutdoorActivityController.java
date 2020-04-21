@@ -7,6 +7,7 @@ package application;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.swing.Action;
@@ -20,8 +21,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -31,19 +30,16 @@ import javafx.scene.control.TextField;
  * JavaFX class required for JavaFx functionality to run.
  */
 public class OutdoorActivityController implements Initializable {
-    
+    private String chosenActivity;
+	private List<String> outdoorActivityCandidatesArrayList = new ArrayList<String>();
+	private OutdoorActivity oA = new OutdoorActivity();
 	
 	public OutdoorActivityController() {
-    	this.outdoorActivityCandidatesArrayList.add("Sailing");
-    	this.outdoorActivityCandidatesArrayList.add("Hiking");
-    	this.outdoorActivityCandidatesArrayList.add("Climbing");
-    	this.outdoorActivityCandidatesArrayList.add("Skiing");
-    	this.outdoorActivityCandidatesArrayList.add("Biking");
-    	
+	
+ 
 	}
 
-	private String chosenActivity;
-	private ArrayList<String> outdoorActivityCandidatesArrayList;
+
 	
     @FXML
     private ListView<String> outdoorActivityListview;
@@ -54,7 +50,7 @@ public class OutdoorActivityController implements Initializable {
     // Button "Choose Selected Activity"
     
     @FXML
-    ObservableList<String> outdoorActivityCandidatesList = FXCollections.observableArrayList(outdoorActivityCandidatesArrayList);
+    ObservableList<String> outdoorActivityCandidatesList = FXCollections.observableArrayList(oA.outdoorActivityCandidateList);
     // List for "Preset list of outdoor activities" ListView
     
     /**
@@ -73,12 +69,10 @@ public class OutdoorActivityController implements Initializable {
      * @param entered - Pressing [Enter]
      */
     public void listOutdoorActivityOptions() {
-    	
-    	ObservableList<String> outdoorActivityCandidatesList = FXCollections.observableArrayList(outdoorActivityCandidatesArrayList);
+   
     	outdoorActivityListview.setItems(outdoorActivityCandidatesList);
     	outdoorActivityListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     	outdoorActivityListview.getSelectionModel().select(0);    	
-    	chooseSelectedActivity.setDisable(true);
     }
     
     
