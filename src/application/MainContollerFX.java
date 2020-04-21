@@ -320,7 +320,7 @@ public class MainContollerFX implements Initializable {
         System.out.println("*************** WUnderground ***************");
         try {
             String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
-            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parse5DayJSON(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
+            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
             // PRINTS NARRATIVE
             for (int i = 0; i < wUndergroundForecasts.size(); i++) {
                 dailyForecast.weatherNarrative(wUndergroundForecasts.get(i)); 

@@ -563,7 +563,7 @@ class CallWUAPITest {
     void testParse5DayJSON() {
         CallWUAPI testJSON = new CallWUAPI();
         try {
-            ArrayList<DailyForecast> forecast = testJSON.parse5DayJSON(jsonTestResponse);
+            ArrayList<DailyForecast> forecast = testJSON.parseWUndergroundJSONForecast(jsonTestResponse);
             
             ArrayList<String> daysOfWeek = new ArrayList<String>();
             ArrayList<String> date = new ArrayList<String>();
