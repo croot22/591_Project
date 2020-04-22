@@ -4,37 +4,41 @@ import java.util.ArrayList;
 import java.util.Collections;
 /**
  * This class is responsible for knowing forecasts, knowing activities, and ranking days/times by chosen activities
- * It collaborates with the Activity, WeatherUndergroundAPI, and NWSAPI class
+ * It collaborates with the Activity, WeatherUndergroundAPI, and NWSAPI classes
  * @author Cayde.Roothoff
  *
  */
 public class RankForecast{
 	private ArrayList<DailyForecast> weatherList = new ArrayList<DailyForecast>();
+	private String chosenOutdoorActivity = new String();
 	private OutdoorActivity activity = new OutdoorActivity();
+	
+	
+	public RankForecast(ArrayList<DailyForecast> weatherList, String activity) {
+		this.weatherList = weatherList;
+		this.chosenOutdoorActivity = activity;
 
+	}
+	
 	public ArrayList<DailyForecast> getRankedList() {
 		return weatherList;
-	}
-
-	public RankForecast(ArrayList<DailyForecast> weatherList, OutdoorActivity activity) {
-		this.weatherList = weatherList;
-		this.activity = activity;
-	}
+	}	
 	
 	/**
  	* This method takes in the class array list and returns a new ranked list according to the activity parameters.
  	* @param null
  	*
  	*/
-	public ArrayList<DailyForecast> rankItems(){
+	private void rankItems(){
 		
 		ArrayList<DailyForecast> rankedList = new ArrayList<DailyForecast>();
+		this.activity.selectActivity(chosenOutdoorActivity);
 		for(DailyForecast day: this.weatherList) {
 			calculateAverage(day);
 			rankedList.add(day);
 		}
 		rankedList.sort(null);
-		return rankedList;
+		Collections.copy(weatherList, rankedList);
 	}
 	
 	/**
@@ -73,6 +77,24 @@ public class RankForecast{
 		dayAverage = (diffTemperatureMax + diffTemperatureMin + diffPrecipChance + diffCloudCover + diffQpf + diffQpfSnow + diffTemperatureHeatIndex + diffTemperatureWindChill) / 8;
 		day.setAverage(dayAverage);
 		
+	}
+	
+	public void rankListPrint() {
+		rankItems();
+		
+		for (int i = 0; i < 3; i++) {
+			
+			System.out.println((i+1) + ".");
+			System.out.println(weatherList.get(i).getDayOfWeek() + " " + weatherList.get(i).getDate());
+			System.out.println("There will be a high temperature of " + weatherList.get(i).getTemperatureMax() + " and a low of " + weatherList.get(i).getTemperatureMin()); 
+			System.out.println("Rain: " + weatherList.get(i).getPrecipChanceN() +"% / Inches: " + weatherList.get(i).getQpfN());
+			System.out.println("Snow: " + weatherList.get(i).getQpfSnowN() + " inches");
+			System.out.println("Cloud cover: " + weatherList.get(i).getCloudCoverN() + "%");
+			System.out.println("Heat Index: " + weatherList.get(i).getTemperatureHeatIndexN());
+			System.out.println("F / Wind Chill: " + weatherList.get(i).getTemperatureWindChillN() + "F");
+			System.out.println("Wind: " + weatherList.get(i).getWindPhraseN());          
+
+		}
 	}
 }
 

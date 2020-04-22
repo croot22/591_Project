@@ -41,8 +41,14 @@ public class MainContollerFX implements Initializable {
     private CallWUAPI callWU = new CallWUAPI();
     private DailyForecast dailyForecast = new DailyForecast();
     private CallNWSAPI callNWS = new CallNWSAPI();
+	private String chosenOutdoorActivity = new String();
+	
     
-    @FXML
+    public void setChosenOutdoorActivity(String chosenOutdoorActivity) {
+		this.chosenOutdoorActivity = chosenOutdoorActivity;
+	}
+
+	@FXML
     private Button selectFileBtn;
     // Button "Select Locations File".
     
@@ -289,7 +295,7 @@ public class MainContollerFX implements Initializable {
                      *    
                      * ***************************************************************** 
                      */
-                    this.btn2HelperAPICalls(locationCoordinates);
+                    this.rankedForecastOutput(locationCoordinates);
                 }
             }
         }
@@ -301,15 +307,17 @@ public class MainContollerFX implements Initializable {
      * TEMPORARY METHOD - To be replaced with final output functionality
      * @param coordinates
      */
-    public void btn2HelperAPICalls(String coordinates) {
+    public void rankedForecastOutput(String coordinates) {
+//    	OutdoorActivityController OAC = new OutdoorActivityController();
+//    	chosenOutdoorActivity = OAC.getChosenActivity();
+    	
         System.out.println("*************** WUnderground ***************");
+        System.out.println("Here are the top 3 days to go " + chosenOutdoorActivity + ":");
         try {
             String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
             ArrayList<DailyForecast> wUndergroundForecasts = callWU.parse5DayJSON(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
-            // PRINTS NARRATIVE
-            for (int i = 0; i < wUndergroundForecasts.size(); i++) {
-                dailyForecast.weatherNarrative(wUndergroundForecasts.get(i)); 
-            }
+            RankForecast rankedList = new RankForecast(wUndergroundForecasts, chosenOutdoorActivity);
+            rankedList.rankListPrint();
 
         } catch (IOException e) {
             System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
@@ -325,10 +333,10 @@ public class MainContollerFX implements Initializable {
             System.out.println("There was an issue calling the National Weather Service forecast for <" + coordinates + ">.");
         } else {
 
-            // PRINTS NARRATIVE
-            for (int i = 0; i < NWSForecasts.size(); i++) {
-                dailyForecast.weatherNarrative(NWSForecasts.get(i));  
-            }
+            // PRINTS Ranked List
+            RankForecast rankedList = new RankForecast(NWSForecasts, chosenOutdoorActivity);
+            rankedList.rankListPrint();
+
         }
 
 
@@ -350,7 +358,12 @@ public class MainContollerFX implements Initializable {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
+    
+    /**
+     * "New" Button Action Method. Opens the "Outdoor Activity Selection" stage/window
+     * @param event
+     * @throws Exception
+     */
     public void ButtonSelectActivityAction(ActionEvent event) throws Exception {
         // Create a new Stage object
         Stage primaryStage = new Stage();

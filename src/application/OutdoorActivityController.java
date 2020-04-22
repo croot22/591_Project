@@ -33,11 +33,14 @@ import javafx.stage.Stage;
  */
 public class OutdoorActivityController implements Initializable {
     private String chosenActivity;
-	private List<String> outdoorActivityCandidatesArrayList = new ArrayList<String>();
 	private OutdoorActivity oA = new OutdoorActivity();
 	
 	
-    @FXML
+    public String getChosenActivity() {
+		return chosenActivity;
+	}
+
+	@FXML
     private ListView<String> outdoorActivityListview;
     // ListView that displays a preset list of activities
     
@@ -91,7 +94,8 @@ public class OutdoorActivityController implements Initializable {
     	this.chosenActivity = outdoorActivityListview.getSelectionModel().getSelectedItem();
     	System.out.println(this.chosenActivity + " is your activity of choice!");
         Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
-        // do what you have to do
+        MainContollerFX mCFX = new MainContollerFX();
+        mCFX.setChosenOutdoorActivity(chosenActivity);
         stage.close();
     }
 

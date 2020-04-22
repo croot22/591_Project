@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is responsible for knowing activities and knowing parameters
+ * This class is responsible for knowing activities and knowing parameters <p>
  * It does not collaborate with any other classes
  * @author Cayde.Roothoff
  *
