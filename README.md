@@ -91,4 +91,4 @@ Running the Program:
 8. Now you can select an activity; click on the bottom right button 
 ![alt text](/ReadMeImages/OutdoorActivityButton.PNG)
 9.Select one of the activities, and click the "Set Activity Selection" Button. 
-![alt text](/ReadMeImages/OutdoorActivityButton.PNG)
+![alt text](/ReadMeImages/SelectActivity.PNG)
