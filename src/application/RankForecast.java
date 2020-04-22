@@ -92,7 +92,8 @@ public class RankForecast{
 			System.out.println("Cloud cover: " + weatherList.get(i).getCloudCoverN() + "%");
 			System.out.println("Heat Index: " + weatherList.get(i).getTemperatureHeatIndexN());
 			System.out.println("F / Wind Chill: " + weatherList.get(i).getTemperatureWindChillN() + "F");
-			System.out.println("Wind: " + weatherList.get(i).getWindPhraseN());          
+			System.out.println("Wind: " + weatherList.get(i).getWindPhraseN());
+			System.out.println();
 
 		}
 	}
