@@ -168,39 +168,30 @@ public class CallWUAPI {
             // k = Night
             // If the "day part name" is null, all Day part values will remain set at default value.
             if (dayPartNameJA.isNull(j)) { 
-                dayPartNameNight = dayPartNameJA.getString(k);
-                narrativeNight = narrativePartDayJA.getString(k);
-                precipChanceNight = precipChanceJA.getInt(k);
-                cloudCoverNight = cloudCoverJA.getInt(k);
-                precipTypeNight = precipTypeJA.getString(k);
-                qpfRainNight = qpfRainJA.getDouble(k);
-                qpfSnowNight = qpfSnowJA.getDouble(k);
-                heatIndexNight = heatIndexJA.getInt(k);
-                windChillNight = windChillJA.getInt(k);
-                windPhraseNight = windPhraseJA.getString(k);
+
             }
             else {
                 dayPartNameDay = dayPartNameJA.getString(j);
-                dayPartNameNight = dayPartNameJA.getString(k);
                 narrativeDay = narrativePartDayJA.getString(j);
-                narrativeNight = narrativePartDayJA.getString(k);
                 precipChanceDay = precipChanceJA.getInt(j);
-                precipChanceNight = precipChanceJA.getInt(k); 
                 cloudCoverDay = cloudCoverJA.getInt(j);
-                cloudCoverNight = cloudCoverJA.getInt(k);
                 precipTypeDay = precipTypeJA.getString(j);
-                precipTypeNight = precipTypeJA.getString(k);
                 qpfRainDay = qpfRainJA.getDouble(j);
-                qpfRainNight = qpfRainJA.getDouble(k);
                 qpfSnowDay = qpfSnowJA.getDouble(j);
-                qpfSnowNight = qpfSnowJA.getDouble(k);
                 heatIndexDay = heatIndexJA.getInt(j);
-                heatIndexNight = heatIndexJA.getInt(k);
-                windChillDay = windChillJA.getInt(j);
-                windChillNight = windChillJA.getInt(k);
                 windPhraseDay = windPhraseJA.getString(j);
-                windPhraseNight = windPhraseJA.getString(k);
             }
+            
+            dayPartNameNight = dayPartNameJA.getString(k);
+            narrativeNight = narrativePartDayJA.getString(k);
+            precipChanceNight = precipChanceJA.getInt(k);
+            cloudCoverNight = cloudCoverJA.getInt(k);
+            precipTypeNight = precipTypeJA.getString(k);
+            qpfRainNight = qpfRainJA.getDouble(k);
+            qpfSnowNight = qpfSnowJA.getDouble(k);
+            heatIndexNight = heatIndexJA.getInt(k);
+            windChillNight = windChillJA.getInt(k);
+            windPhraseNight = windPhraseJA.getString(k);
 
             j = j + 2;
             k = k + 2;
