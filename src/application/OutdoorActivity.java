@@ -39,7 +39,7 @@ public class OutdoorActivity {
 		this.bestWindPhrase = "";
 		this.outdoorActivityCandidateList.add("Sailing");
 		this.outdoorActivityCandidateList.add("Hiking");
-		this.outdoorActivityCandidateList.add("Climing");
+		this.outdoorActivityCandidateList.add("Climbing");
 		this.outdoorActivityCandidateList.add("Skiing");
 		this.outdoorActivityCandidateList.add("Biking");
 	}

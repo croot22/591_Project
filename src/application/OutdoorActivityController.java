@@ -7,6 +7,7 @@ package application;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -25,6 +26,7 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * JavaFX class required for JavaFx functionality to run.
@@ -34,24 +36,19 @@ public class OutdoorActivityController implements Initializable {
 	private List<String> outdoorActivityCandidatesArrayList = new ArrayList<String>();
 	private OutdoorActivity oA = new OutdoorActivity();
 	
-	public OutdoorActivityController() {
-	
- 
-	}
-
-
 	
     @FXML
     private ListView<String> outdoorActivityListview;
     // ListView that displays a preset list of activities
     
     @FXML
-    private Button chooseSelectedActivity;
+    private javafx.scene.control.Button chooseSelectedActivityBtn;
     // Button "Choose Selected Activity"
     
     @FXML
     ObservableList<String> outdoorActivityCandidatesList = FXCollections.observableArrayList(oA.outdoorActivityCandidateList);
     // List for "Preset list of outdoor activities" ListView
+    
     
     /**
      * Method that initializes the Outdoor Activity Selection "window"
@@ -81,12 +78,21 @@ public class OutdoorActivityController implements Initializable {
      * Calls the 'chooseSelectedActivity' method.
      * @param event - Clicking the button.
      */
-    public void chooseSelectedActivityBtn(Action event) {
+    public void chooseSelectedActivityButton(Action event) {
     	this.chooseSelectedActivity();
     } 
     
+    /**
+     * Method for "Choose Selected Activity" button. <p>
+     * Sets the selected activity from the choices in the listview.
+     * @param event - Clicking the button.
+     */
     public void chooseSelectedActivity() {
     	this.chosenActivity = outdoorActivityListview.getSelectionModel().getSelectedItem();
+    	System.out.println(this.chosenActivity);
+        Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
 
 }

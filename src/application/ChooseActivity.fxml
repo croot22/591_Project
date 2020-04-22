@@ -25,17 +25,8 @@
          </font>
       </Label>
       <ListView fx:id="outdoorActivityListview" layoutX="40.0" layoutY="143.0" prefHeight="163.0" prefWidth="200.0">
-           <font>
-              <Font size="14.0" />
-           </font>
 		</ListView> 
-      <Button fx:id="chooseSelectedActivity" layoutX="40.0" layoutY="316.0" mnemonicParsing="false" onAction="#chooseSelectedActivity" text="Choose Selected Activity">
-         <tooltip>
-            <Tooltip text="Chooses your selected activity." wrapText="true">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Tooltip>
-         </tooltip></Button>   
+      <Button fx:id="chooseSelectedActivityBtn" layoutX="40.0" layoutY="316.0" mnemonicParsing="false" onAction="#chooseSelectedActivity" text="Set Activity Selection">
+		</Button>   
    </children>
 </AnchorPane>
