@@ -1,14 +1,25 @@
 package application;
 
+/**
+ * Class to hold the weather forecast data in a
+ * DailyForecast object.
+ * The first 6 instance variables are for data points that apply
+ * to an entire day's forecast.
+ * The remaining 18 instance variables are to hold 9 additional
+ * data points that are divided between Day and Night; to match
+ * the format of how the data is provided by the APIs.
+ */
+
 public class DailyForecast implements Comparable{
-	private String weatherService;
+	private String weatherService; // added to distinguish the weatherService from which data was obtained.
     private String date;
 	private String dayOfWeek;
 	private String narrative;
 	private Integer temperatureMax;
 	private Integer temperatureMin;
 
-	// daypart
+	// Data points provided twice per day
+	// D - Day; N - Night
 	private String daypartNameD;
 	private String daypartNameN;
 	private String narrativeD;
@@ -27,16 +38,43 @@ public class DailyForecast implements Comparable{
 	private Integer temperatureWindChillN;
 	private String windPhraseD;
 	private String windPhraseN;
+	
+	// TODO: add comment
 	private Double average;
 
-
-
-
-
+	// No parameter constructor for easier calling of methods in this class.
 	public DailyForecast() {
-
 	}
 
+	/**
+	 * Full constructor method for creating DailyForecast objects.    
+	 * @param weatherService
+	 * @param date
+	 * @param dayOfWeek
+	 * @param narrative
+	 * @param temperatureMax
+	 * @param temperatureMin
+	 * @param daypartNameD
+	 * @param daypartNameN
+	 * @param narrativeD
+	 * @param narrativeN
+	 * @param precipChanceD
+	 * @param precipChanceN
+	 * @param cloudCoverD
+	 * @param cloudCoverN
+	 * @param precipTypeD
+	 * @param precipTypeN
+	 * @param qpfD
+	 * @param qpfN
+	 * @param qpfSnowD
+	 * @param qpfSnowN
+	 * @param temperatureHeatIndexD
+	 * @param temperatureHeatIndexN
+	 * @param temperatureWindChillD
+	 * @param temperatureWindChillN
+	 * @param windPhraseD
+	 * @param windPhraseN
+	 */
 	public DailyForecast(String weatherService, String date, String dayOfWeek, String narrative, Integer temperatureMax, 
 			Integer temperatureMin, String daypartNameD, String daypartNameN, String narrativeD, 
 			String narrativeN, Integer precipChanceD, Integer precipChanceN, Integer cloudCoverD, 
@@ -74,10 +112,22 @@ public class DailyForecast implements Comparable{
 	}
 
 
-
+    public void setAverage(Double average) {
+        this.average = average;
+    }
+    
+    @Override
+    public int compareTo(Object otherDay) {
+        DailyForecast myOtherDay = (DailyForecast) otherDay;
+        if (myOtherDay.getAverage() == average) return 0;
+        if (average - myOtherDay.getAverage() < 0) return -1;
+        return 1;
+    }
 
 
     /**
+     * *** Not used in the final GUI (non-console) version ****
+     * <p>
 	 * Takes in the DailyForecast object and prints out a narrative of the collected 
 	 * data points, in a human readable display.
 	 * @param dayF (DailyForecast) - Take in an instance
@@ -227,17 +277,7 @@ public class DailyForecast implements Comparable{
 		return average;
 	}
 
-	public void setAverage(Double average) {
-		this.average = average;
-	}
-	
-	@Override
-	public int compareTo(Object otherDay) {
-		DailyForecast myOtherDay = (DailyForecast) otherDay;
-		if (myOtherDay.getAverage() == average) return 0;
-		if (average - myOtherDay.getAverage() < 0) return -1;
-		return 1;
-	}
+
 	
 }
 

@@ -1,9 +1,9 @@
 package application;
-import java.io.BufferedReader;
+//import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
+//import java.io.InputStreamReader;
+//import java.net.URL;
+//import java.net.URLConnection;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -11,8 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CallWUAPI {
-    
-    
     
     /**
      * Methods sets up the URL needed to make a request to the WeatherUnderground
@@ -59,10 +57,9 @@ public class CallWUAPI {
     
     
     /**
-     * 
-     * Method to parse the Weather Underground JSON response string into the DailyForecast Class
-     * @param jsonResponse
-     * @return
+     * Method to parse the Weather Underground JSON response string into the DailyForecast Class.
+     * @param jsonResponse (String) - Takes in the JSON String returned from the API call
+     * @return Array of DailyForecast objects.
      * @throws JSONException
      */
     public ArrayList<DailyForecast> parseWUndergroundJSONForecast(String jsonResponse) throws JSONException {
@@ -80,7 +77,6 @@ public class CallWUAPI {
         // They are also within a nested JSON object. Creating this variable to shorten code below
         JSONObject daypartObj = jObj.getJSONArray("daypart").getJSONObject(0); 
 
-
         JSONArray dayPartNameJA = daypartObj.getJSONArray("daypartName");
         JSONArray narrativePartDayJA = daypartObj.getJSONArray("narrative");
         JSONArray precipChanceJA = daypartObj.getJSONArray("precipChance");
@@ -91,7 +87,6 @@ public class CallWUAPI {
         JSONArray heatIndexJA = daypartObj.getJSONArray("temperatureHeatIndex"); 
         JSONArray windChillJA = daypartObj.getJSONArray("temperatureWindChill"); 
         JSONArray windPhraseJA = daypartObj.getJSONArray("windPhrase"); 
-
 
         // ArrayList to hold the 'DailyForecast' objects
         ArrayList<DailyForecast> forecastsArray = new ArrayList<DailyForecast>();
@@ -129,7 +124,6 @@ public class CallWUAPI {
              * For int/Integer the "non-sense" values is 989.
              * For String - the "non-sense" value is "XX"  
              */
-
 
             Integer tMax = 989;
             if (maxTempJA.isNull(i)) {
@@ -218,9 +212,8 @@ public class CallWUAPI {
              * This continues as for each day, the all day variable has arrays of 5 data points while the "day part" arrays have 10 data points.
              * [i=2 , j=4, k=5], [i=3, j=6, k=7], [i=4 , j=8 , k=9], [i=5, j=10, k=11]
              */
+
             
-
-
             // Sets each day's data to a DailyForecast object using it constructor.
             DailyForecast dailyForecast = new DailyForecast(weatherService, date, dayOfWeek, narrative, tMax, tMin,
                     dayPartNameDay, dayPartNameNight, narrativeDay, narrativeNight, precipChanceDay, precipChanceNight, cloudCoverDay, cloudCoverNight,

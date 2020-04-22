@@ -575,7 +575,7 @@ class CallWUAPITest {
             
             for (int i = 0; i < forecast.size(); i++) {
                 DailyForecast day = forecast.get(i);
-                
+                 
                 String dateString = day.getDate();
                 date.add(dateString);
                 

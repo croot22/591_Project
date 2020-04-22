@@ -1,4 +1,10 @@
 package application;
+
+/**
+ * Main/Run method for the application. <p>
+ * Running this method starts the application. <br>
+ * It calls the main stage/window.
+ */
 	
 import javafx.application.Application;
 //import javafx.collections.FXCollections;
@@ -27,7 +33,9 @@ public class Main_Weather extends Application {
             primaryStage.show();
             
 		} catch(Exception e) {
-			e.printStackTrace();}
+		    System.out.println("Something went wrong loading the main program stage.");
+			//e.printStackTrace();
+		    }
 	}
 	
 	public static void main(String[] args) {
