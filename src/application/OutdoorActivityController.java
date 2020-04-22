@@ -89,7 +89,7 @@ public class OutdoorActivityController implements Initializable {
      */
     public void chooseSelectedActivity() {
     	this.chosenActivity = outdoorActivityListview.getSelectionModel().getSelectedItem();
-    	System.out.println(this.chosenActivity);
+    	System.out.println(this.chosenActivity + " is your activity of choice!");
         Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
         // do what you have to do
         stage.close();

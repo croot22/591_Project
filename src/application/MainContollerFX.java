@@ -283,7 +283,7 @@ public class MainContollerFX implements Initializable {
 
 
                     /*
-                     *  **************************************************************
+                     *  ****************************************************************
                      *    TEMPORARY - Passing the coordinates to 'btn2HelperAPICalls' method, 
                      *    which calls the APIs and displays results in console.
                      *    
