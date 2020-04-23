@@ -327,8 +327,6 @@ public class MainContollerFX implements Initializable {
      * @param coordinates
      */
     public void rankedForecastOutput(String coordinates) {
-//    	OutdoorActivityController OAC = new OutdoorActivityController();
-//    	chosenOutdoorActivity = OAC.getChosenActivity();
     	
         System.out.println("*************** WUnderground ***************");
         System.out.println("Here are the top 3 days to go " + chosenOutdoorActivity + ":");
