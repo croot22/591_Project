@@ -30,6 +30,8 @@ import javafx.scene.control.SelectionMode;
 //import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 //import javafx.stage.FileChooser.ExtensionFilter;
+import src.application.Location;
+import src.application.String;
 
 /**
  * JavaFX class required for JavaFx functionality to run.
@@ -41,8 +43,14 @@ public class MainContollerFX implements Initializable {
     private CallWUAPI callWU = new CallWUAPI();
     private DailyForecast dailyForecast = new DailyForecast();
     private CallNWSAPI callNWS = new CallNWSAPI();
+	private String chosenOutdoorActivity = new String();
+	
     
-    @FXML
+    public void setChosenOutdoorActivity(String chosenOutdoorActivity) {
+		this.chosenOutdoorActivity = chosenOutdoorActivity;
+	}
+
+	@FXML
     private Button selectFileBtn;
     // Button "Select Locations File".
     
@@ -65,6 +73,9 @@ public class MainContollerFX implements Initializable {
     @FXML
     private ListView<String> jsonFileListview; 
     // ListView "Saved Locations List Files"
+    @FXML
+    private ListView<String> activitySelectListview;
+    // ListView "Preset activity selection"
     
     @FXML
     private ListView<String> locationsListview; 
@@ -187,7 +198,7 @@ public class MainContollerFX implements Initializable {
      * @param selectJsonFile (String) Name of file selected by user.
      */
     public void listLocationsFromFile(String selectJsonFile) {
-        ObservableList<String> locationsList = FXCollections.observableArrayList(this.selectedFileLocationList(selectJsonFile));
+        ObservableList<String> locationsList = FXCollections.observableArrayList(UIBackEnd.selectedFileLocationList(selectJsonFile));
         locationsListview.setItems(locationsList);
         locationsListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); 
         userSelectedFile = selectJsonFile;
@@ -210,7 +221,6 @@ public class MainContollerFX implements Initializable {
         }
         return locationList;
     }
-    
     
     /**
      * ActionEvent method for "Selected Locations" button. <p>
@@ -298,13 +308,13 @@ public class MainContollerFX implements Initializable {
 
 
                     /*
-                     *  **************************************************************
+                     *  ****************************************************************
                      *    TEMPORARY - Passing the coordinates to 'btn2HelperAPICalls' method, 
                      *    which calls the APIs and displays results in console.
                      *    
                      * ***************************************************************** 
                      */
-                    this.btn2HelperAPICalls(locationCoordinates);
+                    this.rankedForecastOutput(locationCoordinates);
                 }
             }
         }
@@ -316,15 +326,17 @@ public class MainContollerFX implements Initializable {
      * TEMPORARY METHOD - To be replaced with final output functionality
      * @param coordinates
      */
-    public void btn2HelperAPICalls(String coordinates) {
+    public void rankedForecastOutput(String coordinates) {
+//    	OutdoorActivityController OAC = new OutdoorActivityController();
+//    	chosenOutdoorActivity = OAC.getChosenActivity();
+    	
         System.out.println("*************** WUnderground ***************");
+        System.out.println("Here are the top 3 days to go " + chosenOutdoorActivity + ":");
         try {
             String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
-            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
-            // PRINTS NARRATIVE
-            for (int i = 0; i < wUndergroundForecasts.size(); i++) {
-                dailyForecast.weatherNarrative(wUndergroundForecasts.get(i)); 
-            }
+            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parse5DayJSON(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
+            RankForecast rankedList = new RankForecast(wUndergroundForecasts, chosenOutdoorActivity);
+            rankedList.rankListPrint();
 
         } catch (IOException e) {
             System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
@@ -340,10 +352,10 @@ public class MainContollerFX implements Initializable {
             System.out.println("There was an issue calling the National Weather Service forecast for <" + coordinates + ">.");
         } else {
 
-            // PRINTS NARRATIVE
-            for (int i = 0; i < NWSForecasts.size(); i++) {
-                dailyForecast.weatherNarrative(NWSForecasts.get(i));  
-            }
+            // PRINTS Ranked List
+            RankForecast rankedList = new RankForecast(NWSForecasts, chosenOutdoorActivity);
+            rankedList.rankListPrint();
+
         }
 
 
@@ -356,13 +368,30 @@ public class MainContollerFX implements Initializable {
      */
     public void ButtonNewLocsAction(ActionEvent event) throws Exception {
         // Create a new Stage object
-        Stage newSearchStage = new Stage();
+        Stage primaryStage = new Stage();
         // Copied from the Main_Java (boilerplate) 
         Parent root = FXMLLoader.load(getClass().getResource("/application/NewLocation.fxml")); 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        newSearchStage.setTitle("New Location Setup"); // Set the title of the stage/window.
-        newSearchStage.setScene(scene);
-        newSearchStage.show();
+        primaryStage.setTitle("New Location Setup"); // Set the title of the stage/window.
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    
+    /**
+     * "New" Button Action Method. Opens the "Outdoor Activity Selection" stage/window
+     * @param event
+     * @throws Exception
+     */
+    public void ButtonSelectActivityAction(ActionEvent event) throws Exception {
+        // Create a new Stage object
+        Stage primaryStage = new Stage();
+        // Copied from the Main_Java (boilerplate) 
+        Parent root = FXMLLoader.load(getClass().getResource("/application/ChooseActivity.fxml")); 
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        primaryStage.setTitle("Outdoor Activity Selection"); // Set the title of the stage/window.
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
