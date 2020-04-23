@@ -196,7 +196,7 @@ public class MainContollerFX implements Initializable {
      * @param selectJsonFile (String) Name of file selected by user.
      */
     public void listLocationsFromFile(String selectJsonFile) {
-        ObservableList<String> locationsList = FXCollections.observableArrayList(UIBackEnd.selectedFileLocationList(selectJsonFile));
+        ObservableList<String> locationsList = FXCollections.observableArrayList(selectedFileLocationList(selectJsonFile));
         locationsListview.setItems(locationsList);
         locationsListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); 
         userSelectedFile = selectJsonFile;
@@ -335,7 +335,7 @@ public class MainContollerFX implements Initializable {
 
             // PRINTS NARRATIVE
 
-            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parse5DayJSON(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
+            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
             RankForecast rankedList = new RankForecast(wUndergroundForecasts, chosenOutdoorActivity);
             rankedList.rankListPrint();
 
