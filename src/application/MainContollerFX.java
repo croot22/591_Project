@@ -30,6 +30,8 @@ import javafx.scene.control.SelectionMode;
 //import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 //import javafx.stage.FileChooser.ExtensionFilter;
+import src.application.Location;
+import src.application.String;
 
 /**
  * JavaFX class required for JavaFx functionality to run.
@@ -37,7 +39,7 @@ import javafx.stage.Stage;
 public class MainContollerFX implements Initializable {
     
     public JSONInputOutput jIO = new JSONInputOutput();
-    private UserInterface UIBackEnd = new UserInterface();
+    
     private CallWUAPI callWU = new CallWUAPI();
     private DailyForecast dailyForecast = new DailyForecast();
     private CallNWSAPI callNWS = new CallNWSAPI();
@@ -202,6 +204,23 @@ public class MainContollerFX implements Initializable {
         userSelectedFile = selectJsonFile;
     }
     
+    /**
+     * Helper method to take in the user selected filename and return an ArrayList of Type String,
+     * of all the "Display Names" of the Locations within that file. For Displaying in the "Locations List"
+     * @param filename (String) - The user selected filename
+     * @return ArrayList - String - Of the "Display Names" of the Locations
+     */
+    public ArrayList<String> selectedFileLocationList (String filename) {
+        ArrayList<String> locationList = new ArrayList<String>();
+        ArrayList<Location> locsArray = jIO.fileReader(filename);
+        if (locsArray == null) {
+            return null;
+        }
+        for (Location location : locsArray) {
+            locationList.add(location.getDisplayName());
+        }
+        return locationList;
+    }
     
     /**
      * ActionEvent method for "Selected Locations" button. <p>
