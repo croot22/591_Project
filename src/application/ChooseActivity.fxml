@@ -26,7 +26,7 @@
       </Label>
       <ListView fx:id="outdoorActivityListview" layoutX="40.0" layoutY="143.0" prefHeight="163.0" prefWidth="200.0">
 		</ListView> 
-      <Button fx:id="chooseSelectedActivityBtn" layoutX="40.0" layoutY="316.0" mnemonicParsing="false" onAction="#chooseSelectedActivity" text="Set Activity Selection">
+      <Button fx:id="chooseSelectedActivityBtn" layoutX="40.0" layoutY="316.0" mnemonicParsing="false" onAction="#chooseSelectedActivity" text="Choose Outdoor Activity">
 		</Button>   
    </children>
 </AnchorPane>
