@@ -62,3 +62,7 @@
 2020-04-23T00:21:59.050275600: No value in passed object in forecast grid data
 2020-04-23T00:21:59.054278600: No value in passed object in forecast grid data
 2020-04-23T00:21:59.057280900: No value in passed object in forecast grid data
+2020-04-23T12:24:09.289961: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=40.759,-111.8&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-23T12:24:10.662452400: https://api.weather.gov/points/40.759,-111.8
+2020-04-23T12:24:11.075677500: https://api.weather.gov/gridpoints/SLC/102,174/forecast
+2020-04-23T12:24:11.664067400: https://api.weather.gov/gridpoints/SLC/102,174

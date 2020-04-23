@@ -226,8 +226,9 @@ public class MainContollerFX implements Initializable {
      * ActionEvent method for "Selected Locations" button. <p>
      * Calls the 'selectedLocations' method.
      * @param event - clicking on the button
+     * @throws IOException 
      */
-    public void selectedLocationsBtn(ActionEvent event) {
+    public void selectedLocationsBtn(ActionEvent event) throws IOException {
         this.selectedLocations();
     }
     
@@ -235,18 +236,29 @@ public class MainContollerFX implements Initializable {
      * Method called on action event of "Selected Locations" button. <p>
      * Gets all the user selected Locations using multiple selection functionality.
      * Passes the 'selectedLocations' to the method 'locationSelection'
+     * @throws IOException 
      */
-    public void selectedLocations() {
+    public void selectedLocations() throws IOException {
         List<String> selectedLocations = locationsListview.getSelectionModel().getSelectedItems();
         this.locationSelection(selectedLocations);
+     // Create a new Stage object
+        Stage primaryStage = new Stage();
+        // Copied from the Main_Java (boilerplate) 
+        Parent root = FXMLLoader.load(getClass().getResource("/application/WeatherOutput.fxml")); 
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        primaryStage.setTitle("Weather Information Output"); // Set the title of the stage/window.
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
     
     /**
      * ActionEvent method for "Select All" button. <p>
      * Calls 'selectAll' method.
      * @param event
+     * @throws IOException 
      */
-    public void selectAllBtnAction(ActionEvent event) {
+    public void selectAllBtnAction(ActionEvent event) throws IOException {
         this.selectAll();
     }
     
@@ -255,8 +267,9 @@ public class MainContollerFX implements Initializable {
      * both an ArrayList of type String and type Location were required.<br>
      * Type String - for display purposes.<br>
      * Type Location - for functionality purposes.
+     * @throws IOException 
      */
-    public void selectAll() {
+    public void selectAll() throws IOException {
         // Creating an ArrayList of type String to maintain selected Location of type String
         List<String> selectedLocationsString = new ArrayList<String>();
         
@@ -271,6 +284,16 @@ public class MainContollerFX implements Initializable {
         }
         // Passing the List of type String to the 'locationSelection' method.
         this.locationSelection(selectedLocationsString);
+        
+        // Create a new Stage object
+        Stage primaryStage = new Stage();
+        // Copied from the Main_Java (boilerplate) 
+        Parent root = FXMLLoader.load(getClass().getResource("/application/WeatherOutput.fxml")); 
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        primaryStage.setTitle("Weather Information Output"); // Set the title of the stage/window.
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     /**
@@ -305,15 +328,7 @@ public class MainContollerFX implements Initializable {
                     String longitude = locationsFromFile.get(j).getLongitude();
                     // Creating the required string to make the weather API calls.
                     String locationCoordinates = latitude + "," + longitude;
-
-
-                    /*
-                     *  ****************************************************************
-                     *    TEMPORARY - Passing the coordinates to 'btn2HelperAPICalls' method, 
-                     *    which calls the APIs and displays results in console.
-                     *    
-                     * ***************************************************************** 
-                     */
+                    //takes the location info and calls the ranked forecast output method to give the information for the weather
                     this.rankedForecastOutput(locationCoordinates);
                 }
             }
