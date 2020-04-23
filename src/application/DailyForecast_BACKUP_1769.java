@@ -39,7 +39,15 @@ public class DailyForecast implements Comparable{
 	private String windPhraseD;
 	private String windPhraseN;
 	
+<<<<<<< HEAD
+<<<<<<< HEAD
 	// Variable to help with the compareTo override method
+=======
+	// TODO: add comment
+>>>>>>> b86a9db6332da43a1d0ee93bfa8cfefb75a4b4d7
+=======
+	// Variable to help with the compareTo override method
+>>>>>>> 76d9c7799e0cc0f01d341deea0d3d28ef7feeb2f
 	private Double average;
 
 	// No parameter constructor for easier calling of methods in this class.
