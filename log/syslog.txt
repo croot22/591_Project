@@ -1,0 +1,36 @@
+2020-04-22T16:44:39.737482900: https://api.weather.gov/points/39.734,-104.904561045
+2020-04-22T16:44:40.482989300: https://api.weather.gov/gridpoints/BOU/65,60/forecast
+2020-04-22T16:44:41.002744: https://api.weather.gov/gridpoints/BOU/65,60
+2020-04-22T16:44:41.885462200: No value in passed object in forecast grid data
+2020-04-22T16:44:41.886459: No value in passed object in forecast grid data
+2020-04-22T16:44:41.898426300: No value in passed object in forecast grid data
+2020-04-22T16:44:41.905408700: No value in passed object in forecast grid data
+2020-04-22T16:44:41.912389100: No value in passed object in forecast grid data
+2020-04-22T16:44:41.916378: No value in passed object in forecast grid data
+2020-04-22T16:44:41.918372800: No value in passed object in forecast grid data
+2020-04-22T16:44:41.920368200: No value in passed object in forecast grid data
+2020-04-22T16:44:41.922362300: No value in passed object in forecast grid data
+2020-04-22T16:44:41.925355500: No value in passed object in forecast grid data
+2020-04-22T16:44:42.427548400: https://api.weather.gov/points/40.748,-73.98
+2020-04-22T16:44:43.657906900: https://api.weather.gov/gridpoints/OKX/33,36/forecast
+2020-04-22T16:44:44.081410200: https://api.weather.gov/gridpoints/OKX/33,36
+2020-04-22T16:44:44.609285100: No value in passed object in forecast grid data
+2020-04-22T16:44:44.610282300: No value in passed object in forecast grid data
+2020-04-22T16:44:44.611279700: No value in passed object in forecast grid data
+2020-04-22T16:44:44.613274200: No value in passed object in forecast grid data
+2020-04-22T16:44:44.615268800: No value in passed object in forecast grid data
+2020-04-22T16:44:44.617263400: No value in passed object in forecast grid data
+2020-04-22T16:44:44.619259200: No value in passed object in forecast grid data
+2020-04-22T16:44:45.121513200: https://api.weather.gov/points/40.843,-73.20
+2020-04-22T16:44:45.789264800: https://api.weather.gov/gridpoints/OKX/59,44/forecast
+2020-04-22T16:44:46.441616900: https://api.weather.gov/gridpoints/OKX/59,44
+2020-04-22T16:44:47.275371800: No value in passed object in forecast grid data
+2020-04-22T16:44:47.277367300: No value in passed object in forecast grid data
+2020-04-22T16:44:47.278339300: No value in passed object in forecast grid data
+2020-04-22T16:44:47.279335600: No value in passed object in forecast grid data
+2020-04-22T16:44:47.280333400: No value in passed object in forecast grid data
+2020-04-22T16:44:47.283323100: No value in passed object in forecast grid data
+2020-04-22T16:44:47.286315100: No value in passed object in forecast grid data
+2020-04-22T16:44:47.290304700: No value in passed object in forecast grid data
+2020-04-22T16:44:47.796931500: https://api.weather.gov/points/
+2020-04-22T16:44:48.024265600: The HTTP Request failed, status code is: 404

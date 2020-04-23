@@ -1,34 +1,29 @@
 package application;
+
+/**
+ * Main/Run method for the application. <p>
+ * Running this method starts the application. <br>
+ * It calls the main stage/window.
+ */
 	
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+//import javafx.collections.FXCollections;
+//import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Orientation;
+//import javafx.geometry.Orientation;
 import javafx.stage.Stage;
 import src.application.Exception;
 import src.application.Override;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
-
-
-
-
-
+//import javafx.scene.control.Label;
+//import javafx.scene.control.ListView;
+//import javafx.scene.control.SelectionMode;
+//import javafx.scene.control.TextArea;
+//import javafx.scene.layout.BorderPane;
 
 public class Main_Weather extends Application {
-    
-    //JSONInputOutput jIO = new JSONInputOutput();
-    //private UserInterface UIBackEnd = new UserInterface();
-    
-    // Declaring the TextArea for Logging
-    //TextArea logging;
-    
+
 	@Override
 	public void start(Stage primaryStage) {
 	    try {

@@ -55,6 +55,9 @@ public class CallNWSAPI {
 
 		//if either forecast failed, return null
 		if (requestForecast == null || requestForecastGridData == null) {
+			PrintDebug.printDebug("Failed to get forecast data for "+ url.get(0) + " or " + url.get(1));
+			PrintDebug.printDebug("URL 1 response: " + requestForecast);
+			PrintDebug.printDebug("URL 2 response: " + requestForecastGridData);
 			return null;
 		}
 

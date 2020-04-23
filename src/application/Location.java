@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 /**
  * A class for location storing important info about it such as
@@ -41,20 +42,24 @@ public class Location {
 			//Limit is the max number of returns we want for the location candidates. Defined as a global variable to allow user to change it in future expansion.
 			userInput = userInput.replace(" ", "+");
 			String url = String.format("https://us1.locationiq.com/v1/search.php?key=%1$s&q=%2$s&format=json&countrycodes=%3$s&limit=%4$s", token, userInput, country, limit);
-			//System.out.println(url);
 			String response = GetResponseFromURL.makeRequest(url);
 			
 			if (response == null) {
 				//System.out.println();
 				return null;
 			}
+			
+			try {
 			this.locationResponse = new JSONArray(response);
 			
 			for (int i = 0; i < locationResponse.length(); i++) {
 				locationCandidates.add(locationResponse.getJSONObject(i).getString("display_name"));
 				
 			}
-
+			}catch (JSONException e) {
+				PrintDebug.printDebug("JSON Exception getting location");
+				return null;
+			}
 
 			return locationCandidates;
 		
@@ -72,13 +77,18 @@ public class Location {
 		
 		//for each entry in location response, check if it matches the user selected location and if so set the lat, long, name
 		for (int index = 0; index < locationResponse.length(); index++) {
-			JSONObject object = locationResponse.getJSONObject(index);
-			if (object.getString("display_name").contentEquals(locationName)) {
-				
-				this.latitude = object.getString("lat");
-				this.longitude = object.getString("lon");
-				this.displayName = object.getString("display_name");
+			try {
+				JSONObject object = locationResponse.getJSONObject(index);
+				if (object.getString("display_name").contentEquals(locationName)) {
+					
+					this.latitude = object.getString("lat");
+					this.longitude = object.getString("lon");
+					this.displayName = object.getString("display_name");
+				}
+			} catch (JSONException e) {
+				PrintDebug.printDebug("Couldn't parse location due to JSON error");
 			}
+			
 			
 		}
 		

@@ -30,8 +30,6 @@ import javafx.scene.control.SelectionMode;
 //import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 //import javafx.stage.FileChooser.ExtensionFilter;
-import src.application.Location;
-import src.application.String;
 
 /**
  * JavaFX class required for JavaFx functionality to run.
@@ -198,7 +196,7 @@ public class MainContollerFX implements Initializable {
      * @param selectJsonFile (String) Name of file selected by user.
      */
     public void listLocationsFromFile(String selectJsonFile) {
-        ObservableList<String> locationsList = FXCollections.observableArrayList(UIBackEnd.selectedFileLocationList(selectJsonFile));
+        ObservableList<String> locationsList = FXCollections.observableArrayList(this.selectedFileLocationList(selectJsonFile));
         locationsListview.setItems(locationsList);
         locationsListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); 
         userSelectedFile = selectJsonFile;
@@ -221,6 +219,7 @@ public class MainContollerFX implements Initializable {
         }
         return locationList;
     }
+    
     
     /**
      * ActionEvent method for "Selected Locations" button. <p>
@@ -334,9 +333,10 @@ public class MainContollerFX implements Initializable {
         System.out.println("Here are the top 3 days to go " + chosenOutdoorActivity + ":");
         try {
             String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
-            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parse5DayJSON(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
+            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
             RankForecast rankedList = new RankForecast(wUndergroundForecasts, chosenOutdoorActivity);
             rankedList.rankListPrint();
+            // PRINTS NARRATIVE
 
         } catch (IOException e) {
             System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
@@ -368,14 +368,14 @@ public class MainContollerFX implements Initializable {
      */
     public void ButtonNewLocsAction(ActionEvent event) throws Exception {
         // Create a new Stage object
-        Stage primaryStage = new Stage();
+        Stage newSearchStage = new Stage();
         // Copied from the Main_Java (boilerplate) 
         Parent root = FXMLLoader.load(getClass().getResource("/application/NewLocation.fxml")); 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        primaryStage.setTitle("New Location Setup"); // Set the title of the stage/window.
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        newSearchStage.setTitle("New Location Setup"); // Set the title of the stage/window.
+        newSearchStage.setScene(scene);
+        newSearchStage.show();
     }
     
     /**

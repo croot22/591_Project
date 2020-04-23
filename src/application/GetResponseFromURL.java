@@ -28,7 +28,7 @@ public class GetResponseFromURL {
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).timeout(Duration.ofSeconds(5)).build();
 		String responseBody = "";
-		
+		PrintDebug.printDebug(url);
 		//Try to call the URL and return null if it fails for anything but a redirect
 		try {
 
@@ -45,7 +45,7 @@ public class GetResponseFromURL {
 					
 				}
 				else {
-					System.out.println("The HTTP Request failed, status code is: " + response.statusCode());
+					PrintDebug.printDebug("The HTTP Request failed, status code is: " + response.statusCode(), 1);
 					return null;
 				}
 			}
@@ -53,12 +53,13 @@ public class GetResponseFromURL {
 				responseBody = response.body();
 			}
 		} catch (IOException e) {
-			System.out.println(url + "is unavailable");
+			PrintDebug.printDebug(url + "is unavailable");
 			return null;
 		} catch (InterruptedException e) {
+			PrintDebug.printDebug("Interrupted Exception in GetResponseFromURL");
 			return null;
 		} catch (UnresolvedAddressException e) {
-			System.out.println(url + " is unavailable");
+			PrintDebug.printDebug(url + " is unavailable", 1);
 			return null;
 		}
 		
