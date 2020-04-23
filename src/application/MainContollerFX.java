@@ -30,8 +30,6 @@ import javafx.scene.control.SelectionMode;
 //import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 //import javafx.stage.FileChooser.ExtensionFilter;
-import src.application.Location;
-import src.application.String;
 
 /**
  * JavaFX class required for JavaFx functionality to run.
@@ -334,16 +332,13 @@ public class MainContollerFX implements Initializable {
         System.out.println("Here are the top 3 days to go " + chosenOutdoorActivity + ":");
         try {
             String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
-<<<<<<< HEAD
-            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
-            RankForecast rankedList = new RankForecast(wUndergroundForecasts, chosenOutdoorActivity);
-            rankedList.rankListPrint();
+
             // PRINTS NARRATIVE
-=======
+
             ArrayList<DailyForecast> wUndergroundForecasts = callWU.parse5DayJSON(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
             RankForecast rankedList = new RankForecast(wUndergroundForecasts, chosenOutdoorActivity);
             rankedList.rankListPrint();
->>>>>>> 76d9c7799e0cc0f01d341deea0d3d28ef7feeb2f
+
 
         } catch (IOException e) {
             System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
@@ -385,22 +380,6 @@ public class MainContollerFX implements Initializable {
         primaryStage.show();
     }
     
-    /**
-     * "New" Button Action Method. Opens the "Outdoor Activity Selection" stage/window
-     * @param event
-     * @throws Exception
-     */
-    public void ButtonSelectActivityAction(ActionEvent event) throws Exception {
-        // Create a new Stage object
-        Stage primaryStage = new Stage();
-        // Copied from the Main_Java (boilerplate) 
-        Parent root = FXMLLoader.load(getClass().getResource("/application/ChooseActivity.fxml")); 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        primaryStage.setTitle("Outdoor Activity Selection"); // Set the title of the stage/window.
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
     
     /**
      * "New" Button Action Method. Opens the "Outdoor Activity Selection" stage/window
