@@ -80,6 +80,10 @@ public class MainContollerFX implements Initializable {
     // ListView "Locations"
     
     @FXML
+    private Button chooseActivityBtn;
+    // Button - go to activity selector
+    
+    @FXML
     ObservableList<String> jsonFilesList = FXCollections.observableArrayList(jIO.getFiles());
     // List for "Saved Locations List Files" ListView
     // Gets list of files in the user's sub-folder "SavedSearch"
@@ -176,8 +180,6 @@ public class MainContollerFX implements Initializable {
     public void selectionLocationsFile() {
         if (jsonFilesList.size() != 0) {
             String selectedFile = jsonFileListview.getSelectionModel().getSelectedItem();
-            multiLocalSelectBtn.setDisable(false); // enables button "Selected Locations"
-            selectAllBtn.setDisable(false); // enables button "Select All"
             try {
             	this.listLocationsFromFile(selectedFile);
             } catch (NullPointerException e) {
@@ -396,5 +398,7 @@ public class MainContollerFX implements Initializable {
         primaryStage.setTitle("Outdoor Activity Selection"); // Set the title of the stage/window.
         primaryStage.setScene(scene);
         primaryStage.show();
+        multiLocalSelectBtn.setDisable(false); // enables button "Selected Locations"
+        selectAllBtn.setDisable(false); // enables button "Select All"
     }
 }

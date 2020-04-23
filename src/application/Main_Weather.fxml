@@ -21,7 +21,7 @@
          </tooltip></Button>
       <Button fx:id="multiLocalSelectBtn" disable="true" layoutX="335.0" layoutY="352.0" mnemonicParsing="false" onAction="#selectedLocations" text="Selected Locations">
          <tooltip>
-            <Tooltip text="Only get weather forecast for you selected locations." wrapText="true">
+            <Tooltip text="Only get weather forecast for your selected locations." wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
@@ -82,7 +82,7 @@
          <graphic>
             <ImageView fitHeight="50.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/new.png" />
+                  <Image url="@../img/ActivitySelection.png" />
                </image>
             </ImageView>
          </graphic>

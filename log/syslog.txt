@@ -34,3 +34,31 @@
 2020-04-22T16:44:47.290304700: No value in passed object in forecast grid data
 2020-04-22T16:44:47.796931500: https://api.weather.gov/points/
 2020-04-22T16:44:48.024265600: The HTTP Request failed, status code is: 404
+2020-04-23T00:20:45.602792300: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=40.759,-111.8&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-23T00:20:47.081524300: https://api.weather.gov/points/40.759,-111.8
+2020-04-23T00:20:47.380550700: https://api.weather.gov/gridpoints/SLC/102,174/forecast
+2020-04-23T00:20:48.350401700: https://api.weather.gov/gridpoints/SLC/102,174
+2020-04-23T00:20:49.052445700: No value in passed object in forecast grid data
+2020-04-23T00:20:49.056444900: No value in passed object in forecast grid data
+2020-04-23T00:20:49.096454400: No value in passed object in forecast grid data
+2020-04-23T00:20:49.115461800: No value in passed object in forecast grid data
+2020-04-23T00:20:49.125464100: No value in passed object in forecast grid data
+2020-04-23T00:20:49.136467800: No value in passed object in forecast grid data
+2020-04-23T00:20:49.141468900: No value in passed object in forecast grid data
+2020-04-23T00:20:49.150469200: No value in passed object in forecast grid data
+2020-04-23T00:20:49.156471600: No value in passed object in forecast grid data
+2020-04-23T00:20:49.160471200: No value in passed object in forecast grid data
+2020-04-23T00:21:58.020050400: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=40.759,-111.8&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-23T00:21:58.364709600: https://api.weather.gov/points/40.759,-111.8
+2020-04-23T00:21:58.563677300: https://api.weather.gov/gridpoints/SLC/102,174/forecast
+2020-04-23T00:21:58.731873: https://api.weather.gov/gridpoints/SLC/102,174
+2020-04-23T00:21:59.023269700: No value in passed object in forecast grid data
+2020-04-23T00:21:59.025272100: No value in passed object in forecast grid data
+2020-04-23T00:21:59.031274800: No value in passed object in forecast grid data
+2020-04-23T00:21:59.036272700: No value in passed object in forecast grid data
+2020-04-23T00:21:59.039273200: No value in passed object in forecast grid data
+2020-04-23T00:21:59.043275200: No value in passed object in forecast grid data
+2020-04-23T00:21:59.046275900: No value in passed object in forecast grid data
+2020-04-23T00:21:59.050275600: No value in passed object in forecast grid data
+2020-04-23T00:21:59.054278600: No value in passed object in forecast grid data
+2020-04-23T00:21:59.057280900: No value in passed object in forecast grid data
