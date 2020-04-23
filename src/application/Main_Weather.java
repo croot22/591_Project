@@ -12,8 +12,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 //import javafx.geometry.Orientation;
 import javafx.stage.Stage;
-import src.application.Exception;
-import src.application.Override;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 //import javafx.scene.control.Label;
