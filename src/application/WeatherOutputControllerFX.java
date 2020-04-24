@@ -17,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -56,9 +57,9 @@ public class WeatherOutputControllerFX implements Initializable {
      */
     public void rankedWeatherList() {
    
-    	outdoorActivityListview.setItems(outdoorActivityCandidatesList);
-    	outdoorActivityListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    	outdoorActivityListview.getSelectionModel().select(0);    	
+    	rankedWeatherListview.setItems(outdoorActivityCandidatesList);
+    	rankedWeatherListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    	rankedWeatherListview.getSelectionModel().select(0);    	
     }
     
     
@@ -79,6 +80,12 @@ public class WeatherOutputControllerFX implements Initializable {
     public void chooseSelectedActivity() {
         Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
         stage.close();
+    }
+    
+    public void getPreviousStageInfo() {
+    	  FXMLLoader loader = new FXMLLoader(getClass().getResource("Main_Weather.fxml"));
+    	  MainContollerFX controller = loader.getController();
+    	  controller.setChosenOutdoorActivity(chosenOutdoorActivity);
     }
 
 }

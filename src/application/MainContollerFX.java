@@ -37,15 +37,17 @@ import javafx.stage.Stage;
 public class MainContollerFX implements Initializable {
     
     public JSONInputOutput jIO = new JSONInputOutput();
-    
     private CallWUAPI callWU = new CallWUAPI();
-    private DailyForecast dailyForecast = new DailyForecast();
     private CallNWSAPI callNWS = new CallNWSAPI();
-	private String chosenOutdoorActivity = new String();
+	private static String outdoorActivity = new String();
 	
     
-    public void setChosenOutdoorActivity(String chosenOutdoorActivity) {
-		this.chosenOutdoorActivity = chosenOutdoorActivity;
+    public static String getOutdoorActivity() {
+		return outdoorActivity;
+	}
+
+	public static void setChosenOutdoorActivity(String chosenOutdoorActivity) {
+    	outdoorActivity = chosenOutdoorActivity;
 	}
 
 	@FXML
@@ -344,14 +346,14 @@ public class MainContollerFX implements Initializable {
     public void rankedForecastOutput(String coordinates) {
     	
         System.out.println("*************** WUnderground ***************");
-        System.out.println("Here are the top 3 days to go " + chosenOutdoorActivity + ":");
+        System.out.println("Here are the top 3 days to go " + outdoorActivity + ":");
         try {
             String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
 
             // PRINTS NARRATIVE
 
             ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
-            RankForecast rankedList = new RankForecast(wUndergroundForecasts, chosenOutdoorActivity);
+            RankForecast rankedList = new RankForecast(wUndergroundForecasts, outdoorActivity);
             rankedList.rankListPrint();
 
 
@@ -370,7 +372,7 @@ public class MainContollerFX implements Initializable {
         } else {
 
             // PRINTS Ranked List
-            RankForecast rankedList = new RankForecast(NWSForecasts, chosenOutdoorActivity);
+            RankForecast rankedList = new RankForecast(NWSForecasts, outdoorActivity);
             rankedList.rankListPrint();
 
         }

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OutdoorActivityController">
+<AnchorPane prefHeight="400.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WeatherOutputControllerFX">
    <children>
       <ImageView fitHeight="400.0" fitWidth="796.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -29,8 +29,7 @@
             <Font name="Bookman Old Style Bold" size="14.0" />
          </font>
       </Label>
-      <ListView fx:id="rankedWeatherLis
-      tview" layoutX="40.0" layoutY="143.0" prefHeight="163.0" prefWidth="200.0">
+      <ListView fx:id="rankedWeatherListview" layoutX="40.0" layoutY="143.0" prefHeight="163.0" prefWidth="200.0">
 		</ListView>   
    </children>
 </AnchorPane>

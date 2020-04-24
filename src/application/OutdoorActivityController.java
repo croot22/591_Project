@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 /**
  * This class is the JavaFX Controller for the Outdoor activity Selection page of the application.
  * It controls the selection of an activity
@@ -17,7 +19,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
@@ -80,8 +85,9 @@ public class OutdoorActivityController implements Initializable {
      * ActionEvent method for "Choose Selected Activity" button. <p>
      * Calls the 'chooseSelectedActivity' method.
      * @param event - Clicking the button.
+     * @throws IOException 
      */
-    public void chooseSelectedActivityButton(Action event) {
+    public void chooseSelectedActivityButton(Action event) throws IOException {
     	this.chooseSelectedActivity();
     } 
     
@@ -89,15 +95,26 @@ public class OutdoorActivityController implements Initializable {
      * Method for "Choose Selected Activity" button. <p>
      * Sets the selected activity from the choices in the listview.
      * @param event - Clicking the button.
+     * @throws IOException 
      */
-    public void chooseSelectedActivity() {
-    	this.chosenActivity = outdoorActivityListview.getSelectionModel().getSelectedItem();
-    	System.out.println(this.chosenActivity + " is your activity of choice!");
+    public void chooseSelectedActivity() throws IOException {
+    	MainContollerFX.setChosenOutdoorActivity(outdoorActivityListview.getSelectionModel().getSelectedItem());
+    	System.out.println(MainContollerFX.getOutdoorActivity() + " is your activity of choice!");
         Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
-        MainContollerFX mCFX = new MainContollerFX();
-        mCFX.setChosenOutdoorActivity(chosenActivity);
         stage.close();
     }
+    
+//    public void setPreviousStageOutdoorActivityInfo(String chosenOutdoorActivity) throws IOException {
+//  	  FXMLLoader loader = new FXMLLoader();
+//  	  loader.setLocation(getClass().getResource("Main_Weather.fxml"));
+//  	  Parent mainContollerParent = loader.load();
+//  	  Scene MainWeatherScene = new Scene(mainContollerParent);
+//  	  
+//  	  //access the controller and call a method
+//  	  MainContollerFX controller = loader.getController();
+//  	  controller.setChosenOutdoorActivity(chosenActivity);
+//  	  
+//  }
 
 }
 
