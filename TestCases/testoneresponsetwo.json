@@ -1,0 +1,92 @@
+{
+    "@context": [
+        "https://raw.githubusercontent.com/geojson/geojson-ld/master/contexts/geojson-base.jsonld",
+        {
+            "wx": "https://api.weather.gov/ontology#",
+            "s": "https://schema.org/",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#",
+            "geometry": {
+                "@id": "s:GeoCoordinates",
+                "@type": "geo:wktLiteral"
+            },
+            "city": "s:addressLocality",
+            "state": "s:addressRegion",
+            "distance": {
+                "@id": "s:Distance",
+                "@type": "s:QuantitativeValue"
+            },
+            "bearing": {
+                "@type": "s:QuantitativeValue"
+            },
+            "value": {
+                "@id": "s:value"
+            },
+            "unitCode": {
+                "@id": "s:unitCode",
+                "@type": "@id"
+            },
+            "forecastOffice": {
+                "@type": "@id"
+            },
+            "forecastGridData": {
+                "@type": "@id"
+            },
+            "publicZone": {
+                "@type": "@id"
+            },
+            "county": {
+                "@type": "@id"
+            }
+        }
+    ],
+    "id": "https://api.weather.gov/points/39.7391999,-104",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -104,
+            39.739199900000003
+        ]
+    },
+    "properties": {
+        "@id": "https://api.weather.gov/points/39.7391999,-104",
+        "@type": "wx:Point",
+        "cwa": "BOU",
+        "forecastOffice": "https://api.weather.gov/offices/BOU",
+        "gridX": 96,
+        "gridY": 58,
+        "forecast": "https://api.weather.gov/gridpoints/BOU/96,58/forecast",
+        "forecastHourly": "https://api.weather.gov/gridpoints/BOU/96,58/forecast/hourly",
+        "forecastGridData": "https://api.weather.gov/gridpoints/BOU/96,58",
+        "observationStations": "https://api.weather.gov/gridpoints/BOU/96,58/stations",
+        "relativeLocation": {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -104.043065,
+                    39.615811999999998
+                ]
+            },
+            "properties": {
+                "city": "Deer Trail",
+                "state": "CO",
+                "distance": {
+                    "value": 14206.521167808369,
+                    "unitCode": "unit:m"
+                },
+                "bearing": {
+                    "value": 15,
+                    "unitCode": "unit:degrees_true"
+                }
+            }
+        },
+        "forecastZone": "https://api.weather.gov/zones/forecast/COZ045",
+        "county": "https://api.weather.gov/zones/county/COC005",
+        "fireWeatherZone": "https://api.weather.gov/zones/fire/COZ245",
+        "timeZone": "America/Denver",
+        "radarStation": "KFTG"
+    }
+}

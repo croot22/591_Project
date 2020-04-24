@@ -1,0 +1,275 @@
+{\r\n" + 
+				"    \"@context\": [\r\n" + 
+				"        \"https://raw.githubusercontent.com/geojson/geojson-ld/master/contexts/geojson-base.jsonld\",\r\n" + 
+				"        {\r\n" + 
+				"            \"wx\": \"https://api.weather.gov/ontology#\",\r\n" + 
+				"            \"geo\": \"http://www.opengis.net/ont/geosparql#\",\r\n" + 
+				"            \"unit\": \"http://codes.wmo.int/common/unit/\",\r\n" + 
+				"            \"@vocab\": \"https://api.weather.gov/ontology#\"\r\n" + 
+				"        }\r\n" + 
+				"    ],\r\n" + 
+				"    \"type\": \"Feature\",\r\n" + 
+				"    \"geometry\": {\r\n" + 
+				"        \"type\": \"GeometryCollection\",\r\n" + 
+				"        \"geometries\": [\r\n" + 
+				"            {\r\n" + 
+				"                \"type\": \"Point\",\r\n" + 
+				"                \"coordinates\": [\r\n" + 
+				"                    -104.01246159999999,\r\n" + 
+				"                    39.736632800000002\r\n" + 
+				"                ]\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"type\": \"Polygon\",\r\n" + 
+				"                \"coordinates\": [\r\n" + 
+				"                    [\r\n" + 
+				"                        [\r\n" + 
+				"                            -104.0277404,\r\n" + 
+				"                            39.746899200000001\r\n" + 
+				"                        ],\r\n" + 
+				"                        [\r\n" + 
+				"                            -104.0258327,\r\n" + 
+				"                            39.724897900000002\r\n" + 
+				"                        ],\r\n" + 
+				"                        [\r\n" + 
+				"                            -103.99718559999999,\r\n" + 
+				"                            39.726364500000003\r\n" + 
+				"                        ],\r\n" + 
+				"                        [\r\n" + 
+				"                            -103.9990873,\r\n" + 
+				"                            39.748366000000004\r\n" + 
+				"                        ],\r\n" + 
+				"                        [\r\n" + 
+				"                            -104.0277404,\r\n" + 
+				"                            39.746899200000001\r\n" + 
+				"                        ]\r\n" + 
+				"                    ]\r\n" + 
+				"                ]\r\n" + 
+				"            }\r\n" + 
+				"        ]\r\n" + 
+				"    },\r\n" + 
+				"    \"properties\": {\r\n" + 
+				"        \"updated\": \"2020-04-02T01:04:00+00:00\",\r\n" + 
+				"        \"units\": \"us\",\r\n" + 
+				"        \"forecastGenerator\": \"BaselineForecastGenerator\",\r\n" + 
+				"        \"generatedAt\": \"2020-04-02T01:15:06+00:00\",\r\n" + 
+				"        \"updateTime\": \"2020-04-02T01:04:00+00:00\",\r\n" + 
+				"        \"validTimes\": \"2020-04-01T19:00:00+00:00/P7DT11H\",\r\n" + 
+				"        \"elevation\": {\r\n" + 
+				"            \"value\": 1527.9624000000001,\r\n" + 
+				"            \"unitCode\": \"unit:m\"\r\n" + 
+				"        },\r\n" + 
+				"        \"periods\": [\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 1,\r\n" + 
+				"                \"name\": \"Tonight\",\r\n" + 
+				"                \"startTime\": \"2020-04-01T19:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-02T06:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": false,\r\n" + 
+				"                \"temperature\": 30,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": \"rising\",\r\n" + 
+				"                \"windSpeed\": \"5 to 23 mph\",\r\n" + 
+				"                \"windDirection\": \"NE\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/night/wind_bkn?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Mostly Cloudy\",\r\n" + 
+				"                \"detailedForecast\": \"Mostly cloudy. Low around 30, with temperatures rising to around 34 overnight. Northeast wind 5 to 23 mph, with gusts as high as 32 mph.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 2,\r\n" + 
+				"                \"name\": \"Thursday\",\r\n" + 
+				"                \"startTime\": \"2020-04-02T06:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-02T18:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": true,\r\n" + 
+				"                \"temperature\": 38,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": \"falling\",\r\n" + 
+				"                \"windSpeed\": \"12 to 18 mph\",\r\n" + 
+				"                \"windDirection\": \"NE\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/day/bkn/snow,60?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Mostly Cloudy then Snow Showers Likely\",\r\n" + 
+				"                \"detailedForecast\": \"Snow showers likely and a slight chance of drizzle after 1pm. Mostly cloudy. High near 38, with temperatures falling to around 30 in the afternoon. Northeast wind 12 to 18 mph, with gusts as high as 28 mph. Chance of precipitation is 60%. New snow accumulation of less than half an inch possible.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 3,\r\n" + 
+				"                \"name\": \"Thursday Night\",\r\n" + 
+				"                \"startTime\": \"2020-04-02T18:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-03T06:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": false,\r\n" + 
+				"                \"temperature\": 16,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"8 to 18 mph\",\r\n" + 
+				"                \"windDirection\": \"N\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/night/snow,70/snow,40?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Light Snow Likely\",\r\n" + 
+				"                \"detailedForecast\": \"Snow likely. Cloudy, with a low around 16. North wind 8 to 18 mph, with gusts as high as 30 mph. Chance of precipitation is 70%. New snow accumulation of less than one inch possible.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 4,\r\n" + 
+				"                \"name\": \"Friday\",\r\n" + 
+				"                \"startTime\": \"2020-04-03T06:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-03T18:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": true,\r\n" + 
+				"                \"temperature\": 41,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"1 to 12 mph\",\r\n" + 
+				"                \"windDirection\": \"ENE\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/day/bkn?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Partly Sunny\",\r\n" + 
+				"                \"detailedForecast\": \"Partly sunny, with a high near 41. East northeast wind 1 to 12 mph, with gusts as high as 16 mph.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 5,\r\n" + 
+				"                \"name\": \"Friday Night\",\r\n" + 
+				"                \"startTime\": \"2020-04-03T18:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-04T06:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": false,\r\n" + 
+				"                \"temperature\": 26,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"12 to 15 mph\",\r\n" + 
+				"                \"windDirection\": \"SE\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/night/sct?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Partly Cloudy\",\r\n" + 
+				"                \"detailedForecast\": \"Partly cloudy, with a low around 26. Southeast wind 12 to 15 mph, with gusts as high as 22 mph.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 6,\r\n" + 
+				"                \"name\": \"Saturday\",\r\n" + 
+				"                \"startTime\": \"2020-04-04T06:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-04T18:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": true,\r\n" + 
+				"                \"temperature\": 59,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"12 to 15 mph\",\r\n" + 
+				"                \"windDirection\": \"SSE\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/day/sct?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Mostly Sunny\",\r\n" + 
+				"                \"detailedForecast\": \"Mostly sunny, with a high near 59.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 7,\r\n" + 
+				"                \"name\": \"Saturday Night\",\r\n" + 
+				"                \"startTime\": \"2020-04-04T18:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-05T06:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": false,\r\n" + 
+				"                \"temperature\": 33,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"12 mph\",\r\n" + 
+				"                \"windDirection\": \"SSE\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/night/bkn?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Mostly Cloudy\",\r\n" + 
+				"                \"detailedForecast\": \"Mostly cloudy, with a low around 33.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 8,\r\n" + 
+				"                \"name\": \"Sunday\",\r\n" + 
+				"                \"startTime\": \"2020-04-05T06:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-05T18:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": true,\r\n" + 
+				"                \"temperature\": 69,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"10 mph\",\r\n" + 
+				"                \"windDirection\": \"SSW\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/day/sct?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Mostly Sunny\",\r\n" + 
+				"                \"detailedForecast\": \"Mostly sunny, with a high near 69.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 9,\r\n" + 
+				"                \"name\": \"Sunday Night\",\r\n" + 
+				"                \"startTime\": \"2020-04-05T18:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-06T06:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": false,\r\n" + 
+				"                \"temperature\": 36,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"10 mph\",\r\n" + 
+				"                \"windDirection\": \"SSW\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/night/sct?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Partly Cloudy\",\r\n" + 
+				"                \"detailedForecast\": \"Partly cloudy, with a low around 36.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 10,\r\n" + 
+				"                \"name\": \"Monday\",\r\n" + 
+				"                \"startTime\": \"2020-04-06T06:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-06T18:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": true,\r\n" + 
+				"                \"temperature\": 71,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"10 mph\",\r\n" + 
+				"                \"windDirection\": \"SW\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/day/few?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Sunny\",\r\n" + 
+				"                \"detailedForecast\": \"Sunny, with a high near 71.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 11,\r\n" + 
+				"                \"name\": \"Monday Night\",\r\n" + 
+				"                \"startTime\": \"2020-04-06T18:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-07T06:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": false,\r\n" + 
+				"                \"temperature\": 39,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"10 mph\",\r\n" + 
+				"                \"windDirection\": \"SW\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/night/few?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Mostly Clear\",\r\n" + 
+				"                \"detailedForecast\": \"Mostly clear, with a low around 39.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 12,\r\n" + 
+				"                \"name\": \"Tuesday\",\r\n" + 
+				"                \"startTime\": \"2020-04-07T06:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-07T18:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": true,\r\n" + 
+				"                \"temperature\": 69,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"12 mph\",\r\n" + 
+				"                \"windDirection\": \"WSW\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/day/few?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Sunny\",\r\n" + 
+				"                \"detailedForecast\": \"Sunny, with a high near 69.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 13,\r\n" + 
+				"                \"name\": \"Tuesday Night\",\r\n" + 
+				"                \"startTime\": \"2020-04-07T18:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-08T06:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": false,\r\n" + 
+				"                \"temperature\": 35,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"7 to 10 mph\",\r\n" + 
+				"                \"windDirection\": \"NW\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/night/bkn?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Mostly Cloudy\",\r\n" + 
+				"                \"detailedForecast\": \"Mostly cloudy, with a low around 35.\"\r\n" + 
+				"            },\r\n" + 
+				"            {\r\n" + 
+				"                \"number\": 14,\r\n" + 
+				"                \"name\": \"Wednesday\",\r\n" + 
+				"                \"startTime\": \"2020-04-08T06:00:00-06:00\",\r\n" + 
+				"                \"endTime\": \"2020-04-08T18:00:00-06:00\",\r\n" + 
+				"                \"isDaytime\": true,\r\n" + 
+				"                \"temperature\": 62,\r\n" + 
+				"                \"temperatureUnit\": \"F\",\r\n" + 
+				"                \"temperatureTrend\": null,\r\n" + 
+				"                \"windSpeed\": \"6 to 9 mph\",\r\n" + 
+				"                \"windDirection\": \"N\",\r\n" + 
+				"                \"icon\": \"https://api.weather.gov/icons/land/day/bkn?size=medium\",\r\n" + 
+				"                \"shortForecast\": \"Partly Sunny\",\r\n" + 
+				"                \"detailedForecast\": \"Partly sunny, with a high near 62.\"\r\n" + 
+				"            }\r\n" + 
+				"        ]\r\n" + 
+				"    }\r\n" + 
+				"}
