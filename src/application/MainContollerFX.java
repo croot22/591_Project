@@ -35,385 +35,364 @@ import javafx.stage.Stage;
  * JavaFX class required for JavaFx functionality to run.
  */
 public class MainContollerFX implements Initializable {
-    
-    public JSONInputOutput jIO = new JSONInputOutput();
-    private CallWUAPI callWU = new CallWUAPI();
-    private CallNWSAPI callNWS = new CallNWSAPI();
+
+	public JSONInputOutput jIO = new JSONInputOutput();
+	private CallWUAPI callWU = new CallWUAPI();
+	private CallNWSAPI callNWS = new CallNWSAPI();
 	private static String outdoorActivity = new String();
-	
-    
-    public static String getOutdoorActivity() {
+
+
+	public static String getOutdoorActivity() {
 		return outdoorActivity;
 	}
 
 	public static void setChosenOutdoorActivity(String chosenOutdoorActivity) {
-    	outdoorActivity = chosenOutdoorActivity;
+		outdoorActivity = chosenOutdoorActivity;
 	}
 
 	@FXML
-    private Button selectFileBtn;
-    // Button "Select Locations File".
-    
-    @FXML
-    private Button multiLocalSelectBtn;
-    // Button "Selected Locations"
-    
-    @FXML
-    private Button newLocsBtn;
-    // Button "New" "Create New File with New Locations"
-    
-    @FXML 
-    private Button selectAllBtn;
-    // Button "Select All"
-    
-    @FXML
-    private Button refreshList;
-    // Button - green refresh button
-        
-    @FXML
-    private ListView<String> jsonFileListview; 
-    // ListView "Saved Locations List Files"
-    @FXML
-    private ListView<String> activitySelectListview;
-    // ListView "Preset activity selection"
-    
-    @FXML
-    private ListView<String> locationsListview; 
-    // ListView "Locations"
-    
-    @FXML
-    private Button chooseActivityBtn;
-    // Button - go to activity selector
-    
-    @FXML
-    ObservableList<String> jsonFilesList = FXCollections.observableArrayList(jIO.getFiles());
-    // List for "Saved Locations List Files" ListView
-    // Gets list of files in the user's sub-folder "SavedSearch"
-    
-    @FXML
-    ObservableList<String> locationsList = FXCollections.observableArrayList();
-    // List for "Locations" ListView
-    // Lists the locations within the selected Locations List file.
-    
-    String userSelectedFile = "";
-    // Variable to hold the user's selected filename as a String.
+	private Button selectFileBtn;
+	// Button "Select Locations File".
 
-    
- //    // Variable to hold the locations selected by the user in the 'locationsListview'
-//    ArrayList<Location> localsFromSelectedJSON = new ArrayList<Location>();           
-   
-    
-    /**
-     * JavaFX required method to initialize the 'main' Weather-matic 3000 stage/window
-     */
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        this.setFilesList();
-    }
-    
-    /**
-     * Method to list the files saved it the 'SavedSearch' sub-folder.<p>
-     * Checks if an files exist, lists them if there are files. 
-     * If no files are found, will display a grayed-out message.<br>
-     * If files are found, allows for a single file selection.
-     * Automatically selects the first item in list; error-handling purposes.
-     */
-    public void setFilesList() {
-        jsonFilesList = FXCollections.observableArrayList(jIO.getFiles());
-        if (jsonFilesList.size() != 0) {
-            jsonFileListview.setItems(jsonFilesList); // sets list to Observable String contents
-            jsonFileListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE); // set to single item selections
-            jsonFileListview.getSelectionModel().select(0); // sets default selection to first item
-        } 
-        else {
-            ObservableList<String> noContent = FXCollections.observableArrayList("No files found"); 
-            jsonFileListview.setItems(noContent); // deals with no existing files
-            jsonFileListview.setDisable(true); // disables the ListView; error-handling purposes
-            selectFileBtn.setDisable(true);     // disables selectFileBtn; error-handling purposes
-        }
-    }
-    
-    
-    /**
-     * ActionEvent method for 'Refresh' button.<p>
-     * Calls the 'refreshList' method on action event.
-     * @param event - clicking on the button
-     */
-    public void refreshBtn(ActionEvent event) {
-        this.refreshList();
-    }
-    
-    /**
-     * Method called on action event of 'Refresh' button. <p>
-     * Calls the 'setFilesList' method, to refresh the list of 
-     * files in the "Saved Locations List Files". <br>
-     * This allows for the user to go to the "New Location Setup" stage/window,
-     * create and add and new file, then return to the main screen and use their
-     * new file. 
-     */
-    public void refreshList() {
-        this.setFilesList();
-        if (jsonFilesList.size() != 0) {
-            jsonFileListview.setDisable(false); // enables the ListView; fixes issue with first list created when none existed.
-            selectFileBtn.setDisable(false);     // enables selectFileBtn; fixes issue with first list created when none existed.
-        }
-    }
+	@FXML
+	private Button multiLocalSelectBtn;
+	// Button "Selected Locations"
 
-    
-    /**
-     * ActionEvent method for "Select Locations File"
-     * Calls the 'selectionLocationsFile' method on action event.
-     * @param event - clicking on the button
-     */
-    public void selectLocationsFileBtn(ActionEvent event) {
-        this.selectionLocationsFile();
-    }
-    
-    
-    /**
-     * Method called on action event of "Select Locations File" button. <p>
-     * If the "Saved Locations List Files" is NOT empty, the button is getting
-     * the user selected file and saving it the String variable. 
-     * This also Enables both the "Selected Locations" and "Select All" button; error handling purposes
-     * The user's selected file is passed the 'listLocationFromFile' method to obtain
-     * the locations saved within the selected file. <p>
-     * "Select Locations File" button disabled if no files in list.
-     */
-    public void selectionLocationsFile() {
-        if (jsonFilesList.size() != 0) {
-            String selectedFile = jsonFileListview.getSelectionModel().getSelectedItem();
-            try {
-            	this.listLocationsFromFile(selectedFile);
-            } catch (NullPointerException e) {
-            	
-            }
-        } else {selectFileBtn.disableProperty();}
-    }
-    
-    /**
-     * Helper method to obtain the list of location within a selected JSON file.<p>
-     * Gets the locations from the user selected JSON, parses them with the
-     * 'selectedFileLocationList' method in the UserInterface class.<br>
-     * Set the ListView items to the returned string of locations from JSON.<br>
-     * Sets the selection mode to Multiple item selection.<br>
-     * Assigns the select file name to the global variable 'userSelectedFile'
-     * @param selectJsonFile (String) Name of file selected by user.
-     */
-    public void listLocationsFromFile(String selectJsonFile) {
-        ObservableList<String> locationsList = FXCollections.observableArrayList(selectedFileLocationList(selectJsonFile));
-        locationsListview.setItems(locationsList);
-        locationsListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); 
-        userSelectedFile = selectJsonFile;
-    }
-    
-    /**
-     * Helper method to take in the user selected filename and return an ArrayList of Type String,
-     * of all the "Display Names" of the Locations within that file. For Displaying in the "Locations List"
-     * @param filename (String) - The user selected filename
-     * @return ArrayList - String - Of the "Display Names" of the Locations
-     */
-    public ArrayList<String> selectedFileLocationList (String filename) {
-        ArrayList<String> locationList = new ArrayList<String>();
-        ArrayList<Location> locsArray = jIO.fileReader(filename);
-        if (locsArray == null) {
-            return null;
-        }
-        for (Location location : locsArray) {
-            locationList.add(location.getDisplayName());
-        }
-        return locationList;
-    }
-    
-    /**
-     * ActionEvent method for "Selected Locations" button. <p>
-     * Calls the 'selectedLocations' method.
-     * @param event - clicking on the button
-     * @throws IOException 
-     */
-    public void selectedLocationsBtn(ActionEvent event) throws IOException {
-        this.selectedLocations();
-    }
-    
-    /**
-     * Method called on action event of "Selected Locations" button. <p>
-     * Gets all the user selected Locations using multiple selection functionality.
-     * Passes the 'selectedLocations' to the method 'locationSelection'
-     * @throws IOException 
-     */
-    public void selectedLocations() throws IOException {
-        List<String> selectedLocations = locationsListview.getSelectionModel().getSelectedItems();
-        this.locationSelection(selectedLocations);
-     // Create a new Stage object
-        Stage primaryStage = new Stage();
-        // Copied from the Main_Java (boilerplate) 
-        Parent root = FXMLLoader.load(getClass().getResource("/application/WeatherOutput.fxml")); 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        primaryStage.setTitle("Weather Information Output"); // Set the title of the stage/window.
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-    
-    /**
-     * ActionEvent method for "Select All" button. <p>
-     * Calls 'selectAll' method.
-     * @param event
-     * @throws IOException 
-     */
-    public void selectAllBtnAction(ActionEvent event) throws IOException {
-        this.selectAll();
-    }
-    
-    /**
-     * As JavaFX ObservableList would not take an ArrayList of object type Location,
-     * both an ArrayList of type String and type Location were required.<br>
-     * Type String - for display purposes.<br>
-     * Type Location - for functionality purposes.
-     * @throws IOException 
-     */
-    public void selectAll() throws IOException {
-        // Creating an ArrayList of type String to maintain selected Location of type String
-        List<String> selectedLocationsString = new ArrayList<String>();
-        
-        // Creating an ArrayList of type Location with All of the locations in the users selected file.
-        ArrayList<Location> locationsFromFile = jIO.fileReader(this.userSelectedFile);
-       
-        // For-Loop to get the "Display Name" of the locations and add them
-        // to the String ArrayList.
-        for (Location local : locationsFromFile) {
-            String localAsString = local.getDisplayName();
-            selectedLocationsString.add(localAsString);
-        }
-        // Passing the List of type String to the 'locationSelection' method.
-        this.locationSelection(selectedLocationsString);
-        
-        // Create a new Stage object
-        Stage primaryStage = new Stage();
-        // Copied from the Main_Java (boilerplate) 
-        Parent root = FXMLLoader.load(getClass().getResource("/application/WeatherOutput.fxml")); 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        primaryStage.setTitle("Weather Information Output"); // Set the title of the stage/window.
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
+	@FXML
+	private Button newLocsBtn;
+	// Button "New" "Create New File with New Locations"
 
-    /**
-     * As the JavaFX ListView would not maintain an array of type Location, an
-     * array of type String was also maintained for display purposes. To use the returned
-     * string from the user multiple selection option, this method takes in the selected
-     * locations in the List of type String and compares the location names with an ArrayList
-     * of type Location.<p>
-     * By comparing the String name selected, with the "Display Name" maintained in the Location 
-     * objects, the proper Location objects are selected. <p>
-     * Once the correct Location objects are selected, the necessary coordinates are obtained
-     * to make the calls to the weather APIs.
-     * @param selectedLocations (List type String) - Of the user selected locations.
-     */
-    public void locationSelection(List<String> selectedLocations) {
-        // Obtaining all the Location objects in the selected file and storing in an ArrayList
-        ArrayList<Location> locationsFromFile = jIO.fileReader(this.userSelectedFile);
+	@FXML 
+	private Button selectAllBtn;
+	// Button "Select All"
 
-        // Iterating through the String List to get to location "name" for comparison.
-        for (int i = 0; i < selectedLocations.size(); i++) {
-            String locSelected = selectedLocations.get(i);
+	@FXML
+	private Button refreshList;
+	// Button - green refresh button
 
-            // Iterating through the Location ArrayList to get the "DisplayName" for comparison
-            for (int j = 0; j < locationsFromFile.size(); j++) {
-                String locInFile = locationsFromFile.get(j).getDisplayName();
+	@FXML
+	private ListView<String> jsonFileListview; 
+	// ListView "Saved Locations List Files"
+	@FXML
+	private ListView<String> activitySelectListview;
+	// ListView "Preset activity selection"
 
-                // If the names in both lists are the same, the code below is run.
-                if (locInFile.equals(locSelected)) {
+	@FXML
+	private ListView<String> locationsListview; 
+	// ListView "Locations"
 
-                    // Getting the latitude and longitude from the Location object and storing to String variable  
-                    String latitude = locationsFromFile.get(j).getLatitude();
-                    String longitude = locationsFromFile.get(j).getLongitude();
-                    // Creating the required string to make the weather API calls.
-                    String locationCoordinates = latitude + "," + longitude;
-                    //takes the location info and calls the ranked forecast output method to give the information for the weather
-                    this.rankedForecastOutput(locationCoordinates);
-                }
-            }
-        }
-    }
-    
+	@FXML
+	private Button chooseActivityBtn;
+	// Button - go to activity selector
 
-        
-    /** 
-     * TEMPORARY METHOD - To be replaced with final output functionality
-     * @param coordinates
-     */
-    public void rankedForecastOutput(String coordinates) {
-    	
-        System.out.println("*************** WUnderground ***************");
-        System.out.println("Here are the top 3 days to go " + outdoorActivity + ":");
-        try {
-            String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
+	@FXML
+	ObservableList<String> jsonFilesList = FXCollections.observableArrayList(jIO.getFiles());
+	// List for "Saved Locations List Files" ListView
+	// Gets list of files in the user's sub-folder "SavedSearch"
 
-            // PRINTS NARRATIVE
+	@FXML
+	ObservableList<String> locationsList = FXCollections.observableArrayList();
+	// List for "Locations" ListView
+	// Lists the locations within the selected Locations List file.
 
-            ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
-            RankForecast rankedList = new RankForecast(wUndergroundForecasts, outdoorActivity);
-            rankedList.rankListPrint();
+	String userSelectedFile = "";
+	// Variable to hold the user's selected filename as a String.
 
 
-        } catch (IOException e) {
-            System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
-            e.printStackTrace();
-        }
+	//    // Variable to hold the locations selected by the user in the 'locationsListview'
+	//    ArrayList<Location> localsFromSelectedJSON = new ArrayList<Location>();           
 
 
-        System.out.println("*************** National Weather Service ***************");
-        //String key2 = "NWS_" + location.getDisplayName();
-        ArrayList<DailyForecast> NWSForecasts = callNWS.getNWSForecast(coordinates);
+	/**
+	 * JavaFX required method to initialize the 'main' Weather-matic 3000 stage/window
+	 */
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		this.setFilesList();
+	}
 
-        if (NWSForecasts == null) {
-            System.out.println("There was an issue calling the National Weather Service forecast for <" + coordinates + ">.");
-        } else {
+	/**
+	 * Method to list the files saved it the 'SavedSearch' sub-folder.<p>
+	 * Checks if an files exist, lists them if there are files. 
+	 * If no files are found, will display a grayed-out message.<br>
+	 * If files are found, allows for a single file selection.
+	 * Automatically selects the first item in list; error-handling purposes.
+	 */
+	public void setFilesList() {
+		jsonFilesList = FXCollections.observableArrayList(jIO.getFiles());
+		if (jsonFilesList.size() != 0) {
+			jsonFileListview.setItems(jsonFilesList); // sets list to Observable String contents
+			jsonFileListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE); // set to single item selections
+			jsonFileListview.getSelectionModel().select(0); // sets default selection to first item
+		} 
+		else {
+			ObservableList<String> noContent = FXCollections.observableArrayList("No files found"); 
+			jsonFileListview.setItems(noContent); // deals with no existing files
+			jsonFileListview.setDisable(true); // disables the ListView; error-handling purposes
+			selectFileBtn.setDisable(true);     // disables selectFileBtn; error-handling purposes
+		}
+	}
 
-            // PRINTS Ranked List
-            RankForecast rankedList = new RankForecast(NWSForecasts, outdoorActivity);
-            rankedList.rankListPrint();
 
-        }
+	/**
+	 * ActionEvent method for 'Refresh' button.<p>
+	 * Calls the 'refreshList' method on action event.
+	 * @param event - clicking on the button
+	 */
+	public void refreshBtn(ActionEvent event) {
+		this.refreshList();
+	}
+
+	/**
+	 * Method called on action event of 'Refresh' button. <p>
+	 * Calls the 'setFilesList' method, to refresh the list of 
+	 * files in the "Saved Locations List Files". <br>
+	 * This allows for the user to go to the "New Location Setup" stage/window,
+	 * create and add and new file, then return to the main screen and use their
+	 * new file. 
+	 */
+	public void refreshList() {
+		this.setFilesList();
+		if (jsonFilesList.size() != 0) {
+			jsonFileListview.setDisable(false); // enables the ListView; fixes issue with first list created when none existed.
+			selectFileBtn.setDisable(false);     // enables selectFileBtn; fixes issue with first list created when none existed.
+		}
+	}
 
 
-    }
-        
-    /**
-     * "New" Button Action Method. Opens the "New Location Setup" stage/window
-     * @param event
-     * @throws Exception
-     */
-    public void ButtonNewLocsAction(ActionEvent event) throws Exception {
-        // Create a new Stage object
-        Stage primaryStage = new Stage();
-        // Copied from the Main_Java (boilerplate) 
-        Parent root = FXMLLoader.load(getClass().getResource("/application/NewLocation.fxml")); 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        primaryStage.setTitle("New Location Setup"); // Set the title of the stage/window.
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-    
-    
-    /**
-     * "New" Button Action Method. Opens the "Outdoor Activity Selection" stage/window
-     * @param event
-     * @throws Exception
-     */
-    public void ButtonSelectActivityAction(ActionEvent event) throws Exception {
-        // Create a new Stage object
-        Stage primaryStage = new Stage();
-        // Copied from the Main_Java (boilerplate) 
-        Parent root = FXMLLoader.load(getClass().getResource("/application/ChooseActivity.fxml")); 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-        primaryStage.setTitle("Outdoor Activity Selection"); // Set the title of the stage/window.
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        multiLocalSelectBtn.setDisable(false); // enables button "Selected Locations"
-        selectAllBtn.setDisable(false); // enables button "Select All"
-    }
+	/**
+	 * ActionEvent method for "Select Locations File"
+	 * Calls the 'selectionLocationsFile' method on action event.
+	 * @param event - clicking on the button
+	 */
+	public void selectLocationsFileBtn(ActionEvent event) {
+		this.selectionLocationsFile();
+	}
+
+
+	/**
+	 * Method called on action event of "Select Locations File" button. <p>
+	 * If the "Saved Locations List Files" is NOT empty, the button is getting
+	 * the user selected file and saving it the String variable. 
+	 * This also Enables both the "Selected Locations" and "Select All" button; error handling purposes
+	 * The user's selected file is passed the 'listLocationFromFile' method to obtain
+	 * the locations saved within the selected file. <p>
+	 * "Select Locations File" button disabled if no files in list.
+	 */
+	public void selectionLocationsFile() {
+		if (jsonFilesList.size() != 0) {
+			String selectedFile = jsonFileListview.getSelectionModel().getSelectedItem();
+			try {
+				this.listLocationsFromFile(selectedFile);
+			} catch (NullPointerException e) {
+
+			}
+		} else {selectFileBtn.disableProperty();}
+	}
+
+	/**
+	 * Helper method to obtain the list of location within a selected JSON file.<p>
+	 * Gets the locations from the user selected JSON, parses them with the
+	 * 'selectedFileLocationList' method in the UserInterface class.<br>
+	 * Set the ListView items to the returned string of locations from JSON.<br>
+	 * Sets the selection mode to Multiple item selection.<br>
+	 * Assigns the select file name to the global variable 'userSelectedFile'
+	 * @param selectJsonFile (String) Name of file selected by user.
+	 */
+	public void listLocationsFromFile(String selectJsonFile) {
+		ObservableList<String> locationsList = FXCollections.observableArrayList(selectedFileLocationList(selectJsonFile));
+		locationsListview.setItems(locationsList);
+		locationsListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); 
+		userSelectedFile = selectJsonFile;
+	}
+
+	/**
+	 * Helper method to take in the user selected filename and return an ArrayList of Type String,
+	 * of all the "Display Names" of the Locations within that file. For Displaying in the "Locations List"
+	 * @param filename (String) - The user selected filename
+	 * @return ArrayList - String - Of the "Display Names" of the Locations
+	 */
+	public ArrayList<String> selectedFileLocationList (String filename) {
+		ArrayList<String> locationList = new ArrayList<String>();
+		ArrayList<Location> locsArray = jIO.fileReader(filename);
+		if (locsArray == null) {
+			return null;
+		}
+		for (Location location : locsArray) {
+			locationList.add(location.getDisplayName());
+		}
+		return locationList;
+	}
+
+	/**
+	 * ActionEvent method for "Selected Locations" button. <p>
+	 * Calls the 'selectedLocations' method.
+	 * @param event - clicking on the button
+	 * @throws IOException 
+	 */
+	public void selectedLocationsBtn(ActionEvent event) throws IOException {
+		this.selectedLocations();
+	}
+
+	/**
+	 * Method called on action event of "Selected Locations" button. <p>
+	 * Gets all the user selected Locations using multiple selection functionality.
+	 * Passes the 'selectedLocations' to the method 'locationSelection'
+	 * @throws IOException 
+	 */
+	public void selectedLocations() throws IOException {
+		List<String> selectedLocations = locationsListview.getSelectionModel().getSelectedItems();
+		this.locationSelection(selectedLocations);
+		setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
+	}
+
+	/**
+	 * ActionEvent method for "Select All" button. <p>
+	 * Calls 'selectAll' method.
+	 * @param event
+	 * @throws IOException 
+	 */
+	public void selectAllBtnAction(ActionEvent event) throws IOException {
+		this.selectAll();
+	}
+
+	/**
+	 * As JavaFX ObservableList would not take an ArrayList of object type Location,
+	 * both an ArrayList of type String and type Location were required.<br>
+	 * Type String - for display purposes.<br>
+	 * Type Location - for functionality purposes.
+	 * @throws IOException 
+	 */
+	public void selectAll() throws IOException {
+		// Creating an ArrayList of type String to maintain selected Location of type String
+		List<String> selectedLocationsString = new ArrayList<String>();
+
+		// Creating an ArrayList of type Location with All of the locations in the users selected file.
+		ArrayList<Location> locationsFromFile = jIO.fileReader(this.userSelectedFile);
+
+		// For-Loop to get the "Display Name" of the locations and add them
+		// to the String ArrayList.
+		for (Location local : locationsFromFile) {
+			String localAsString = local.getDisplayName();
+			selectedLocationsString.add(localAsString);
+		}
+		// Passing the List of type String to the 'locationSelection' method.
+		this.locationSelection(selectedLocationsString);
+		setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
+	}
+
+	/**
+	 * As the JavaFX ListView would not maintain an array of type Location, an
+	 * array of type String was also maintained for display purposes. To use the returned
+	 * string from the user multiple selection option, this method takes in the selected
+	 * locations in the List of type String and compares the location names with an ArrayList
+	 * of type Location.<p>
+	 * By comparing the String name selected, with the "Display Name" maintained in the Location 
+	 * objects, the proper Location objects are selected. <p>
+	 * Once the correct Location objects are selected, the necessary coordinates are obtained
+	 * to make the calls to the weather APIs.
+	 * @param selectedLocations (List type String) - Of the user selected locations.
+	 */
+	public void locationSelection(List<String> selectedLocations) {
+		// Obtaining all the Location objects in the selected file and storing in an ArrayList
+		ArrayList<Location> locationsFromFile = jIO.fileReader(this.userSelectedFile);
+
+		// Iterating through the String List to get to location "name" for comparison.
+		for (int i = 0; i < selectedLocations.size(); i++) {
+			String locSelected = selectedLocations.get(i);
+
+			// Iterating through the Location ArrayList to get the "DisplayName" for comparison
+			for (int j = 0; j < locationsFromFile.size(); j++) {
+				String locInFile = locationsFromFile.get(j).getDisplayName();
+
+				// If the names in both lists are the same, the code below is run.
+				if (locInFile.equals(locSelected)) {
+
+					// Getting the latitude and longitude from the Location object and storing to String variable  
+					String latitude = locationsFromFile.get(j).getLatitude();
+					String longitude = locationsFromFile.get(j).getLongitude();
+					// Creating the required string to make the weather API calls.
+					String locationCoordinates = latitude + "," + longitude;
+					//takes the location info and calls the ranked forecast output method to give the information for the weather
+					this.rankedForecastOutput(locationCoordinates);
+				}
+			}
+		}
+	}
+
+
+
+	/** 
+	 * TEMPORARY METHOD - To be replaced with final output functionality
+	 * @param coordinates
+	 */
+	public void rankedForecastOutput(String coordinates) {
+
+		System.out.println("*************** WUnderground ***************");
+		System.out.println("Here are the top 3 days to go " + outdoorActivity + ":");
+		try {
+			String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
+
+			// PRINTS NARRATIVE
+
+			ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
+			RankForecast rankedList = new RankForecast(wUndergroundForecasts, outdoorActivity);
+			rankedList.rankListPrint();
+
+
+		} catch (IOException e) {
+			System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
+			e.printStackTrace();
+		}
+
+
+		System.out.println("*************** National Weather Service ***************");
+		//String key2 = "NWS_" + location.getDisplayName();
+		ArrayList<DailyForecast> NWSForecasts = callNWS.getNWSForecast(coordinates);
+
+		if (NWSForecasts == null) {
+			System.out.println("There was an issue calling the National Weather Service forecast for <" + coordinates + ">.");
+		} else {
+
+			// PRINTS Ranked List
+			RankForecast rankedList = new RankForecast(NWSForecasts, outdoorActivity);
+			rankedList.rankListPrint();
+
+		}
+
+
+	}
+
+	/**
+	 * "New" Button Action Method. Opens the "New Location Setup" stage/window
+	 * @param event
+	 * @throws Exception
+	 */
+	public void ButtonNewLocsAction(ActionEvent event) throws Exception {
+		setNewStage("/application/NewLocation.fxml","New Location Setup");
+	}
+
+
+	/**
+	 * "New" Button Action Method. Opens the "Outdoor Activity Selection" stage/window
+	 * @param event
+	 * @throws Exception
+	 */
+	public void ButtonSelectActivityAction(ActionEvent event) throws Exception {
+		setNewStage("/application/ChooseActivity.fxml","Outdoor Activity Selection");
+		multiLocalSelectBtn.setDisable(false); // enables button "Selected Locations"
+		selectAllBtn.setDisable(false); // enables button "Select All"
+	}
+
+	public void setNewStage(String resource, String title) throws IOException {
+		// Create a new Stage object
+		Stage primaryStage = new Stage();
+		// Copied from the Main_Java (boilerplate) 
+		Parent root = FXMLLoader.load(getClass().getResource(resource)); 
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setTitle(title); // Set the title of the stage/window.
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
 }

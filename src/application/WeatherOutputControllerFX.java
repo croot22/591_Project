@@ -81,12 +81,7 @@ public class WeatherOutputControllerFX implements Initializable {
         Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
         stage.close();
     }
-    
-    public void getPreviousStageInfo() {
-    	  FXMLLoader loader = new FXMLLoader(getClass().getResource("Main_Weather.fxml"));
-    	  MainContollerFX controller = loader.getController();
-    	  controller.setChosenOutdoorActivity(chosenOutdoorActivity);
-    }
+
 
 }
 
