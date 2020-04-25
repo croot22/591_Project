@@ -3,6 +3,9 @@ package application;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 /**
  * This class is responsible for knowing forecasts, knowing activities, and ranking days/times by chosen activities
@@ -110,6 +113,7 @@ public class RankForecast{
 
 		}
 		Text rankedWeatherInfo = new Text(rankedWeatherInfoString);
+		rankedWeatherInfo.setFont(Font.font("Bookman Old Style Bold",FontWeight.NORMAL, FontPosture.REGULAR, 10.0));
 		return rankedWeatherInfo;
 	}
 }

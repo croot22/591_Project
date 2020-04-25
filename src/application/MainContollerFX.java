@@ -352,7 +352,7 @@ public class MainContollerFX implements Initializable {
 				// PRINTS Ranked List
 				RankForecast rankedList = new RankForecast(NWSForecasts, outdoorActivity);
 				weatherInfoOutput = rankedList.rankListPrint();
-
+				
 			}
 		}
 
@@ -380,6 +380,12 @@ public class MainContollerFX implements Initializable {
 		selectAllBtn.setDisable(false); // enables button "Select All"
 	}
 
+	/**
+	 * Helper method that takes in the location 'resource' and title and creates a new stage/window
+	 * @param resource
+	 * @param title
+	 * @throws IOException
+	 */
 	public void setNewStage(String resource, String title) throws IOException {
 		// Create a new Stage object
 		Stage primaryStage = new Stage();

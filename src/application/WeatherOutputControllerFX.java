@@ -54,29 +54,16 @@ public class WeatherOutputControllerFX implements Initializable {
     	this.rankedNWSWeatherList();
     }
     
-    /**
-     * Action Method - Works upon user pressing 'Enter' when Search Textbox is selected.
-     * Calls the 'listPotentialSearchResult' based on the user input search term.
-     * <p>Error Handling: <br>
-     * Pressing enter when search box is blank, an AlertBox indicating nothing was entered.
-     * @param entered - Pressing [Enter]
-     */
+
     public void rankedUWWeatherList() {
     	
-		//takes the location info and calls the ranked forecast output method to give the information for the weather
-    	
-    	rankedUWWeatherTextFlow.getChildren().add(MainContollerFX.rankedForecastOutput(MainContollerFX.locationCoordinates,"WU"));	
+    	//takes the location info and calls the ranked forecast output method to give the information for the weather
+    	rankedUWWeatherTextFlow.getChildren().add(MainContollerFX.rankedForecastOutput(MainContollerFX.locationCoordinates,"WU"));
     }
     
-    /**
-     * Action Method - Works upon user pressing 'Enter' when Search Textbox is selected.
-     * Calls the 'listPotentialSearchResult' based on the user input search term.
-     * <p>Error Handling: <br>
-     * Pressing enter when search box is blank, an AlertBox indicating nothing was entered.
-     * @param entered - Pressing [Enter]
-     */
+
     public void rankedNWSWeatherList() {
-   
+    	//takes the location info and calls the ranked forecast output method to give the information for the weather
     	rankedNWSWeatherTextFlow.getChildren().add(MainContollerFX.rankedForecastOutput(MainContollerFX.locationCoordinates,"NWS"));  	
     }
 }
