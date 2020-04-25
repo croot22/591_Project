@@ -209,6 +209,7 @@ public class MainContollerFX implements Initializable {
 		ObservableList<String> locationsList = FXCollections.observableArrayList(selectedFileLocationList(selectJsonFile));
 		locationsListview.setItems(locationsList);
 		locationsListview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); 
+		locationsListview.getSelectionModel().select(0);
 		userSelectedFile = selectJsonFile;
 	}
 
@@ -247,7 +248,7 @@ public class MainContollerFX implements Initializable {
 	 * @throws IOException 
 	 */
 	public void selectedLocations() throws IOException {
-		selectedLocationsString = locationsListview.getSelectionModel().getSelectedItems();
+		selectedLocationsString = locationsListview.getSelectionModel().getSelectedItems(); 
 		locationSelection(selectedLocationsString);
 		outputLocation = selectedLocationsString.get(0);
 		setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
