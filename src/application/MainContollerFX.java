@@ -37,8 +37,8 @@ import javafx.stage.Stage;
 public class MainContollerFX implements Initializable {
 
 	public JSONInputOutput jIO = new JSONInputOutput();
-	private CallWUAPI callWU = new CallWUAPI();
-	private CallNWSAPI callNWS = new CallNWSAPI();
+	private static CallWUAPI callWU = new CallWUAPI();
+	private static CallNWSAPI callNWS = new CallNWSAPI();
 	private static String outdoorActivity = new String();
 
 
@@ -326,10 +326,8 @@ public class MainContollerFX implements Initializable {
 	 * TEMPORARY METHOD - To be replaced with final output functionality
 	 * @param coordinates
 	 */
-	public void rankedForecastOutput(String coordinates) {
-
-		System.out.println("*************** WUnderground ***************");
-		System.out.println("Here are the top 3 days to go " + outdoorActivity + ":");
+	public static void rankedForecastOutput(String coordinates) {
+		
 		try {
 			String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
 
@@ -344,10 +342,7 @@ public class MainContollerFX implements Initializable {
 			System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
 			e.printStackTrace();
 		}
-
-
-		System.out.println("*************** National Weather Service ***************");
-		//String key2 = "NWS_" + location.getDisplayName();
+		
 		ArrayList<DailyForecast> NWSForecasts = callNWS.getNWSForecast(coordinates);
 
 		if (NWSForecasts == null) {

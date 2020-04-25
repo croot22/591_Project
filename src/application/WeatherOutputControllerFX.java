@@ -27,6 +27,7 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 /**
@@ -35,8 +36,12 @@ import javafx.stage.Stage;
 public class WeatherOutputControllerFX implements Initializable {	
 
 	@FXML
-    private ListView<String> rankedWeatherListview;
-    // ListView that displays a preset list of activities    
+    private TextFlow rankedUWWeatherTextFlow;
+    // TextFlow that displays ranked weather info   
+	
+	@FXML
+    private TextFlow rankedNWSWeatherTextFlow;
+    // TextFlow that displays ranked weather info 
     
     
     /**
@@ -44,8 +49,8 @@ public class WeatherOutputControllerFX implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-    	this.rankedWeatherList();
-    	this.
+    	this.rankedUWWeatherList();
+    	this.rankedNWSWeatherList();
     }
     
     /**
@@ -55,11 +60,21 @@ public class WeatherOutputControllerFX implements Initializable {
      * Pressing enter when search box is blank, an AlertBox indicating nothing was entered.
      * @param entered - Pressing [Enter]
      */
-    public void rankedWeatherList() {
+    public void rankedUWWeatherList() {
    
-    	rankedWeatherListview.setItems(outdoorActivityCandidatesList);
-    	rankedWeatherListview.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    	rankedWeatherListview.getSelectionModel().select(0);    	
+    	rankedUWWeatherTextFlow.setItems(outdoorActivityCandidatesList);   	
+    }
+    
+    /**
+     * Action Method - Works upon user pressing 'Enter' when Search Textbox is selected.
+     * Calls the 'listPotentialSearchResult' based on the user input search term.
+     * <p>Error Handling: <br>
+     * Pressing enter when search box is blank, an AlertBox indicating nothing was entered.
+     * @param entered - Pressing [Enter]
+     */
+    public void rankedNWSWeatherList() {
+   
+    	rankedNWSWeatherTextFlow.setItems(outdoorActivityCandidatesList);  	
     }
     
     
