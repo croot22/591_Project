@@ -61,8 +61,10 @@ public class WeatherOutputControllerFX implements Initializable {
      * @param entered - Pressing [Enter]
      */
     public void rankedUWWeatherList() {
-   
-    	rankedUWWeatherTextFlow.setItems(outdoorActivityCandidatesList);   	
+    	
+		//takes the location info and calls the ranked forecast output method to give the information for the weather
+    	
+    	rankedUWWeatherTextFlow.getChildren().add(MainContollerFX.rankedForecastOutput(MainContollerFX.locationCoordinates));	
     }
     
     /**
@@ -74,29 +76,7 @@ public class WeatherOutputControllerFX implements Initializable {
      */
     public void rankedNWSWeatherList() {
    
-    	rankedNWSWeatherTextFlow.setItems(outdoorActivityCandidatesList);  	
+    	rankedNWSWeatherTextFlow.getChildren().add(MainContollerFX.rankedForecastOutput(MainContollerFX.locationCoordinates));  	
     }
-    
-    
-    /**
-     * ActionEvent method for "Choose Selected Activity" button. <p>
-     * Calls the 'chooseSelectedActivity' method.
-     * @param event - Clicking the button.
-     */
-    public void chooseSelectedActivityButton(Action event) {
-    	this.chooseSelectedActivity();
-    } 
-    
-    /**
-     * Method for "Choose Selected Activity" button. <p>
-     * Sets the selected activity from the choices in the listview.
-     * @param event - Clicking the button.
-     */
-    public void chooseSelectedActivity() {
-        Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
-        stage.close();
-    }
-
-
 }
 

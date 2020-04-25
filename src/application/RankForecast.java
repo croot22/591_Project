@@ -81,11 +81,12 @@ public class RankForecast{
 		
 	}
 	
-	public void rankListPrint() {
+	public Text rankListPrint() {
 		rankItems();
+		String rankedWeatherInfoString = new String();
 		
 		for (int i = 0; i < 3; i++) {
-			Text rankedWeatherInfo = new Text((i+1) + ". \n" +
+			rankedWeatherInfoString += (i+1) + ". \n" +
 			weatherList.get(i).getDayOfWeek() + " " + weatherList.get(i).getDate() + "\n" +
 			"There will be a high temperature of " + weatherList.get(i).getTemperatureMax() + " and a low of " + weatherList.get(i).getTemperatureMin() + "\n" +
 			"Rain: " + weatherList.get(i).getPrecipChanceN() +"% / Inches: " + weatherList.get(i).getQpfN() + "\n" +
@@ -93,9 +94,7 @@ public class RankForecast{
 			"Cloud cover: " + weatherList.get(i).getCloudCoverN() + "% \n" +
 			"Heat Index: " + weatherList.get(i).getTemperatureHeatIndexN() + "\n" +
 			"F / Wind Chill: " + weatherList.get(i).getTemperatureWindChillN() + "F \n" +
-			"Wind: " + weatherList.get(i).getWindPhraseN() + "\n");
-			
-			
+			"Wind: " + weatherList.get(i).getWindPhraseN() + "\n";
 //			System.out.println((i+1) + ".");
 //			System.out.println(weatherList.get(i).getDayOfWeek() + " " + weatherList.get(i).getDate());
 //			System.out.println("There will be a high temperature of " + weatherList.get(i).getTemperatureMax() + " and a low of " + weatherList.get(i).getTemperatureMin()); 
@@ -108,6 +107,8 @@ public class RankForecast{
 //			System.out.println();
 
 		}
+		Text rankedWeatherInfo = new Text(rankedWeatherInfoString);
+		return rankedWeatherInfo;
 	}
 }
 

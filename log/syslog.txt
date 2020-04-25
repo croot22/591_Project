@@ -214,3 +214,12 @@
 2020-04-24T19:13:05.305389200: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=&format=json&countrycodes=us&limit=5
 2020-04-24T19:13:05.437759600: The HTTP Request failed, status code is: 400
 2020-04-24T19:13:05.956121100: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=11787&format=json&countrycodes=us&limit=5
+2020-04-25T10:17:20.471477800: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=43.987,-115.7&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T10:17:22.288942700: https://api.weather.gov/points/43.987,-115.7
+2020-04-25T10:17:22.666037700: https://api.weather.gov/gridpoints/BOI/152,99/forecast
+2020-04-25T10:17:23.854754900: https://api.weather.gov/gridpoints/BOI/152,99
+2020-04-25T10:17:24.766732200: No value in passed object in forecast grid data
+2020-04-25T10:17:24.807743600: No value in passed object in forecast grid data
+2020-04-25T10:17:24.822747800: No value in passed object in forecast grid data
+2020-04-25T10:17:24.841749900: No value in passed object in forecast grid data
+2020-04-25T10:17:24.851751700: No value in passed object in forecast grid data

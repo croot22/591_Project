@@ -26,6 +26,7 @@ import javafx.scene.control.Button;
 //import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.text.Text;
 //import javafx.scene.control.TextField;
 //import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -36,10 +37,14 @@ import javafx.stage.Stage;
  */
 public class MainContollerFX implements Initializable {
 
-	public JSONInputOutput jIO = new JSONInputOutput();
-	private static CallWUAPI callWU = new CallWUAPI();
-	private static CallNWSAPI callNWS = new CallNWSAPI();
-	private static String outdoorActivity = new String();
+	static JSONInputOutput jIO = new JSONInputOutput();
+	static CallWUAPI callWU = new CallWUAPI();
+	static CallNWSAPI callNWS = new CallNWSAPI();
+	static String outdoorActivity = new String();
+	// Creating an ArrayList of type String to maintain selected Location of type String
+	static List<String> selectedLocationsString = new ArrayList<String>();
+	// Creating the required string to make the weather API calls.
+	static String locationCoordinates = new String();
 
 
 	public static String getOutdoorActivity() {
@@ -95,7 +100,7 @@ public class MainContollerFX implements Initializable {
 	// List for "Locations" ListView
 	// Lists the locations within the selected Locations List file.
 
-	String userSelectedFile = "";
+	static String userSelectedFile = "";
 	// Variable to hold the user's selected filename as a String.
 
 
@@ -231,7 +236,7 @@ public class MainContollerFX implements Initializable {
 	 * @throws IOException 
 	 */
 	public void selectedLocationsBtn(ActionEvent event) throws IOException {
-		this.selectedLocations();
+		selectedLocations();
 	}
 
 	/**
@@ -241,8 +246,8 @@ public class MainContollerFX implements Initializable {
 	 * @throws IOException 
 	 */
 	public void selectedLocations() throws IOException {
-		List<String> selectedLocations = locationsListview.getSelectionModel().getSelectedItems();
-		this.locationSelection(selectedLocations);
+		selectedLocationsString = locationsListview.getSelectionModel().getSelectedItems();
+		locationSelection(selectedLocationsString);
 		setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
 	}
 
@@ -264,11 +269,8 @@ public class MainContollerFX implements Initializable {
 	 * @throws IOException 
 	 */
 	public void selectAll() throws IOException {
-		// Creating an ArrayList of type String to maintain selected Location of type String
-		List<String> selectedLocationsString = new ArrayList<String>();
-
 		// Creating an ArrayList of type Location with All of the locations in the users selected file.
-		ArrayList<Location> locationsFromFile = jIO.fileReader(this.userSelectedFile);
+		ArrayList<Location> locationsFromFile = jIO.fileReader(userSelectedFile);
 
 		// For-Loop to get the "Display Name" of the locations and add them
 		// to the String ArrayList.
@@ -277,7 +279,7 @@ public class MainContollerFX implements Initializable {
 			selectedLocationsString.add(localAsString);
 		}
 		// Passing the List of type String to the 'locationSelection' method.
-		this.locationSelection(selectedLocationsString);
+		locationSelection(selectedLocationsString);
 		setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
 	}
 
@@ -295,7 +297,7 @@ public class MainContollerFX implements Initializable {
 	 */
 	public void locationSelection(List<String> selectedLocations) {
 		// Obtaining all the Location objects in the selected file and storing in an ArrayList
-		ArrayList<Location> locationsFromFile = jIO.fileReader(this.userSelectedFile);
+		ArrayList<Location> locationsFromFile = jIO.fileReader(userSelectedFile);
 
 		// Iterating through the String List to get to location "name" for comparison.
 		for (int i = 0; i < selectedLocations.size(); i++) {
@@ -311,10 +313,8 @@ public class MainContollerFX implements Initializable {
 					// Getting the latitude and longitude from the Location object and storing to String variable  
 					String latitude = locationsFromFile.get(j).getLatitude();
 					String longitude = locationsFromFile.get(j).getLongitude();
-					// Creating the required string to make the weather API calls.
-					String locationCoordinates = latitude + "," + longitude;
-					//takes the location info and calls the ranked forecast output method to give the information for the weather
-					this.rankedForecastOutput(locationCoordinates);
+					locationCoordinates = latitude + "," + longitude;
+
 				}
 			}
 		}
@@ -326,7 +326,8 @@ public class MainContollerFX implements Initializable {
 	 * TEMPORARY METHOD - To be replaced with final output functionality
 	 * @param coordinates
 	 */
-	public static void rankedForecastOutput(String coordinates) {
+	public static Text rankedForecastOutput(String coordinates) {
+		Text weatherInfoOutput = new Text();
 		
 		try {
 			String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
@@ -335,7 +336,7 @@ public class MainContollerFX implements Initializable {
 
 			ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
 			RankForecast rankedList = new RankForecast(wUndergroundForecasts, outdoorActivity);
-			rankedList.rankListPrint();
+			weatherInfoOutput = rankedList.rankListPrint();
 
 
 		} catch (IOException e) {
@@ -351,11 +352,11 @@ public class MainContollerFX implements Initializable {
 
 			// PRINTS Ranked List
 			RankForecast rankedList = new RankForecast(NWSForecasts, outdoorActivity);
-			rankedList.rankListPrint();
+			weatherInfoOutput = rankedList.rankListPrint();
 
 		}
 
-
+		return weatherInfoOutput;
 	}
 
 	/**
