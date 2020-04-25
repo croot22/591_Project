@@ -114,6 +114,7 @@ public class MainContollerFX implements Initializable {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		this.chooseActivityBtn.setDisable(true);
 		this.setFilesList();
 	}
 
@@ -194,6 +195,7 @@ public class MainContollerFX implements Initializable {
 
 			}
 		} else {selectFileBtn.disableProperty();}
+		this.chooseActivityBtn.setDisable(false);
 	}
 
 	/**
@@ -250,8 +252,10 @@ public class MainContollerFX implements Initializable {
 	public void selectedLocations() throws IOException {
 		selectedLocationsString = locationsListview.getSelectionModel().getSelectedItems(); 
 		locationSelection(selectedLocationsString);
-		outputLocation = selectedLocationsString.get(0);
-		setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
+		for (int i = 0; i < selectedLocationsString.size(); i++) {
+			outputLocation = selectedLocationsString.get(i);
+			setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
+		}
 	}
 
 	/**
@@ -285,7 +289,7 @@ public class MainContollerFX implements Initializable {
 			locationSelection(selectedLocationsString);
 			outputLocation = selectedLocationsString.get(0);
 			setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
-			
+
 		}
 	}
 
@@ -362,7 +366,7 @@ public class MainContollerFX implements Initializable {
 				// PRINTS Ranked List
 				RankForecast rankedList = new RankForecast(NWSForecasts, outdoorActivity);
 				weatherInfoOutput = rankedList.rankListPrint();
-				
+
 			}
 		}
 
