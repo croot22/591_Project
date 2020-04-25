@@ -26,10 +26,10 @@ public class Location {
 	 * takes a street address as an input and makes a call to get a bunch of location candidates
 	 * from locationiq.com returns an arraylist of the names of the location candidates
 	 * will return null if there is no location data available and prints out an error
-	 * to the console in that case.
+	 * to the log file in that case.
 	 * Throttle at no more than 2 per second.
-	 * @param address
-	 * @return
+	 * @param userInput of location
+	 * @return ArrayList<String> of potential matches
 	 */
 
 
@@ -71,7 +71,7 @@ public class Location {
 	 * parses an address from an indicated location. Function takes in 
 	 * the desired location name from the getLocationCandidates() method and
 	 * puts the proper name, lat, long into the instance variables for the class
-	 * 	 * @param index
+	 * 	 * @param locationName
 	 */
 	public void parseAddress(String locationName) {
 		
@@ -97,7 +97,7 @@ public class Location {
 	
 	/**
 	 * Method to clone a location
-	 * @param l
+	 * @param l - location to clone
 	 */
 	public void clone (Location l) {
 		this.displayName = l.getDisplayName();

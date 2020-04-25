@@ -44,7 +44,7 @@ public class PrintDebug {
 	 * overloaded method to print debug messages to log file AND to console
 	 * if a second paramter is passed.
 	 * @param message
-	 * @param i
+	 * @param i - flag that denotes if message should print to console as well as syslog file
 	 */
 	public static void printDebug(String message, int i) {
 		System.out.println(message);

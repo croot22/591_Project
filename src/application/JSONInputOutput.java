@@ -22,8 +22,9 @@ public class JSONInputOutput {
 	 * and a filename and saves these files in a directory called
 	 * "SavedSearches" in the current file path where this program is executing from
 	 * Also has a boolean value for append or not appending the input into the file.
-	 * @param locations
-	 * @param filename
+	 * @param ArrayList<Location> - Locations to write to file
+	 * @param String filename - name of file to write to
+	 * @param Boolean overwrite - whether or not to overwrite existing file
 	 */
 	public void fileWriter(ArrayList<Location> locations, String filename, Boolean overwrite) {
 		
@@ -80,8 +81,8 @@ public class JSONInputOutput {
 	
 	/**
 	 * Overloaded class defaulting to overwriting the file if it already exists vs. appending values to it
-	 * @param locations
-	 * @param filename
+	 * @param ArrayList<Location> locations - locations to write to file
+	 * @param filename - name of file to write to
 	 */
 	public void fileWriter(ArrayList<Location> locations, String filename) {
 		fileWriter(locations, filename, true);
@@ -93,7 +94,7 @@ public class JSONInputOutput {
 	 * The file imported must be in the "SavedSearches" directory
 	 * in the current filepath
 	 * @param filename
-	 * @return
+	 * @return ArrayList<Location> locations from file
 	 */
 	public ArrayList<Location> fileReader(String filename){
 		//Get the current directory and make a "SavedSearches" folder if it doesn't exist
@@ -146,7 +147,7 @@ public class JSONInputOutput {
 	 * "SavedSearches" directory in the current filepath.
 	 * Logs a warning to the console if the current directory is empty and returns
 	 * a blank arraylist in that case
-	 * @return
+	 * @return ArrayList<String> file names
 	 */
 	public ArrayList<String> getFiles(){
 		
@@ -181,41 +182,36 @@ public class JSONInputOutput {
 	 * two pieces of forecast data APIs. Returns an arraylist of DailyForecasts for the relevant days
 	 * @param forecastResponseBody
 	 * @param forecastGridDataResponseBody
-	 * @return
+	 * @return ArrayList<DailyForecast> forecast for the given location
 	 */
 	public ArrayList<DailyForecast> parseNWSForecast(String forecastResponseBody, String forecastGridDataResponseBody){
-		
+		//Get JSONObject for 2 forecast pieces
 		JSONObject forecastObject = new JSONObject(forecastResponseBody);
 		JSONObject forecastGridDataObject = new JSONObject(forecastGridDataResponseBody);
 		ArrayList<DailyForecast> weatherData = new ArrayList<DailyForecast>();
-		
-		
 
 		//gets forecast for each entry in the array
 		try {
 			JSONArray array = forecastObject.getJSONObject("properties").getJSONArray("periods");
 			for (int i = 0; i < array.length()-1; i++) {
+				//gets forecast for first and second periods, will compare the date of both to see if they are the same day or not
 				JSONObject b = array.getJSONObject(i);
 				JSONObject c = array.getJSONObject(i+1);
 				LocalDateTime startTimeOne = LocalDateTime.parse(b.getString("startTime").subSequence(0, 19));
 				LocalDateTime endTimeOne = LocalDateTime.parse(b.getString("endTime").subSequence(0, 19));
 				LocalDateTime startTimeTwo = LocalDateTime.parse(c.getString("startTime").subSequence(0, 19));
 				LocalDateTime endTimeTwo = LocalDateTime.parse(c.getString("endTime").subSequence(0, 19));
-
-
 				LocalDate date = startTimeOne.toLocalDate();
 				LocalDate dateTwo = startTimeTwo.toLocalDate();
 
 				/*for the first day or if the start date of the current object is the same as the next object
 				 * create a DailyForecast object and add it to the arraylist
-				 * 
 				 */
 				if (i == 0 || date.equals(dateTwo)) {
 					//Init AM & PM variables to default values that will be "ignored" if not changed
 					Integer precipProbAm = 989;
 					Double precipAmountAm = 989.0;
 					Integer cloudCoverAm = 989;
-					String precipTypeAm = "";
 					Double snowfallAm = 989.0;
 					Double heatIndexAm = 989.0;
 					Double windChillAm = 989.0;
@@ -225,7 +221,6 @@ public class JSONInputOutput {
 					Integer precipProbPm = 989;
 					Double precipAmountPm = 989.0;
 					Integer cloudCoverPm = 989;
-					String precipTypePm = "";
 					Double snowfallPm = 989.0;
 					Double heatIndexPm = 989.0;
 					Double windChillPm = 989.0;
@@ -237,7 +232,6 @@ public class JSONInputOutput {
 					precipProbAm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "probabilityOfPrecipitation", 1));
 					precipAmountAm = parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "quantitativePrecipitation", 0) / 25.4;
 					cloudCoverAm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "skyCover", 1));
-					precipTypeAm = "";
 					snowfallAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "snowfallAmount", 0)) / 25.4;
 					heatIndexAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "heatIndex", 1) * 9.0 / 5.0) + 32;
 					windChillAm = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeOne, "windChill", 1) * 9.0 / 5.0) + 32;
@@ -251,11 +245,9 @@ public class JSONInputOutput {
 						Double highTemp = parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeTwo, "maxTemperature", 1);
 						highTemp = (highTemp * 9.0 / 5.0) + 32.0;
 						Double lowTemp = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeTwo, "minTemperature", 1) * 9 / 5) + 32;
-
 						precipProbPm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "probabilityOfPrecipitation", 1));
 						precipAmountPm = parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "quantitativePrecipitation", 0) / 25.4;
 						cloudCoverPm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "skyCover", 1));
-						precipTypePm = "";
 						snowfallPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "snowfallAmount", 0)) / 25.4;
 						heatIndexPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "heatIndex", 1) * 9 / 5) + 32;
 						windChillPm = (parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "windChill", 1) * 9 / 5) + 32;
@@ -305,7 +297,7 @@ public class JSONInputOutput {
 	 * meant to get the 2 full URLs for getting the complete forecast data
 	 * returns an arraylist of 2 urls
 	 * @param responseBody
-	 * @return
+	 * @return ArrayList<String> of URLs in response body
 	 */
 	public ArrayList<String> parseGPS(String responseBody) {
 		
@@ -334,7 +326,7 @@ public class JSONInputOutput {
 	 * @param startTime
 	 * @param endTime
 	 * @param key
-	 * @return
+	 * @return a Double that gives the averages
 	 */
 	private Double parseForecastGridData(JSONObject object, LocalDateTime startTime, LocalDateTime endTime, String key, int avgFlag) {
 		//parses out the array of values for the specified key from the input object
