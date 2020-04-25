@@ -282,6 +282,7 @@ public class MainContollerFX implements Initializable {
 			selectedLocationsString.add(localAsString);
 			// Passing the List of type String to the 'locationSelection' method.
 			locationSelection(selectedLocationsString);
+			outputLocation = selectedLocationsString.get(0);
 			setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
 			
 		}
