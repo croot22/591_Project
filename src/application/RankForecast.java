@@ -86,9 +86,11 @@ public class RankForecast{
 		String rankedWeatherInfoString = new String();
 		
 		for (int i = 0; i < 3; i++) {
-			rankedWeatherInfoString += (i+1) + ". \n" +
+			int j = i + 1;
+			rankedWeatherInfoString += j + ". \n" +
 			weatherList.get(i).getDayOfWeek() + " " + weatherList.get(i).getDate() + "\n" +
-			"There will be a high temperature of " + weatherList.get(i).getTemperatureMax() + " and a low of " + weatherList.get(i).getTemperatureMin() + "\n" +
+			"There will be a high temperature of " + weatherList.get(i).getTemperatureMax() + "\n" +
+			" and a low of " + weatherList.get(i).getTemperatureMin() + "\n" +
 			"Rain: " + weatherList.get(i).getPrecipChanceN() +"% / Inches: " + weatherList.get(i).getQpfN() + "\n" +
 			"Snow: " + weatherList.get(i).getQpfSnowN() + " inches \n" +
 			"Cloud cover: " + weatherList.get(i).getCloudCoverN() + "% \n" +

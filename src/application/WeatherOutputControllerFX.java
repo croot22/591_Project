@@ -27,6 +27,7 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
@@ -36,11 +37,11 @@ import javafx.stage.Stage;
 public class WeatherOutputControllerFX implements Initializable {	
 
 	@FXML
-    private TextFlow rankedUWWeatherTextFlow;
+    private HBox rankedUWWeatherTextFlow;
     // TextFlow that displays ranked weather info   
 	
 	@FXML
-    private TextFlow rankedNWSWeatherTextFlow;
+    private HBox rankedNWSWeatherTextFlow;
     // TextFlow that displays ranked weather info 
     
     
