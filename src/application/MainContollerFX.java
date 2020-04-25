@@ -283,7 +283,7 @@ public class MainContollerFX implements Initializable {
 		// to the String ArrayList.
 		for (Location local : locationsFromFile) {
 			String localAsString = local.getDisplayName();
-			selectedLocationsString.clear();
+			selectedLocationsString = new ArrayList<String>();
 			selectedLocationsString.add(localAsString);
 			// Passing the List of type String to the 'locationSelection' method.
 			locationSelection(selectedLocationsString);
