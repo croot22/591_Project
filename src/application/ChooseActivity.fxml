@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OutdoorActivityController">
+<AnchorPane prefHeight="277.0" prefWidth="398.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OutdoorActivityController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="398.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="277.0" fitWidth="398.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/skiing.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="40.0" layoutY="100.0" prefHeight="38.0" prefWidth="200.0" text="Outdoor Activity Selection" textAlignment="CENTER" textFill="#3911d6" underline="false">
+      <Label layoutX="22.0" layoutY="25.0" prefHeight="38.0" prefWidth="200.0" text="Outdoor Activity Selection" textAlignment="CENTER" textFill="#3911d6" underline="false">
          <font>
             <Font name="Bookman Old Style Bold" size="14.0" />
          </font>
       </Label>
-      <ListView fx:id="outdoorActivityListview" layoutX="40.0" layoutY="143.0" prefHeight="163.0" prefWidth="200.0">
+      <ListView fx:id="outdoorActivityListview" layoutX="22.0" layoutY="63.0" prefHeight="163.0" prefWidth="200.0">
 		</ListView> 
-      <Button fx:id="chooseSelectedActivityBtn" layoutX="40.0" layoutY="316.0" mnemonicParsing="false" onAction="#chooseSelectedActivity" text="Choose Outdoor Activity">
+      <Button fx:id="chooseSelectedActivityBtn" layoutX="22.0" layoutY="240.0" mnemonicParsing="false" onAction="#chooseSelectedActivity" text="Choose Outdoor Activity">
 		</Button>   
    </children>
 </AnchorPane>
