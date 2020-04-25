@@ -350,7 +350,6 @@ public class MainContollerFX implements Initializable {
 				RankForecast rankedList = new RankForecast(wUndergroundForecasts, outdoorActivity);
 				weatherInfoOutput = rankedList.rankListPrint();
 
-
 			} catch (IOException e) {
 				System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
 				e.printStackTrace();
