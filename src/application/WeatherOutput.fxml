@@ -9,11 +9,6 @@
 
 <AnchorPane prefHeight="271.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WeatherOutputControllerFX">
    <children>
-      <ImageView fitHeight="340.0" fitWidth="528.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/WeatherOutput.jpeg" />
-         </image>
-      </ImageView>
       <Label layoutX="40.0" layoutY="15.0" prefHeight="38.0" prefWidth="200.0" text="Top 3 Days (Weather Underground)" textAlignment="CENTER" underline="false">
          <font>
             <Font name="Bookman Old Style Bold" size="10.0" />
