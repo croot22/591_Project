@@ -326,34 +326,34 @@ public class MainContollerFX implements Initializable {
 	 * TEMPORARY METHOD - To be replaced with final output functionality
 	 * @param coordinates
 	 */
-	public static Text rankedForecastOutput(String coordinates) {
+	public static Text rankedForecastOutput(String coordinates, String aPIType) {
 		Text weatherInfoOutput = new Text();
-		
-		try {
-			String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
+		if (aPIType == "WU") {
+			try {
+				String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
 
-			// PRINTS NARRATIVE
-
-			ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
-			RankForecast rankedList = new RankForecast(wUndergroundForecasts, outdoorActivity);
-			weatherInfoOutput = rankedList.rankListPrint();
+				ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
+				RankForecast rankedList = new RankForecast(wUndergroundForecasts, outdoorActivity);
+				weatherInfoOutput = rankedList.rankListPrint();
 
 
-		} catch (IOException e) {
-			System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
-			e.printStackTrace();
+			} catch (IOException e) {
+				System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
+				e.printStackTrace();
+			}
 		}
-		
-		ArrayList<DailyForecast> NWSForecasts = callNWS.getNWSForecast(coordinates);
+		else {
+			ArrayList<DailyForecast> NWSForecasts = callNWS.getNWSForecast(coordinates);
 
-		if (NWSForecasts == null) {
-			System.out.println("There was an issue calling the National Weather Service forecast for <" + coordinates + ">.");
-		} else {
+			if (NWSForecasts == null) {
+				System.out.println("There was an issue calling the National Weather Service forecast for <" + coordinates + ">.");
+			} else {
 
-			// PRINTS Ranked List
-			RankForecast rankedList = new RankForecast(NWSForecasts, outdoorActivity);
-			weatherInfoOutput = rankedList.rankListPrint();
+				// PRINTS Ranked List
+				RankForecast rankedList = new RankForecast(NWSForecasts, outdoorActivity);
+				weatherInfoOutput = rankedList.rankListPrint();
 
+			}
 		}
 
 		return weatherInfoOutput;
