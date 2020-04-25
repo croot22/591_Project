@@ -113,3 +113,104 @@
 2020-04-24T15:14:33.590754400: No value in passed object in forecast grid data
 2020-04-24T15:14:33.598756100: No value in passed object in forecast grid data
 2020-04-24T15:14:33.608759400: No value in passed object in forecast grid data
+2020-04-24T19:05:21.417195200: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=Ankorage&format=json&countrycodes=us&limit=5
+2020-04-24T19:05:21.974568500: The HTTP Request failed, status code is: 404
+2020-04-24T19:05:31.014435500: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=..!!@#@&format=json&countrycodes=us&limit=5
+2020-04-24T19:05:31.173538100: The HTTP Request failed, status code is: 404
+2020-04-24T19:05:49.649223400: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=Anchorage&format=json&countrycodes=us&limit=5
+2020-04-24T19:05:59.384899900: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=Toronto&format=json&countrycodes=us&limit=5
+2020-04-24T19:06:08.595833800: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=Tokyo&format=json&countrycodes=us&limit=5
+2020-04-24T19:06:46.925752300: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=61.175,-149.1&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-24T19:06:47.854774600: https://api.weather.gov/points/61.175,-149.1
+2020-04-24T19:06:48.391614900: JSONException line 313 JSONIO
+2020-04-24T19:06:48.395649: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=33.548,-101.9&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-24T19:06:48.938852700: https://api.weather.gov/points/33.548,-101.9
+2020-04-24T19:06:49.385779500: https://api.weather.gov/gridpoints/LUB/46,31/forecast
+2020-04-24T19:06:49.878444: https://api.weather.gov/gridpoints/LUB/46,31
+2020-04-24T19:06:51.048668800: No value in passed object in forecast grid data
+2020-04-24T19:06:51.107636100: No value in passed object in forecast grid data
+2020-04-24T19:06:51.126626: No value in passed object in forecast grid data
+2020-04-24T19:06:51.158607500: No value in passed object in forecast grid data
+2020-04-24T19:06:51.208577900: No value in passed object in forecast grid data
+2020-04-24T19:06:51.216572500: No value in passed object in forecast grid data
+2020-04-24T19:06:51.223570900: No value in passed object in forecast grid data
+2020-04-24T19:10:11.208930500: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=61.175,-149.1&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-24T19:10:11.766668900: https://api.weather.gov/points/61.175,-149.1
+2020-04-24T19:10:11.901932400: JSONException line 313 JSONIO
+2020-04-24T19:10:11.904947900: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=33.548,-101.9&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-24T19:10:12.315197100: https://api.weather.gov/points/33.548,-101.9
+2020-04-24T19:10:12.440020500: https://api.weather.gov/gridpoints/LUB/46,31/forecast
+2020-04-24T19:10:12.562180100: https://api.weather.gov/gridpoints/LUB/46,31
+2020-04-24T19:10:12.796721700: No value in passed object in forecast grid data
+2020-04-24T19:10:12.801718300: No value in passed object in forecast grid data
+2020-04-24T19:10:12.803716400: No value in passed object in forecast grid data
+2020-04-24T19:10:12.810714100: No value in passed object in forecast grid data
+2020-04-24T19:10:12.818708800: No value in passed object in forecast grid data
+2020-04-24T19:10:12.823706300: No value in passed object in forecast grid data
+2020-04-24T19:10:12.826704100: No value in passed object in forecast grid data
+2020-04-24T19:10:52.055062600: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=61.175,-149.1&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-24T19:10:52.765106900: https://api.weather.gov/points/61.175,-149.1
+2020-04-24T19:10:52.986059500: JSONException line 313 JSONIO
+2020-04-24T19:10:52.988942200: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=33.548,-101.9&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-24T19:10:53.263606100: https://api.weather.gov/points/33.548,-101.9
+2020-04-24T19:10:53.410855100: https://api.weather.gov/gridpoints/LUB/46,31/forecast
+2020-04-24T19:10:53.554308900: https://api.weather.gov/gridpoints/LUB/46,31
+2020-04-24T19:10:53.852858500: No value in passed object in forecast grid data
+2020-04-24T19:10:53.873846: No value in passed object in forecast grid data
+2020-04-24T19:10:53.882841900: No value in passed object in forecast grid data
+2020-04-24T19:10:53.906827100: No value in passed object in forecast grid data
+2020-04-24T19:10:53.928816200: No value in passed object in forecast grid data
+2020-04-24T19:10:53.940809600: No value in passed object in forecast grid data
+2020-04-24T19:10:53.948802900: No value in passed object in forecast grid data
+2020-04-24T19:11:21.292290400: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=61.175,-149.1&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-24T19:11:22.037846100: https://api.weather.gov/points/61.175,-149.1
+2020-04-24T19:11:22.250849800: JSONException line 313 JSONIO
+2020-04-24T19:11:22.253848500: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=33.548,-101.9&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-24T19:11:22.575674500: https://api.weather.gov/points/33.548,-101.9
+2020-04-24T19:11:22.696552200: https://api.weather.gov/gridpoints/LUB/46,31/forecast
+2020-04-24T19:11:22.828860800: https://api.weather.gov/gridpoints/LUB/46,31
+2020-04-24T19:11:23.146637600: No value in passed object in forecast grid data
+2020-04-24T19:11:23.164628600: No value in passed object in forecast grid data
+2020-04-24T19:11:23.173623400: No value in passed object in forecast grid data
+2020-04-24T19:11:23.193611200: No value in passed object in forecast grid data
+2020-04-24T19:11:23.223593600: No value in passed object in forecast grid data
+2020-04-24T19:11:23.235586900: No value in passed object in forecast grid data
+2020-04-24T19:11:23.240584400: No value in passed object in forecast grid data
+2020-04-24T19:12:36.117541600: https://api.weather.gov/points/39.734,-104.904561045
+2020-04-24T19:12:38.295630600: https://api.weather.gov/gridpoints/BOU/65,60/forecast
+2020-04-24T19:12:38.866711: https://api.weather.gov/gridpoints/BOU/65,60
+2020-04-24T19:12:39.919839600: No value in passed object in forecast grid data
+2020-04-24T19:12:39.959817200: No value in passed object in forecast grid data
+2020-04-24T19:12:39.966512800: No value in passed object in forecast grid data
+2020-04-24T19:12:39.975532400: No value in passed object in forecast grid data
+2020-04-24T19:12:39.980529400: No value in passed object in forecast grid data
+2020-04-24T19:12:39.986035300: No value in passed object in forecast grid data
+2020-04-24T19:12:39.991032900: No value in passed object in forecast grid data
+2020-04-24T19:12:39.997029400: No value in passed object in forecast grid data
+2020-04-24T19:12:40.000027500: No value in passed object in forecast grid data
+2020-04-24T19:12:40.005960900: No value in passed object in forecast grid data
+2020-04-24T19:12:40.007959: No value in passed object in forecast grid data
+2020-04-24T19:12:40.510943: https://api.weather.gov/points/40.748,-73.98
+2020-04-24T19:12:42.472226600: https://api.weather.gov/gridpoints/OKX/33,36/forecast
+2020-04-24T19:12:42.767930900: https://api.weather.gov/gridpoints/OKX/33,36
+2020-04-24T19:12:43.389353100: No value in passed object in forecast grid data
+2020-04-24T19:12:43.393350400: No value in passed object in forecast grid data
+2020-04-24T19:12:43.399370900: No value in passed object in forecast grid data
+2020-04-24T19:12:43.403367200: No value in passed object in forecast grid data
+2020-04-24T19:12:43.909433500: https://api.weather.gov/points/40.843,-73.20
+2020-04-24T19:12:45.237684200: https://api.weather.gov/gridpoints/OKX/59,44/forecast
+2020-04-24T19:12:46.059189600: https://api.weather.gov/gridpoints/OKX/59,44
+2020-04-24T19:12:47.247334600: No value in passed object in forecast grid data
+2020-04-24T19:12:47.253313: No value in passed object in forecast grid data
+2020-04-24T19:12:47.264306600: No value in passed object in forecast grid data
+2020-04-24T19:12:47.276302900: No value in passed object in forecast grid data
+2020-04-24T19:12:47.283294600: No value in passed object in forecast grid data
+2020-04-24T19:12:47.790288500: https://api.weather.gov/points/
+2020-04-24T19:12:47.969922200: The HTTP Request failed, status code is: 404
+2020-04-24T19:13:01.490639700: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=11787&format=json&countrycodes=us&limit=5
+2020-04-24T19:13:02.768051100: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=Empire+State+Building&format=json&countrycodes=us&limit=5
+2020-04-24T19:13:03.416085100: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=1600+Pennsylvania+Ave+NW&format=json&countrycodes=us&limit=5
+2020-04-24T19:13:04.581119600: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=Denver,+CO&format=json&countrycodes=us&limit=5
+2020-04-24T19:13:05.305389200: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=&format=json&countrycodes=us&limit=5
+2020-04-24T19:13:05.437759600: The HTTP Request failed, status code is: 400
+2020-04-24T19:13:05.956121100: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=11787&format=json&countrycodes=us&limit=5

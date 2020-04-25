@@ -36,7 +36,7 @@ public class CallNWSAPI {
 	/**
 	 * takes in GPS coordiates as a string latitude,longitude and returns the forecast for that location
 	 * throttle this call at 2 per second. returns NULL if there is a failure to call one of the APIs
-	 * @param location
+	 * @param coordinates
 	 * @return
 	 */
 	
