@@ -242,7 +242,7 @@ public class JSONInputOutput {
 					//checks if the 2 objects are from the same start date and if so fill out the "PM" variables
 					if (date.isEqual(dateTwo)) {
 
-						Double highTemp = parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeTwo, "maxTemperature", 1);
+						Double highTemp = parseForecastGridData(forecastGridDataObject, startTimeOne.withHour(6), endTimeTwo, "maxTemperature", 1);
 						highTemp = (highTemp * 9.0 / 5.0) + 32.0;
 						Double lowTemp = (parseForecastGridData(forecastGridDataObject, startTimeOne, endTimeTwo, "minTemperature", 1) * 9 / 5) + 32;
 						precipProbPm = (int)Math.round(parseForecastGridData(forecastGridDataObject, startTimeTwo, endTimeTwo, "probabilityOfPrecipitation", 1));
