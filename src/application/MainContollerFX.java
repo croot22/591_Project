@@ -45,6 +45,7 @@ public class MainContollerFX implements Initializable {
 	static List<String> selectedLocationsString = new ArrayList<String>();
 	// Creating the required string to make the weather API calls.
 	static String locationCoordinates = new String();
+	static String outputLocation = new String();
 
 
 	public static String getOutdoorActivity() {
@@ -248,6 +249,7 @@ public class MainContollerFX implements Initializable {
 	public void selectedLocations() throws IOException {
 		selectedLocationsString = locationsListview.getSelectionModel().getSelectedItems();
 		locationSelection(selectedLocationsString);
+		outputLocation = selectedLocationsString.get(0);
 		setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
 	}
 
@@ -276,11 +278,13 @@ public class MainContollerFX implements Initializable {
 		// to the String ArrayList.
 		for (Location local : locationsFromFile) {
 			String localAsString = local.getDisplayName();
+			selectedLocationsString.clear();
 			selectedLocationsString.add(localAsString);
+			// Passing the List of type String to the 'locationSelection' method.
+			locationSelection(selectedLocationsString);
+			setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
+			
 		}
-		// Passing the List of type String to the 'locationSelection' method.
-		locationSelection(selectedLocationsString);
-		setNewStage("/application/WeatherOutput.fxml","Weather Information Output");
 	}
 
 	/**
@@ -322,13 +326,17 @@ public class MainContollerFX implements Initializable {
 
 
 
-	/** 
-	 * TEMPORARY METHOD - To be replaced with final output functionality
+
+	/**
+	 * Method that makes the API calls depending on the API type given as one of the arguments </p>
+	 * and returns the output as a text variable
 	 * @param coordinates
+	 * @param aPIType
+	 * @return Text
 	 */
-	public static Text rankedForecastOutput(String coordinates, String aPIType) {
+	public static Text rankedForecastOutput(String coordinates, String APIType) {
 		Text weatherInfoOutput = new Text();
-		if (aPIType == "WU") {
+		if (APIType == "WU") {
 			try {
 				String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
 
