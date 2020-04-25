@@ -27,7 +27,9 @@ public class JSONInputOutput {
 	 * @param Boolean overwrite - whether or not to overwrite existing file
 	 */
 	public void fileWriter(ArrayList<Location> locations, String filename, Boolean overwrite) {
-		
+		if (filename == null) {
+			filename = "weather.json";
+		}
 		//Setup a directory called SavedSearches in the current directory if it doesn't exist
 		String directoryPath = System.getProperty("user.dir") + "/SavedSearches/";
 		JSONArray savedSearch = new JSONArray();
