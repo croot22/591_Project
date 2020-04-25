@@ -90,8 +90,7 @@ public class RankForecast{
 		
 		for (int i = 0; i < 3; i++) {
 			int j = i + 1;
-			rankedWeatherInfoString += MainContollerFX.outputLocation + "\n" +
-			j + ". \n" +
+			rankedWeatherInfoString += j + ". \n" +
 			weatherList.get(i).getDayOfWeek() + " " + weatherList.get(i).getDate() + "\n" +
 			"There will be a high temperature of " + weatherList.get(i).getTemperatureMax() + "\n" +
 			" and a low of " + weatherList.get(i).getTemperatureMin() + "\n" +

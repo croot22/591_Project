@@ -25,6 +25,11 @@
          </font>
       </Label>
       <HBox fx:id="rankedNWSWeatherTextFlow" layoutX="293.0" layoutY="53.0" prefHeight="219.0" prefWidth="200.0" />
-      <HBox fx:id="rankedUWWeatherTextFlow" layoutX="40.0" layoutY="53.0" prefHeight="219.0" prefWidth="200.0" />   
+      <HBox fx:id="rankedUWWeatherTextFlow" layoutX="40.0" layoutY="53.0" prefHeight="219.0" prefWidth="200.0" />
+      <Label fx:id="locationLabel" layoutX="164.0" layoutY="-5.0" prefHeight="38.0" prefWidth="200.0" textAlignment="CENTER" underline="false">
+         <font>
+            <Font name="Bookman Old Style Bold" size="10.0" />
+         </font>
+      </Label>   
    </children>
 </AnchorPane>

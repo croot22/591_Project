@@ -620,3 +620,73 @@
 2020-04-25T14:17:55.791357500: No value in passed object in forecast grid data
 2020-04-25T14:17:55.799358700: No value in passed object in forecast grid data
 2020-04-25T14:17:55.807359500: No value in passed object in forecast grid data
+2020-04-25T14:28:32.312854: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=43.616,-116.2&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T14:28:33.513109100: https://api.weather.gov/points/43.616,-116.2
+2020-04-25T14:28:33.800446700: https://api.weather.gov/gridpoints/BOI/133,85/forecast
+2020-04-25T14:28:33.998458600: https://api.weather.gov/gridpoints/BOI/133,85
+2020-04-25T14:28:34.435715600: No value in passed object in forecast grid data
+2020-04-25T14:28:34.445719400: No value in passed object in forecast grid data
+2020-04-25T14:28:34.458725600: No value in passed object in forecast grid data
+2020-04-25T14:28:34.468726700: No value in passed object in forecast grid data
+2020-04-25T14:28:34.492733700: No value in passed object in forecast grid data
+2020-04-25T14:28:34.505736300: No value in passed object in forecast grid data
+2020-04-25T14:28:34.512740200: No value in passed object in forecast grid data
+2020-04-25T14:28:34.524741100: No value in passed object in forecast grid data
+2020-04-25T14:28:34.530743200: No value in passed object in forecast grid data
+2020-04-25T14:28:34.538745300: No value in passed object in forecast grid data
+2020-04-25T14:30:08.394076400: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=43.616,-116.2&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T14:30:09.622357500: https://api.weather.gov/points/43.616,-116.2
+2020-04-25T14:30:09.891378600: https://api.weather.gov/gridpoints/BOI/133,85/forecast
+2020-04-25T14:30:10.172884500: https://api.weather.gov/gridpoints/BOI/133,85
+2020-04-25T14:30:10.606594: No value in passed object in forecast grid data
+2020-04-25T14:30:10.620597700: No value in passed object in forecast grid data
+2020-04-25T14:30:10.635602400: No value in passed object in forecast grid data
+2020-04-25T14:30:10.643605800: No value in passed object in forecast grid data
+2020-04-25T14:30:10.660609700: No value in passed object in forecast grid data
+2020-04-25T14:30:10.668613300: No value in passed object in forecast grid data
+2020-04-25T14:30:10.674614: No value in passed object in forecast grid data
+2020-04-25T14:30:10.687610700: No value in passed object in forecast grid data
+2020-04-25T14:30:10.693617500: No value in passed object in forecast grid data
+2020-04-25T14:30:10.702619300: No value in passed object in forecast grid data
+2020-04-25T14:31:36.065865800: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=40.609,-111.9&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T14:31:37.146465400: https://api.weather.gov/points/40.609,-111.9
+2020-04-25T14:31:37.456445300: https://api.weather.gov/gridpoints/SLC/98,168/forecast
+2020-04-25T14:31:38.659754900: https://api.weather.gov/gridpoints/SLC/98,168
+2020-04-25T14:31:39.496871: No value in passed object in forecast grid data
+2020-04-25T14:31:39.502874600: No value in passed object in forecast grid data
+2020-04-25T14:31:39.512877400: No value in passed object in forecast grid data
+2020-04-25T14:31:39.535882200: No value in passed object in forecast grid data
+2020-04-25T14:31:39.551886800: No value in passed object in forecast grid data
+2020-04-25T14:31:39.560887900: No value in passed object in forecast grid data
+2020-04-25T14:31:39.567890900: No value in passed object in forecast grid data
+2020-04-25T14:31:39.579893700: No value in passed object in forecast grid data
+2020-04-25T14:31:39.589897: No value in passed object in forecast grid data
+2020-04-25T14:31:39.604900600: No value in passed object in forecast grid data
+2020-04-25T14:34:11.873437900: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=40.609,-111.9&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T14:34:15.167539600: https://api.weather.gov/points/40.609,-111.9
+2020-04-25T14:34:17.488607100: https://api.weather.gov/gridpoints/SLC/98,168/forecast
+2020-04-25T14:34:19.259492400: https://api.weather.gov/gridpoints/SLC/98,168
+2020-04-25T14:34:22.851400600: No value in passed object in forecast grid data
+2020-04-25T14:34:22.856402100: No value in passed object in forecast grid data
+2020-04-25T14:34:22.867406900: No value in passed object in forecast grid data
+2020-04-25T14:34:22.887413700: No value in passed object in forecast grid data
+2020-04-25T14:34:22.902416300: No value in passed object in forecast grid data
+2020-04-25T14:34:22.912418400: No value in passed object in forecast grid data
+2020-04-25T14:34:22.919421100: No value in passed object in forecast grid data
+2020-04-25T14:34:22.947426600: No value in passed object in forecast grid data
+2020-04-25T14:34:22.955427800: No value in passed object in forecast grid data
+2020-04-25T14:34:22.964433300: No value in passed object in forecast grid data
+2020-04-25T14:38:16.266612400: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=40.609,-111.9&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T14:38:17.406848300: https://api.weather.gov/points/40.609,-111.9
+2020-04-25T14:38:17.709064300: https://api.weather.gov/gridpoints/SLC/98,168/forecast
+2020-04-25T14:38:17.921173500: https://api.weather.gov/gridpoints/SLC/98,168
+2020-04-25T14:38:18.358278700: No value in passed object in forecast grid data
+2020-04-25T14:38:18.364294700: No value in passed object in forecast grid data
+2020-04-25T14:38:18.374284400: No value in passed object in forecast grid data
+2020-04-25T14:38:18.402288200: No value in passed object in forecast grid data
+2020-04-25T14:38:18.423296100: No value in passed object in forecast grid data
+2020-04-25T14:38:18.432300900: No value in passed object in forecast grid data
+2020-04-25T14:38:18.438300800: No value in passed object in forecast grid data
+2020-04-25T14:38:18.449300900: No value in passed object in forecast grid data
+2020-04-25T14:38:18.458306100: No value in passed object in forecast grid data
+2020-04-25T14:38:18.466306300: No value in passed object in forecast grid data

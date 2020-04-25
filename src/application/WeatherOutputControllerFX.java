@@ -24,10 +24,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
@@ -44,6 +46,8 @@ public class WeatherOutputControllerFX implements Initializable {
     private HBox rankedNWSWeatherTextFlow;
     // TextFlow that displays ranked weather info 
     
+    @FXML
+    private Label locationLabel;
     
     /**
      * Method that initializes the Outdoor Activity Selection "window"
@@ -52,6 +56,7 @@ public class WeatherOutputControllerFX implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
     	this.rankedUWWeatherList();
     	this.rankedNWSWeatherList();
+    	this.locationLabelOutput();
     }
     
 
@@ -65,6 +70,10 @@ public class WeatherOutputControllerFX implements Initializable {
     public void rankedNWSWeatherList() {
     	//takes the location info and calls the ranked forecast output method to give the information for the weather
     	rankedNWSWeatherTextFlow.getChildren().add(MainContollerFX.rankedForecastOutput(MainContollerFX.locationCoordinates,"NWS"));  	
+    }
+    
+    public void locationLabelOutput() {
+    	locationLabel.setText(MainContollerFX.outputLocation);
     }
 }
 
