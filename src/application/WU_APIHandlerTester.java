@@ -1,4 +1,5 @@
-package application;
+ package application;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -563,56 +564,102 @@ class WU_APIHandlerTester {
     void testParse5DayJSON() {
         WU_APIHandler testJSON = new WU_APIHandler();
         try {
+            // Creates an ArrayList of DailyForecast objects using the 'parseWUndergroundJSONForecast' method
+            // and a static set of data (above)
             ArrayList<DailyForecast> forecast = testJSON.parseWUndergroundJSONForecast(jsonTestResponse);
             
-            ArrayList<String> daysOfWeek = new ArrayList<String>();
-            ArrayList<String> date = new ArrayList<String>();
-            ArrayList<String> mainNarr = new ArrayList<String>();
+            ArrayList<String> daysOfWeekArray = new ArrayList<String>();
+            ArrayList<String> dateArray = new ArrayList<String>();
+            ArrayList<String> narrativeArray = new ArrayList<String>();
+            ArrayList<Integer> temperatureMaxArray = new ArrayList<Integer>();
+            ArrayList<Integer> temperatureMinArray = new ArrayList<Integer>();
             
             // START OF TWO PER DAY ELEMENTS
-            ArrayList<String> dayPrtD = new ArrayList<String>();
-            ArrayList<String> dayPrtN = new ArrayList<String>();
+            ArrayList<String> dayPartNameDArray = new ArrayList<String>();
+            ArrayList<String> dayPartNameNArray = new ArrayList<String>();
+            ArrayList<String> narrativeDArray = new ArrayList<String>();
+            ArrayList<String> narrativeNArray = new ArrayList<String>();
+            
             
             for (int i = 0; i < forecast.size(); i++) {
                 DailyForecast day = forecast.get(i);
                  
                 String dateString = day.getDate();
-                date.add(dateString);
+                dateArray.add(dateString);
                 
-                String dayName = day.getDayOfWeek();
-                daysOfWeek.add(dayName);
+                String dayOfWeek = day.getDayOfWeek();
+                daysOfWeekArray.add(dayOfWeek);
                 
-                String narrMain = day.getNarrative();
-                mainNarr.add(narrMain);
+                String narrative = day.getNarrative();
+                narrativeArray.add(narrative);
+                
+                Integer temperatureMax = day.getTemperatureMax();
+                temperatureMaxArray.add(temperatureMax);
+                
+                Integer temperatureMin = day.getTemperatureMin();
+                temperatureMinArray.add(temperatureMin);
                 
                 // START OF TWO PER DAY ELEMENTS
-                String dayPartD = day.getDaypartNameD();
-                dayPrtD.add(dayPartD);
+                String dayPartNameD = day.getDaypartNameD();
+                dayPartNameDArray.add(dayPartNameD);
                 
                 String dayPartN = day.getDaypartNameN();
-                dayPrtN.add(dayPartN);
+                dayPartNameNArray.add(dayPartN);
+                
+                String narrativeD = day.getNarrativeD();
+                narrativeDArray.add(narrativeD);
+                
+                String narrativeN = day.getNarrativeN();
+                narrativeNArray.add(narrativeN);
                 
             }
-            String dateTest = date.toString();
-            assertEquals(dateTest, "[2020-03-16, 2020-03-17, 2020-03-18, 2020-03-19, 2020-03-20, 2020-03-21]");
             
-            String daysTest = daysOfWeek.toString();
-            assertEquals(daysTest, "[Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]");
+            /**
+             * JUnit 'assertEquals' testing for correct parsing of JSON into DailyForecast objects
+             */
             
-            String narrTest = mainNarr.toString();
-            assertEquals(narrTest, "[Considerable cloudiness. Lows overnight in the upper 30s., "
+            String dateTest = dateArray.toString();
+            assertEquals("[2020-03-16, 2020-03-17, 2020-03-18, 2020-03-19, 2020-03-20, 2020-03-21]", dateTest);
+            
+            String daysOfWeekTest = daysOfWeekArray.toString();
+            assertEquals("[Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]", daysOfWeekTest);
+            
+            String narrativeTest = narrativeArray.toString();
+            assertEquals("[Considerable cloudiness. Lows overnight in the upper 30s., "
                     + "Mix of sun and clouds. Highs in the low 60s and lows in the low 40s., "
                     + "Plenty of sun. Highs in the mid 60s and lows in the low 40s., "
                     + "Rain mixed with snow. Highs in the low 40s and lows in the upper teens., "
                     + "Snow showers developing in the afternoon. Highs in the low 30s and lows in the low 20s., "
-                    + "Partly cloudy. Highs in the low 40s and lows in the upper 20s.]");
+                    + "Partly cloudy. Highs in the low 40s and lows in the upper 20s.]", narrativeTest);
+            
+            String temperatureMaxTest = temperatureMaxArray.toString();
+            assertEquals("[989, 60, 64, 43, 30, 42]", temperatureMaxTest);
+
+            String temperatureMinTest = temperatureMinArray.toString();
+            assertEquals("[37, 40, 40, 19, 21, 27]", temperatureMinTest);
             
             // START OF TWO PER DAY ELEMENTS
-            String dayPartDTest = dayPrtD.toString();
-            assertEquals(dayPartDTest, "[XX, Tomorrow, Wednesday, Thursday, Friday, Saturday]");
+            String dayPartDTest = dayPartNameDArray.toString();
+            assertEquals("[XX, Tomorrow, Wednesday, Thursday, Friday, Saturday]", dayPartDTest);
             
-            String dayPartNTest = dayPrtN.toString();
-            assertEquals(dayPartNTest, "[Tonight, Tomorrow night, Wednesday night, Thursday night, Friday night, Saturday night]");
+            String dayPartNTest = dayPartNameNArray.toString();
+            assertEquals("[Tonight, Tomorrow night, Wednesday night, Thursday night, Friday night, Saturday night]", dayPartNTest);
+            
+//            String narrativeDTest = narrativeDArray.toString();
+//            assertEquals("[Partly cloudy skies this evening will become overcast overnight. Sprinkles or flurries possible. Low 37F. N winds at 10 to 20 mph, decreasing to 5 to 10 mph., "
+//                    + "Some clouds early will give way to generally clear conditions overnight. Low around 40F. Winds WSW at 5 to 10 mph."
+//                    + "Cloudy with showers. Low around 40F. Winds NNW at 10 to 15 mph. Chance of rain 80%., "
+//                    + "Snow in the evening will taper off and give way to cloudy skies overnight. Low 19F. Winds NE at 10 to 20 mph. Chance of snow 70%. Snow accumulations less than one inch., "
+//                    + "Snow in the evening will give way to some clearing overnight. Low 21F. Winds NNW at 5 to 10 mph. Chance of snow 60%. Snow accumulations less than one inch., "
+//                    + "A few clouds from time to time. Low 27F. Winds SW at 5 to 10 mph.]", narrativeDTest);
+            
+            String narrativeNTest = narrativeNArray.toString();
+            assertEquals("[Partly cloudy skies this evening will become overcast overnight. Sprinkles or flurries possible. Low 37F. N winds at 10 to 20 mph, decreasing to 5 to 10 mph., "
+                    + "Some clouds early will give way to generally clear conditions overnight. Low around 40F. Winds WSW at 5 to 10 mph., "
+                    + "Cloudy with showers. Low around 40F. Winds NNW at 10 to 15 mph. Chance of rain 80%., "
+                    + "Snow in the evening will taper off and give way to cloudy skies overnight. Low 19F. Winds NE at 10 to 20 mph. Chance of snow 70%. Snow accumulations less than one inch., "
+                    + "Snow in the evening will give way to some clearing overnight. Low 21F. Winds NNW at 5 to 10 mph. Chance of snow 60%. Snow accumulations less than one inch., "
+                    + "A few clouds from time to time. Low 27F. Winds SW at 5 to 10 mph.]", narrativeNTest);
             
             
             

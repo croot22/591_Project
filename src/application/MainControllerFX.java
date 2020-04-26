@@ -345,14 +345,18 @@ public class MainControllerFX implements Initializable {
 		if (APIType == "WU") {
 			try {
 				String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
+				
+				if (jsonRecd == null) {
+				    System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
+				} else {
 
 				ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
 				RankForecast rankedList = new RankForecast(wUndergroundForecasts, outdoorActivity);
 				weatherInfoOutput = rankedList.rankListPrint();
-
+				}
 			} catch (IOException e) {
 				System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 		else {
