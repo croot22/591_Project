@@ -35,11 +35,11 @@ import javafx.stage.Stage;
 /**
  * JavaFX class required for JavaFx functionality to run.
  */
-public class MainContollerFX implements Initializable {
+public class MainControllerFX implements Initializable {
 
 	static JSONInputOutput jIO = new JSONInputOutput();
-	static CallWUAPI callWU = new CallWUAPI();
-	static CallNWSAPI callNWS = new CallNWSAPI();
+	static WU_APIHandler callWU = new WU_APIHandler();
+	static NWS_APIHandler callNWS = new NWS_APIHandler();
 	static String outdoorActivity = new String();
 	// Creating an ArrayList of type String to maintain selected Location of type String
 	static List<String> selectedLocationsString = new ArrayList<String>();
@@ -133,7 +133,7 @@ public class MainContollerFX implements Initializable {
 			jsonFileListview.getSelectionModel().select(0); // sets default selection to first item
 		} 
 		else {
-			ObservableList<String> noContent = FXCollections.observableArrayList("No files found"); 
+			ObservableList<String> noContent = FXCollections.observableArrayList("No files found \nClick the NEW button"); 
 			jsonFileListview.setItems(noContent); // deals with no existing files
 			jsonFileListview.setDisable(true); // disables the ListView; error-handling purposes
 			selectFileBtn.setDisable(true);     // disables selectFileBtn; error-handling purposes

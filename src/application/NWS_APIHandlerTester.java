@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-class CallNWSAPITester {
+class NWS_APIHandlerTester {
 
 	/**
 	 * Test the calls to NWS API by calling known GPS coordinates and confirming basic information
@@ -17,7 +17,7 @@ class CallNWSAPITester {
 	 */
 	@Test
 	void NWSCalltest() {
-		CallNWSAPI nws = new CallNWSAPI();
+		NWS_APIHandler nws = new NWS_APIHandler();
 		LocalDate today = LocalDate.now();
 		
 		//setup some known GPS coordinates and get the forecast for them

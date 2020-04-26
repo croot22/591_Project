@@ -84,6 +84,10 @@ public class RankForecast{
 		
 	}
 	
+	/**
+	 * This method creates and returns a text variable that includes the weather information for a specific day
+	 * @return Text
+	 */
 	public Text rankListPrint() {
 		rankItems();
 		String rankedWeatherInfoString = new String();
@@ -100,16 +104,6 @@ public class RankForecast{
 			"Heat Index: " + weatherList.get(i).getTemperatureHeatIndexN() + "\n" +
 			"F / Wind Chill: " + weatherList.get(i).getTemperatureWindChillN() + "F \n" +
 			"Wind: " + weatherList.get(i).getWindPhraseN() + "\n";
-//			System.out.println((i+1) + ".");
-//			System.out.println(weatherList.get(i).getDayOfWeek() + " " + weatherList.get(i).getDate());
-//			System.out.println("There will be a high temperature of " + weatherList.get(i).getTemperatureMax() + " and a low of " + weatherList.get(i).getTemperatureMin()); 
-//			System.out.println("Rain: " + weatherList.get(i).getPrecipChanceN() +"% / Inches: " + weatherList.get(i).getQpfN());
-//			System.out.println("Snow: " + weatherList.get(i).getQpfSnowN() + " inches");
-//			System.out.println("Cloud cover: " + weatherList.get(i).getCloudCoverN() + "%");
-//			System.out.println("Heat Index: " + weatherList.get(i).getTemperatureHeatIndexN());
-//			System.out.println("F / Wind Chill: " + weatherList.get(i).getTemperatureWindChillN() + "F");
-//			System.out.println("Wind: " + weatherList.get(i).getWindPhraseN());
-//			System.out.println();
 
 		}
 		Text rankedWeatherInfo = new Text(rankedWeatherInfoString);

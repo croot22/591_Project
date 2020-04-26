@@ -84,7 +84,7 @@ public class OutdoorActivity {
 	}
 
 	/**
-	 * selectActivity sets the parameters for the chosen activity. This method does not return anything.
+	 * Sets the parameters for the chosen activity. This method does not return anything.
 	 * @param activity
 	 */
 	public void selectActivity(String activity) {

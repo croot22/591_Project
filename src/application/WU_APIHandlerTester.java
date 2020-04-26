@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 
-class CallWUAPITest {
+class WU_APIHandlerTester {
 
 //    @Test
 //    void testJArrayHelper() {
@@ -561,7 +561,7 @@ class CallWUAPITest {
     
     @Test
     void testParse5DayJSON() {
-        CallWUAPI testJSON = new CallWUAPI();
+        WU_APIHandler testJSON = new WU_APIHandler();
         try {
             ArrayList<DailyForecast> forecast = testJSON.parseWUndergroundJSONForecast(jsonTestResponse);
             

@@ -98,24 +98,11 @@ public class OutdoorActivityController implements Initializable {
      * @throws IOException 
      */
     public void chooseSelectedActivity() throws IOException {
-    	MainContollerFX.setChosenOutdoorActivity(outdoorActivityListview.getSelectionModel().getSelectedItem());
-    	AlertBox.display("Selected!", MainContollerFX.getOutdoorActivity() + " is your activity of choice!");
-    	//System.out.println(MainContollerFX.getOutdoorActivity() + " is your activity of choice!");
+    	MainControllerFX.setChosenOutdoorActivity(outdoorActivityListview.getSelectionModel().getSelectedItem());
+    	AlertBox.display("Selected!", MainControllerFX.getOutdoorActivity() + " is your activity of choice!");
+    	//System.out.println(MainControllerFX.getOutdoorActivity() + " is your activity of choice!");
         Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
         stage.close();
     }
-    
-//    public void setPreviousStageOutdoorActivityInfo(String chosenOutdoorActivity) throws IOException {
-//  	  FXMLLoader loader = new FXMLLoader();
-//  	  loader.setLocation(getClass().getResource("Main_Weather.fxml"));
-//  	  Parent mainContollerParent = loader.load();
-//  	  Scene MainWeatherScene = new Scene(mainContollerParent);
-//  	  
-//  	  //access the controller and call a method
-//  	  MainContollerFX controller = loader.getController();
-//  	  controller.setChosenOutdoorActivity(chosenActivity);
-//  	  
-//  }
-
 }
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author Bryan Rogers
  *
  */
-public class CallNWSAPI {
+public class NWS_APIHandler {
 
 	
 	/**
