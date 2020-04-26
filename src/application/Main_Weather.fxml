@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-border-width: 5; -fx-border-color: orange;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainContollerFX">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-border-width: 5; -fx-border-color: orange;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainControllerFX">
    <children>
       <Button fx:id="selectFileBtn" layoutX="117.0" layoutY="352.0" mnemonicParsing="false" onAction="#selectionLocationsFile" text="Select Locations File">
          <tooltip>

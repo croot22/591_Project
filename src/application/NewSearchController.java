@@ -36,7 +36,7 @@ public class NewSearchController implements Initializable {
     //private UserInterface UIBackEnd = new UserInterface();
     //private AlertBox alertBox = new AlertBox();
     private JSONInputOutput jIO = new JSONInputOutput();
-    private MainContollerFX mainCon = new MainContollerFX();
+    private MainControllerFX mainCon = new MainControllerFX();
     //private JSONArray locationResponse;
 
 

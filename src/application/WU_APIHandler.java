@@ -10,7 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CallWUAPI {
+public class WU_APIHandler {
     
     /**
      * Methods sets up the URL needed to make a request to the WeatherUnderground
