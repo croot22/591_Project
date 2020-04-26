@@ -645,13 +645,12 @@ class WU_APIHandlerTester {
             String dayPartNTest = dayPartNameNArray.toString();
             assertEquals("[Tonight, Tomorrow night, Wednesday night, Thursday night, Friday night, Saturday night]", dayPartNTest);
             
-//            String narrativeDTest = narrativeDArray.toString();
-//            assertEquals("[Partly cloudy skies this evening will become overcast overnight. Sprinkles or flurries possible. Low 37F. N winds at 10 to 20 mph, decreasing to 5 to 10 mph., "
-//                    + "Some clouds early will give way to generally clear conditions overnight. Low around 40F. Winds WSW at 5 to 10 mph."
-//                    + "Cloudy with showers. Low around 40F. Winds NNW at 10 to 15 mph. Chance of rain 80%., "
-//                    + "Snow in the evening will taper off and give way to cloudy skies overnight. Low 19F. Winds NE at 10 to 20 mph. Chance of snow 70%. Snow accumulations less than one inch., "
-//                    + "Snow in the evening will give way to some clearing overnight. Low 21F. Winds NNW at 5 to 10 mph. Chance of snow 60%. Snow accumulations less than one inch., "
-//                    + "A few clouds from time to time. Low 27F. Winds SW at 5 to 10 mph.]", narrativeDTest);
+            String narrativeDTest = narrativeDArray.toString();
+            assertEquals("[XX, Partly cloudy skies. High near 60F. Winds N at 5 to 10 mph., "
+                    + "Sunshine and some clouds. High 64F. Winds S at 10 to 20 mph., "
+                    + "Rain and snow in the morning, becoming all snow in the afternoon. Morning high of 43F with temps falling to near freezing. Winds N at 15 to 25 mph. Chance of rain 90%. Snow accumulating 1 to 3 inches.  Winds could occasionally gust over 40 mph., "
+                    + "Mostly cloudy. Snow showers around in the afternoon. High near 30F. Winds ENE at 10 to 15 mph. Chance of snow 60%., "
+                    + "Intervals of clouds and sunshine. High 42F. Winds ENE at 5 to 10 mph.]", narrativeDTest);
             
             String narrativeNTest = narrativeNArray.toString();
             assertEquals("[Partly cloudy skies this evening will become overcast overnight. Sprinkles or flurries possible. Low 37F. N winds at 10 to 20 mph, decreasing to 5 to 10 mph., "
