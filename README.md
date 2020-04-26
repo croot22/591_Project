@@ -81,7 +81,7 @@ Running the Program:
 ![alt text](/ReadMeImages/WeatherMaticHome.PNG "Properties") 
 2. This page gives the option to select a file with saved locations in it, or select a new set of locations.
 3. If a file is selected and the button Select Locations File is pressed, the list of locations will appear in the right hand screen. From there, any combination of the locations can be selected and the "Select" button will get the forecast for the selected locations."Select All" will get the forecast for all locations in the right hand menu.
-![alt text](/ReadMeImages/WeatherMaticSelectedLocations.PNG "Properties")
+![alt text](/ReadMeImages/WeatherMaticSelectLocations.PNG "Properties")
 4. If the "Create New Locations List" button is pressed, a new window for searching for locations to get the forecast from will open.
 ![alt text](/ReadMeImages/NewLocationSetup.PNG "Properties")
 5. In this window, a location can be searched for and matches will appear in the left menu and can be added to the list on the right
