@@ -35,11 +35,11 @@ import javafx.stage.Stage;
 /**
  * JavaFX class required for JavaFx functionality to run.
  */
-public class MainContollerFX implements Initializable {
+public class MainControllerFX implements Initializable {
 
 	static JSONInputOutput jIO = new JSONInputOutput();
-	static CallWUAPI callWU = new CallWUAPI();
-	static CallNWSAPI callNWS = new CallNWSAPI();
+	static WU_APIHandler callWU = new WU_APIHandler();
+	static NWS_APIHandler callNWS = new NWS_APIHandler();
 	static String outdoorActivity = new String();
 	// Creating an ArrayList of type String to maintain selected Location of type String
 	static List<String> selectedLocationsString = new ArrayList<String>();
@@ -345,14 +345,18 @@ public class MainContollerFX implements Initializable {
 		if (APIType == "WU") {
 			try {
 				String jsonRecd = callWU.makeAPICall(coordinates); // makes API to WUnderground
+				
+				if (jsonRecd == null) {
+				    System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
+				} else {
 
 				ArrayList<DailyForecast> wUndergroundForecasts = callWU.parseWUndergroundJSONForecast(jsonRecd); // parse the Weather Underground JSON response string into the DailyForecast Class
 				RankForecast rankedList = new RankForecast(wUndergroundForecasts, outdoorActivity);
 				weatherInfoOutput = rankedList.rankListPrint();
-
+				}
 			} catch (IOException e) {
 				System.out.println("There was an issue calling the WUnderground forecast for <" + coordinates + ">.");
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 		else {

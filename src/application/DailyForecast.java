@@ -48,32 +48,32 @@ public class DailyForecast implements Comparable{
 
 	/**
 	 * Full constructor method for creating DailyForecast objects.    
-	 * @param weatherService
-	 * @param date
-	 * @param dayOfWeek
-	 * @param narrative
-	 * @param temperatureMax
-	 * @param temperatureMin
-	 * @param daypartNameD
-	 * @param daypartNameN
-	 * @param narrativeD
-	 * @param narrativeN
-	 * @param precipChanceD
-	 * @param precipChanceN
-	 * @param cloudCoverD
-	 * @param cloudCoverN
-	 * @param precipTypeD
-	 * @param precipTypeN
-	 * @param qpfD
-	 * @param qpfN
-	 * @param qpfSnowD
-	 * @param qpfSnowN
-	 * @param temperatureHeatIndexD
-	 * @param temperatureHeatIndexN
-	 * @param temperatureWindChillD
-	 * @param temperatureWindChillN
-	 * @param windPhraseD
-	 * @param windPhraseN
+	 * @param weatherService - The provider of the weather forecast - ex. National Weather Service
+	 * @param date - Date of forecast
+	 * @param dayOfWeek - The day of week name - ex. Monday, Tuesday, etc
+	 * @param narrative - A human readable narrative of the days forecast
+	 * @param temperatureMax - Daily maximum temperature
+	 * @param temperatureMin - Daily minimum temperature
+	 * @param daypartNameD - Day part name (for "Day" portion) ex. Today, Tomorrow
+	 * @param daypartNameN - Night part name (for "Night" portion) ex. Tonight, Tomorrow Night
+	 * @param narrativeD - Day part - human readable narrative for partial day
+	 * @param narrativeN - Night part - human readable narrative for partial day
+	 * @param precipChanceD - Day part - integer type, percentage value for probability of precipitation
+	 * @param precipChanceN - Night part - integer type, percentage value for probability of precipitation
+	 * @param cloudCoverD - Day part - average cloud cover expressed as a percentage
+	 * @param cloudCoverN - Night part - average cloud cover expressed as a percentage
+	 * @param precipTypeD - Day part - string of precipitation type ex. rain, snow
+	 * @param precipTypeN - Night part - string of precipitation type ex. rain, snow
+	 * @param qpfD - Day part - forecasted measurable precipitation (liquid or liquid equivalent)
+	 * @param qpfN - Night part - forecasted measurable precipitation (liquid or liquid equivalent)
+	 * @param qpfSnowD - Day part - forecasted measurable precipitation as snow
+	 * @param qpfSnowN - Night part - forecasted measurable precipitation as snow
+	 * @param temperatureHeatIndexD - Day part - air temperature feel on human skin
+	 * @param temperatureHeatIndexN - Night part - air temperature feel on human skin
+	 * @param temperatureWindChillD - Day part - - air temperature feel on human skin
+	 * @param temperatureWindChillN - Night part - air temperature feel on human skin
+	 * @param windPhraseD - Day part - human readable phrase that describes the wind direction and speed
+	 * @param windPhraseN - Night part - human readable phrase that describes the wind direction and speed
 	 */
 	public DailyForecast(String weatherService, String date, String dayOfWeek, String narrative, Integer temperatureMax, 
 			Integer temperatureMin, String daypartNameD, String daypartNameN, String narrativeD, 
@@ -124,58 +124,6 @@ public class DailyForecast implements Comparable{
         return 1;
     }
 
-
-    /**
-     * *** Not used in the final GUI (non-console) version ****
-     * <p>
-	 * Takes in the DailyForecast object and prints out a narrative of the collected 
-	 * data points, in a human readable display.
-	 * @param dayF (DailyForecast) - Take in an instance
-	 */
-	public void weatherNarrative (DailyForecast dayF) {  
-
-		System.out.println("The forecast for " + dayF.getDayOfWeek() + ", " + dayF.getDate() + " is:");
-		System.out.println(dayF.getNarrative());
-
-		if (dayF.getTemperatureMax() == 989) { 
-			// 989 value assigned to catch Null values and to display different message.
-			System.out.println("Low for today is: " + dayF.getTemperatureMin() + " F");
-		} else {
-			System.out.println("Today's High is " + dayF.getTemperatureMax() +
-					" F and Low is " + dayF.getTemperatureMin() + "F");
-			System.out.println("\nThe Day and Evening forecasts:\n");
-		}
-
-		// PART DAY FORECASTS
-
-		if (!dayF.getDaypartNameD().equals("XX")) {
-			// "XX" value assigned to catch Null values and to display a different message
-			System.out.println(dayF.getDaypartNameD() + ":");
-			System.out.println(dayF.getNarrativeD());
-			System.out.println("Rain: " + dayF.getPrecipChanceD() +"% / Inches: " + dayF.getQpfD());
-
-			String snowRange = ""; // To a blank snowRange something to display
-			System.out.println("Snow: " + dayF.getQpfSnowD() + " inches. With a range of " 
-					+ snowRange);
-
-			System.out.println("Cloud cover: " + dayF.getCloudCoverD() + "%");
-			System.out.println("Heat Index: " + dayF.getTemperatureHeatIndexD() + 
-					"F / Wind Chill: " + dayF.getTemperatureWindChillD() + "F");
-			System.out.println("Wind: " + dayF.getWindPhraseD());
-		}
-		System.out.println();
-		System.out.println(dayF.getDaypartNameN() + ":");
-		System.out.println(dayF.getNarrativeN());
-		System.out.println("Rain: " + dayF.getPrecipChanceN() +"% / Inches: " + dayF.getQpfN());
-		System.out.println("Snow: " + dayF.getQpfSnowN() + " inches."); 
-		System.out.println("Cloud cover: " + dayF.getCloudCoverN() + "%");
-		System.out.println("Heat Index: " + dayF.getTemperatureHeatIndexN() +
-				"F / Wind Chill: " + dayF.getTemperatureWindChillN() + "F");
-		System.out.println("Wind: " + dayF.getWindPhraseN());          
-		System.out.println("\n\n");
-
-
-	}
 	
 	public String getWeatherService() {
 	    return weatherService;

@@ -66,7 +66,7 @@ public class WeatherOutputControllerFX implements Initializable {
     public void rankedUWWeatherList() {
     	
     	//takes the location info and calls the ranked forecast output method to give the information for the weather
-    	rankedUWWeatherTextFlow.getChildren().add(MainContollerFX.rankedForecastOutput(MainContollerFX.locationCoordinates,"WU"));
+    	rankedUWWeatherTextFlow.getChildren().add(MainControllerFX.rankedForecastOutput(MainControllerFX.locationCoordinates,"WU"));
     }
     
 
@@ -75,14 +75,14 @@ public class WeatherOutputControllerFX implements Initializable {
      */
     public void rankedNWSWeatherList() {
     	//takes the location info and calls the ranked forecast output method to give the information for the weather
-    	rankedNWSWeatherTextFlow.getChildren().add(MainContollerFX.rankedForecastOutput(MainContollerFX.locationCoordinates,"NWS"));  	
+    	rankedNWSWeatherTextFlow.getChildren().add(MainControllerFX.rankedForecastOutput(MainControllerFX.locationCoordinates,"NWS"));  	
     }
     
     /**
      * This method adds the selected location the the fxml label
      */
     public void locationLabelOutput() {
-    	locationLabel.setText(MainContollerFX.outputLocation);
+    	locationLabel.setText(MainControllerFX.outputLocation);
     }
 }
 

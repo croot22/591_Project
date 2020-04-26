@@ -14,13 +14,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-//import javafx.scene.control.Label;
-//import javafx.scene.control.ListView;
-//import javafx.scene.control.SelectionMode;
-//import javafx.scene.control.TextArea;
-//import javafx.scene.layout.BorderPane;
 
-public class Main_Weather extends Application {
+
+public class Run_Weathermatic3000 extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {

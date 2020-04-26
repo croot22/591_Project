@@ -98,9 +98,9 @@ public class OutdoorActivityController implements Initializable {
      * @throws IOException 
      */
     public void chooseSelectedActivity() throws IOException {
-    	MainContollerFX.setChosenOutdoorActivity(outdoorActivityListview.getSelectionModel().getSelectedItem());
-    	AlertBox.display("Selected!", MainContollerFX.getOutdoorActivity() + " is your activity of choice!");
-    	//System.out.println(MainContollerFX.getOutdoorActivity() + " is your activity of choice!");
+    	MainControllerFX.setChosenOutdoorActivity(outdoorActivityListview.getSelectionModel().getSelectedItem());
+    	AlertBox.display("Selected!", MainControllerFX.getOutdoorActivity() + " is your activity of choice!");
+    	//System.out.println(MainControllerFX.getOutdoorActivity() + " is your activity of choice!");
         Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
         stage.close();
     }

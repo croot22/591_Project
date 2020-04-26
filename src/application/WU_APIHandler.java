@@ -10,7 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CallWUAPI {
+public class WU_APIHandler {
     
     /**
      * Methods sets up the URL needed to make a request to the WeatherUnderground
@@ -36,25 +36,7 @@ public class CallWUAPI {
         
     }
     
-//    public ArrayList<String> jArrayHelper (JSONArray jsonArray) {
-//        ArrayList<String> arrName = new ArrayList<String>();
-//        
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            try {
-//                arrName.add(jsonArray.get(i).toString());
-//                //System.out.println(jsonArray.get(i).toString());
-//                
-//            } catch (JSONException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//            
-//        }
-//        
-//        return arrName;
-//        
-//    }
-    
+ 
     
     /**
      * Method to parse the Weather Underground JSON response string into the DailyForecast Class.
