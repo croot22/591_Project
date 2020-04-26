@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test cases for Location class. Meant to stress different methods/functions of the Location class.
+ * @author Bryan Rogers
+ *
+ */
 class locationTester {
 
 	/**

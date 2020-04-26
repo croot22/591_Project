@@ -96,7 +96,7 @@ public class Location {
 	}
 	
 	/**
-	 * Method to clone a location
+	 * Method to clone a location. Takes in another location and sets this instance equal to it
 	 * @param l - location to clone
 	 */
 	public void clone (Location l) {

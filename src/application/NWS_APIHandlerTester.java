@@ -9,6 +9,11 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test cases for NWSApiHandler. Meant to stress different methods and features of the calss.
+ * @author Bryan Rogers
+ *
+ */
 class NWS_APIHandlerTester {
 
 	/**

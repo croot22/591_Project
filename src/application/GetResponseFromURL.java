@@ -19,6 +19,7 @@ public class GetResponseFromURL {
 	
 	/**
 	 * static method to make HTTP request to a URL
+	 * Returns the HTTP response as a string
 	 * @param url
 	 * @return
 	 */
