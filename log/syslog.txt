@@ -1033,7 +1033,6 @@
 2020-04-25T16:55:51.342603300: No value in passed object in forecast grid data
 2020-04-25T16:55:51.415621900: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=40.609,-111.9&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
 2020-04-25T16:55:51.639634900: https://api.weather.gov/points/40.609,-111.9
-2020-04-25T16:55:51.805641900: https://api.weather.gov/gridpoints/SLC/98,168/forecast
 2020-04-25T16:55:52.238355: https://api.weather.gov/gridpoints/SLC/98,168
 2020-04-25T16:55:52.768607100: No value in passed object in forecast grid data
 2020-04-25T16:55:52.771606100: No value in passed object in forecast grid data
@@ -1045,3 +1044,116 @@
 2020-04-25T16:55:52.795613900: No value in passed object in forecast grid data
 2020-04-25T16:55:52.799614800: No value in passed object in forecast grid data
 2020-04-25T16:55:52.804615300: No value in passed object in forecast grid data
+2020-04-25T18:05:01.837385200: warning, no files in this directory
+2020-04-25T18:05:02.181513400: warning, no files in this directory
+2020-04-25T18:05:04.761237500: warning, no files in this directory
+2020-04-25T18:05:09.719996900: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=golden&format=json&countrycodes=us&limit=5
+2020-04-25T18:05:12.530610700: warning, no files in this directory
+2020-04-25T18:05:20.012805200: No file to read
+2020-04-25T18:05:23.139332900: warning, no files in this directory
+2020-04-25T18:05:26.975196700: warning, no files in this directory
+2020-04-25T18:06:48.301372500: warning, no files in this directory
+2020-04-25T18:06:48.582131300: warning, no files in this directory
+2020-04-25T18:06:54.955648300: warning, no files in this directory
+2020-04-25T18:06:59.439584800: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=golden&format=json&countrycodes=us&limit=5
+2020-04-25T18:07:03.119191600: warning, no files in this directory
+2020-04-25T18:07:24.010043400: warning, no files in this directory
+2020-04-25T18:07:24.774569500: warning, no files in this directory
+2020-04-25T18:11:50.529057500: warning, no files in this directory
+2020-04-25T18:11:50.869232300: warning, no files in this directory
+2020-04-25T18:11:52.948456: warning, no files in this directory
+2020-04-25T18:12:01.208451900: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=golden&format=json&countrycodes=us&limit=5
+2020-04-25T18:12:03.517689300: warning, no files in this directory
+2020-04-25T18:12:06.647232100: No file to read
+2020-04-25T20:01:05.256029100: warning, no files in this directory
+2020-04-25T20:01:05.565203300: warning, no files in this directory
+2020-04-25T20:01:11.269389800: warning, no files in this directory
+2020-04-25T20:01:14.240549200: warning, no files in this directory
+2020-04-25T20:01:16.703249300: warning, no files in this directory
+2020-04-25T20:02:10.730713300: warning, no files in this directory
+2020-04-25T20:02:11.046866600: warning, no files in this directory
+2020-04-25T20:02:25.925191500: warning, no files in this directory
+2020-04-25T20:02:28.866584800: warning, no files in this directory
+2020-04-25T20:02:32.686383700: warning, no files in this directory
+2020-04-25T20:02:33.866883600: warning, no files in this directory
+2020-04-25T20:02:34.350967800: warning, no files in this directory
+2020-04-25T20:02:36.545619700: warning, no files in this directory
+2020-04-25T20:02:38.468778400: warning, no files in this directory
+2020-04-25T20:02:40.270064700: warning, no files in this directory
+2020-04-25T20:02:44.754003300: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=lakewood+co+&format=json&countrycodes=us&limit=5
+2020-04-25T20:02:46.679398200: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=lakewood+co+&format=json&countrycodes=us&limit=5
+2020-04-25T20:02:51.281939900: warning, no files in this directory
+2020-04-25T20:03:00.035755100: No file to read
+2020-04-25T20:03:35.176160800: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=39.708,-105.0&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T20:03:35.499839100: https://api.weather.gov/points/39.708,-105.0
+2020-04-25T20:03:35.677331200: https://api.weather.gov/gridpoints/BOU/62,59/forecast
+2020-04-25T20:03:37.018480800: https://api.weather.gov/gridpoints/BOU/62,59
+2020-04-25T20:03:37.714495700: No value in passed object in forecast grid data
+2020-04-25T20:03:37.717492500: No value in passed object in forecast grid data
+2020-04-25T20:03:37.721477900: No value in passed object in forecast grid data
+2020-04-25T20:03:37.724469200: No value in passed object in forecast grid data
+2020-04-25T20:03:37.728459: No value in passed object in forecast grid data
+2020-04-25T20:03:37.731450900: No value in passed object in forecast grid data
+2020-04-25T20:03:37.734442800: No value in passed object in forecast grid data
+2020-04-25T20:03:37.739429800: No value in passed object in forecast grid data
+2020-04-25T20:03:37.742421900: No value in passed object in forecast grid data
+2020-04-25T20:04:20.410854: warning, no files in this directory
+2020-04-25T20:04:20.722000400: warning, no files in this directory
+2020-04-25T20:04:23.259440900: warning, no files in this directory
+2020-04-25T20:04:27.609475700: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=dnever&format=json&countrycodes=us&limit=5
+2020-04-25T20:04:28.018381: The HTTP Request failed, status code is: 404
+2020-04-25T20:04:33.687691800: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=denver&format=json&countrycodes=us&limit=5
+2020-04-25T20:04:44.244191300: warning, no files in this directory
+2020-04-25T20:05:08.319914500: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=lakewood&format=json&countrycodes=us&limit=5
+2020-04-25T20:05:25.072662200: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=arvada&format=json&countrycodes=us&limit=5
+2020-04-25T20:06:01.102388: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=39.739,-104.9&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T20:06:01.547282800: https://api.weather.gov/points/39.739,-104.9
+2020-04-25T20:06:01.701969: https://api.weather.gov/gridpoints/BOU/65,60/forecast
+2020-04-25T20:06:02.011251500: https://api.weather.gov/gridpoints/BOU/65,60
+2020-04-25T20:06:02.757355900: No value in passed object in forecast grid data
+2020-04-25T20:06:02.762342300: No value in passed object in forecast grid data
+2020-04-25T20:06:02.766331300: No value in passed object in forecast grid data
+2020-04-25T20:06:02.769323800: No value in passed object in forecast grid data
+2020-04-25T20:06:02.774309900: No value in passed object in forecast grid data
+2020-04-25T20:06:02.777302500: No value in passed object in forecast grid data
+2020-04-25T20:06:02.778299600: No value in passed object in forecast grid data
+2020-04-25T20:06:02.783289100: No value in passed object in forecast grid data
+2020-04-25T20:06:02.787297100: No value in passed object in forecast grid data
+2020-04-25T20:06:02.963823700: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=39.708,-105.0&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T20:06:03.355966700: https://api.weather.gov/points/39.708,-105.0
+2020-04-25T20:06:03.494439: https://api.weather.gov/gridpoints/BOU/62,59/forecast
+2020-04-25T20:06:03.610057600: https://api.weather.gov/gridpoints/BOU/62,59
+2020-04-25T20:06:03.812720300: No value in passed object in forecast grid data
+2020-04-25T20:06:03.813717900: No value in passed object in forecast grid data
+2020-04-25T20:06:03.814717: No value in passed object in forecast grid data
+2020-04-25T20:06:03.815714600: No value in passed object in forecast grid data
+2020-04-25T20:06:03.816711700: No value in passed object in forecast grid data
+2020-04-25T20:06:03.817709500: No value in passed object in forecast grid data
+2020-04-25T20:06:03.818705900: No value in passed object in forecast grid data
+2020-04-25T20:06:03.820699300: No value in passed object in forecast grid data
+2020-04-25T20:06:03.821698600: No value in passed object in forecast grid data
+2020-04-25T20:06:04.003381200: https://api.weather.com/v3/wx/forecast/daily/5day?geocode=39.800,-105.0&units=e&language=en-US&format=json&apiKey=a5951eae4c0f4fb5951eae4c0f7fb544
+2020-04-25T20:06:04.528772100: https://api.weather.gov/points/39.800,-105.0
+2020-04-25T20:06:08.131085200: https://api.weather.gov/gridpoints/BOU/62,63/forecast
+2020-04-25T20:06:09.952265600: https://api.weather.gov/gridpoints/BOU/62,63
+2020-04-25T20:06:10.894069600: No value in passed object in forecast grid data
+2020-04-25T20:06:10.895095: No value in passed object in forecast grid data
+2020-04-25T20:06:10.896116: No value in passed object in forecast grid data
+2020-04-25T20:06:10.897061400: No value in passed object in forecast grid data
+2020-04-25T20:06:10.898058400: No value in passed object in forecast grid data
+2020-04-25T20:06:10.899056: No value in passed object in forecast grid data
+2020-04-25T20:06:10.900053500: No value in passed object in forecast grid data
+2020-04-25T20:06:10.901050700: No value in passed object in forecast grid data
+2020-04-25T20:06:10.902047700: No value in passed object in forecast grid data
+2020-04-25T20:06:10.904042500: No value in passed object in forecast grid data
+2020-04-25T20:07:42.513319600: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=denver&format=json&countrycodes=us&limit=5
+2020-04-25T20:08:22.037683400: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=golden&format=json&countrycodes=us&limit=5
+2020-04-25T20:08:59.457092100: warning, no files in this directory
+2020-04-25T20:08:59.755125600: warning, no files in this directory
+2020-04-25T20:09:44.679186600: warning, no files in this directory
+2020-04-25T20:09:44.999838100: warning, no files in this directory
+2020-04-25T20:09:50.847411500: warning, no files in this directory
+2020-04-25T20:09:55.727217900: https://us1.locationiq.com/v1/search.php?key=e543fdd48f150b&q=golden&format=json&countrycodes=us&limit=5
+2020-04-25T20:09:58.300886900: warning, no files in this directory
+2020-04-25T20:10:00.844739200: No file to read
+>>>>>>> b9f8fbdd56028c8e00aadb4ac45690cc1342d250

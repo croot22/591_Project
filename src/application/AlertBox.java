@@ -1,5 +1,8 @@
 package application;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
 /**
  * Class to use the AlertBox functionality of JavaFX
  * Has a single method to allow for easy incorporation into any
@@ -10,12 +13,17 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.*;
 
+
+
 public class AlertBox {
     
-    /**
+
+
+     /**
      * Display method allows for easy incorporation of an AlertBox throughout
      * the application. It takes in two parameters, which gives the AlertBox
      * a title and a message.<p>
