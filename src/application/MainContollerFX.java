@@ -133,7 +133,7 @@ public class MainContollerFX implements Initializable {
 			jsonFileListview.getSelectionModel().select(0); // sets default selection to first item
 		} 
 		else {
-			ObservableList<String> noContent = FXCollections.observableArrayList("No files found"); 
+			ObservableList<String> noContent = FXCollections.observableArrayList("No files found \nClick the NEW button"); 
 			jsonFileListview.setItems(noContent); // deals with no existing files
 			jsonFileListview.setDisable(true); // disables the ListView; error-handling purposes
 			selectFileBtn.setDisable(true);     // disables selectFileBtn; error-handling purposes
