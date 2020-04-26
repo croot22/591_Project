@@ -181,6 +181,10 @@ public class NewSearchController implements Initializable {
     public void addLocationToSelectedList() {
         String selectedLocal = searchResultsListview.getSelectionModel().getSelectedItem();
         this.fileChoiceBox(); // set the list in "Save to File" drop down.
+        if (selectedFile.equals("")) {
+             AlertBox.display("Create a File", "There does not appear to be a file to save the location(s). "
+                    + "\nPlease use the \"Create a New File\" box to name your new file. ");
+        }
         addToFile.setDisable(false); // enables the "Add to File" button.
         
         // Display purposes
