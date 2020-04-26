@@ -28,5 +28,6 @@ Bryan Rogers
 Cayde Roothoff
  - Created the activity selection sequence in the GUI
  - Built the activity ranking method with preset parameters 
- - Linked the weather and activity info weather with the ranking to create the output for the GUI
+ - Linked the weather and activity info weather with the ranking criteria
+ - Created the output for the GUI
  
