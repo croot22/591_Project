@@ -17,17 +17,19 @@ Justin Rich
  - Linked the API for Weather Underground to the app
  - helped with the file selection sequence in the GUI
  - Built several helper classes
+ - Helped with API reading
  
 Bryan Rogers
  - Created the file selection sequence
  - Linked the API for National Weather Service
  - Built a class for the API reading
  - Built the location search
+ - Helped with front-end GUI
 
- 
 Cayde Roothoff
  - Created the activity selection sequence in the GUI
  - Built the activity ranking method with preset parameters 
  - Linked the weather and activity info weather with the ranking criteria
  - Created the output for the GUI
+ - Helped with front-end GUI
  

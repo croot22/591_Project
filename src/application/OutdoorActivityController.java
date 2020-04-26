@@ -104,18 +104,5 @@ public class OutdoorActivityController implements Initializable {
         Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
         stage.close();
     }
-    
-//    public void setPreviousStageOutdoorActivityInfo(String chosenOutdoorActivity) throws IOException {
-//  	  FXMLLoader loader = new FXMLLoader();
-//  	  loader.setLocation(getClass().getResource("Main_Weather.fxml"));
-//  	  Parent mainContollerParent = loader.load();
-//  	  Scene MainWeatherScene = new Scene(mainContollerParent);
-//  	  
-//  	  //access the controller and call a method
-//  	  MainContollerFX controller = loader.getController();
-//  	  controller.setChosenOutdoorActivity(chosenActivity);
-//  	  
-//  }
-
 }
 
