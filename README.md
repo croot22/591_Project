@@ -72,12 +72,12 @@ These files will now be on the classpath. CLick "Apply and Close" to exit the pr
     ![alt text](/ReadMeImages/RunConfig.png "Properties") 
     24.	In the VM Arguments section, enter the below text with the /path/to/files/lib replaced with the location of the downloaded gluon          files on your local desktop.
     a.	--module-path "\path\to\javafx-sdk-14\lib" --add-modules javafx.controls,javafx.fxml
-    b.	Ex: --module-path "C:\Users\Bryan Rogers\Dropbox\MCIT\CIT 591\Final Project\openjfx-14_windows-x64_bin-sdk\javafx-sdk-14\lib" --        add-modules javafx.controls,javafx.fxml
+    b.	Ex: --module-path "C:\Users\Bryan Rogers\Dropbox\MCIT\CIT 591\Final Project\openjfx-14_windows-x64_bin-sdk\javafx-sdk-14\lib" --add-modules javafx.controls,javafx.fxml
 25.	Click run
 
 
 Running the Program:
-1. When the Main_Weather.java program runs, it will open a JavaFX controller. Additional instructions describing each button can be found in the hover over text in the controller.
+1. When the Run_WeatherMatic3000.java program runs, it will open a JavaFX controller. Additional instructions describing each button can be found in the hover over text in the controller.
 ![alt text](/ReadMeImages/WeatherMaticHome.PNG "Properties") 
 2. This page gives the option to select a file with saved locations in it, or select a new set of locations.
 3. If a file is selected and the button Select Locations File is pressed, the list of locations will appear in the right hand screen. From there, any combination of the locations can be selected and the "Select" button will get the forecast for the selected locations."Select All" will get the forecast for all locations in the right hand menu.
