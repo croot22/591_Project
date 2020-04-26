@@ -33,11 +33,9 @@ import javafx.stage.Stage;
  */
 public class NewSearchController implements Initializable {
     private Location location = new Location();
-    //private UserInterface UIBackEnd = new UserInterface();
-    //private AlertBox alertBox = new AlertBox();
     private JSONInputOutput jIO = new JSONInputOutput();
-    private MainControllerFX mainCon = new MainControllerFX();
-    //private JSONArray locationResponse;
+
+
 
 
     @FXML
