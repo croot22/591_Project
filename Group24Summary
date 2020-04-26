@@ -1,0 +1,32 @@
+Team 24
+Justin Rich
+Bryan Rogers
+Cayde Roothoff
+
+
+Weather-Matic 3000 Java Application Summary
+The Weather App is a tool for people who want a simple, quick way to find the best day to do a certain outdoor activity.
+This app draws from two weather service API's; Weather Underground and the National Weather Service. 
+Weather information is collected based on the user's selected location(s), and is then matched against preset parameters for the user's chosen activity.
+The app will then return information about the top three days to go in the following week for both of the API's based on the activity's parameters.
+While the app is complete in terms of what was planned for the school project, future functionality will include the ability to add more activities and adjust the parameters for each activity among other things.
+The work breakdown was as follows:
+
+Justin Rich
+ - Created the front-end GUI
+ - Linked the API for Weather Underground to the app
+ - helped with the file selection sequence in the GUI
+ - Built several helper classes
+ 
+Bryan Rogers
+ - Created the file selection sequence
+ - Linked the API for National Weather Service
+ - Built a class for the API reading
+ - Built the location search
+
+ 
+Cayde Roothoff
+ - Created the activity selection sequence in the GUI
+ - Built the activity ranking method with preset parameters 
+ - Linked the weather and activity info weather with the ranking to create the output for the GUI
+ 
