@@ -47,8 +47,9 @@ public class PrintDebug {
 	 * @param i - flag that denotes if message should print to console as well as syslog file
 	 */
 	public static void printDebug(String message, int i) {
+		PrintDebug.printDebug(message);
 		System.out.println(message);
-		printDebug(message);
+		
 	}
 	
 }
