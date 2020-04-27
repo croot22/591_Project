@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -21,7 +19,7 @@
       </Label>
       <HBox fx:id="rankedNWSWeatherTextFlow" layoutX="293.0" layoutY="53.0" prefHeight="219.0" prefWidth="200.0" />
       <HBox fx:id="rankedUWWeatherTextFlow" layoutX="40.0" layoutY="53.0" prefHeight="219.0" prefWidth="200.0" />
-      <Label fx:id="locationLabel" layoutX="164.0" layoutY="-5.0" prefHeight="38.0" prefWidth="200.0" textAlignment="CENTER" underline="false">
+      <Label fx:id="locationLabel" layoutX="114.0" layoutY="-4.0" prefHeight="38.0" prefWidth="300.0" textAlignment="CENTER" underline="false">
          <font>
             <Font name="Bookman Old Style Bold" size="10.0" />
          </font>

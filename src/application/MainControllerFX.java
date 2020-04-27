@@ -42,7 +42,7 @@ public class MainControllerFX implements Initializable {
 	static JSONInputOutput jIO = new JSONInputOutput();
 	static WU_APIHandler callWU = new WU_APIHandler();
 	static NWS_APIHandler callNWS = new NWS_APIHandler();
-	static String outdoorActivity = new String();
+	static String outdoorActivity = "Sailing";
 	// Creating an ArrayList of type String to maintain selected Location of type String
 	static List<String> selectedLocationsString = new ArrayList<String>();
 	// Creating the required string to make the weather API calls.
