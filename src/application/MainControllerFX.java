@@ -8,6 +8,7 @@ package application;
 
 //import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,7 @@ public class MainControllerFX implements Initializable {
 	// Creating the required string to make the weather API calls.
 	static String locationCoordinates = new String();
 	static String outputLocation = new String();
+	public static ArrayList<String> outdoorActivityCandidateList = new ArrayList<String>();
 
 
 	public static String getOutdoorActivity() {
@@ -116,6 +118,7 @@ public class MainControllerFX implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.chooseActivityBtn.setDisable(true);
 		this.setFilesList();
+		addActivitiesToList();
 	}
 
 	/**
@@ -339,8 +342,13 @@ public class MainControllerFX implements Initializable {
 	 * @param coordinates
 	 * @param aPIType
 	 * @return Text
+	 * @throws SecurityException 
+	 * @throws NoSuchMethodException 
+	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException 
+	 * @throws IllegalAccessException 
 	 */
-	public static Text rankedForecastOutput(String coordinates, String APIType) {
+	public static Text rankedForecastOutput(String coordinates, String APIType) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		Text weatherInfoOutput = new Text();
 		if (APIType == "WU") {
 			try {
@@ -413,5 +421,13 @@ public class MainControllerFX implements Initializable {
 		primaryStage.setTitle(title); // Set the title of the stage/window.
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+	
+	private static void addActivitiesToList() {
+		outdoorActivityCandidateList.add("Sailing");
+		outdoorActivityCandidateList.add("Hiking");
+		outdoorActivityCandidateList.add("Climbing");
+		outdoorActivityCandidateList.add("Skiing");
+		outdoorActivityCandidateList.add("Biking");
 	}
 }

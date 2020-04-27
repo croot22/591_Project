@@ -1,5 +1,7 @@
 package application;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * This class is the JavaFX Controller for the Weather Output page of the application.
  * It displays the ranked weather information
@@ -54,16 +56,28 @@ public class WeatherOutputControllerFX implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-    	this.rankedUWWeatherList();
-    	this.rankedNWSWeatherList();
-    	this.locationLabelOutput();
+    	try {
+			this.rankedUWWeatherList();
+	    	this.rankedNWSWeatherList();
+	    	this.locationLabelOutput();
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
+				| SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     }
     
 
     /**
      * This method adds the text for Weather Underground to the fxml text box
+     * @throws SecurityException 
+     * @throws NoSuchMethodException 
+     * @throws InvocationTargetException 
+     * @throws IllegalArgumentException 
+     * @throws IllegalAccessException 
      */
-    public void rankedUWWeatherList() {
+    public void rankedUWWeatherList() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
     	
     	//takes the location info and calls the ranked forecast output method to give the information for the weather
     	rankedUWWeatherTextFlow.getChildren().add(MainControllerFX.rankedForecastOutput(MainControllerFX.locationCoordinates,"WU"));
@@ -72,8 +86,13 @@ public class WeatherOutputControllerFX implements Initializable {
 
     /**
      * This method adds the text for NWS to the fxml text box
+     * @throws SecurityException 
+     * @throws NoSuchMethodException 
+     * @throws InvocationTargetException 
+     * @throws IllegalArgumentException 
+     * @throws IllegalAccessException 
      */
-    public void rankedNWSWeatherList() {
+    public void rankedNWSWeatherList() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
     	//takes the location info and calls the ranked forecast output method to give the information for the weather
     	rankedNWSWeatherTextFlow.getChildren().add(MainControllerFX.rankedForecastOutput(MainControllerFX.locationCoordinates,"NWS"));  	
     }

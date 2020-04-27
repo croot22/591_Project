@@ -10,153 +10,161 @@ import java.util.List;
  *
  */
 public class OutdoorActivity {
-	private Integer bestTemperatureMax;
-	private Integer bestTemperatureMin;
+	public static Integer bestTemperatureMax = 0;
+	public static Integer bestTemperatureMin = 0;
 
 	// day part
-	private Integer bestPrecipChance;
-	private Integer bestCloudCover;
-	private Double bestQpf;
-	private Double bestQpfSnow;
-	private Integer bestTemperatureHeatIndex;
-	private Integer bestTemperatureWindChill;
-	private String bestWindPhrase;
-	private String activityType;
-	public ArrayList<String> outdoorActivityCandidateList = new ArrayList<String>();
-
-	public OutdoorActivity() {
-
-		this.bestTemperatureMax = 0;
-		this.bestTemperatureMin = 0;
-
-		// day part
-		this.bestPrecipChance = 0;
-		this.bestCloudCover = 0;
-		this.bestQpf = 0.0;
-		this.bestQpfSnow = 0.0;
-		this.bestTemperatureHeatIndex = 0;
-		this.bestTemperatureWindChill = 0;
-		this.bestWindPhrase = "";
-		this.outdoorActivityCandidateList.add("Sailing");
-		this.outdoorActivityCandidateList.add("Hiking");
-		this.outdoorActivityCandidateList.add("Climbing");
-		this.outdoorActivityCandidateList.add("Skiing");
-		this.outdoorActivityCandidateList.add("Biking");
-	}
+	public static Integer bestPrecipChance = 0;
+	public static Integer bestCloudCover = 0;
+	public static Double bestQpf = 0.0;
+	public static Double bestQpfSnow = 0.0;
+	public static Integer bestTemperatureHeatIndex = 0;
+	public static Integer bestTemperatureWindChill = 0;
+	public static String bestWindPhrase = "";
+	public static String activityType = "";
 	
-	public Integer getBestTemperatureMax() {
+	
+
+	
+	public static Integer getBestTemperatureMax() {
 		return bestTemperatureMax;
 	}
 
-	public Integer getBestTemperatureMin() {
+	public static Integer getBestTemperatureMin() {
 		return bestTemperatureMin;
 	}
 
-	public Integer getBestPrecipChance() {
+	public static Integer getBestPrecipChance() {
 		return bestPrecipChance;
 	}
 
-	public Integer getBestCloudCover() {
+	public static Integer getBestCloudCover() {
 		return bestCloudCover;
 	}
 
-	public Double getBestQpf() {
+	public static Double getBestQpf() {
 		return bestQpf;
 	}
 
-	public Double getBestQpfSnow() {
+	public static Double getBestQpfSnow() {
 		return bestQpfSnow;
 	}
 
-	public Integer getBestTemperatureHeatIndex() {
+	public static Integer getBestTemperatureHeatIndex() {
 		return bestTemperatureHeatIndex;
 	}
 
-	public Integer getBestTemperatureWindChill() {
+	public static Integer getBestTemperatureWindChill() {
 		return bestTemperatureWindChill;
 	}
 
-	public String getBestWindPhrase() {
+	public static String getBestWindPhrase() {
 		return bestWindPhrase;
 	}
-	public String getActivityType() {
+	public static String getActivityType() {
 		return activityType;
 	}
-
-	/**
-	 * Sets the parameters for the chosen activity. This method does not return anything.
-	 * @param activity
-	 */
-	public void selectActivity(String activity) {
-		if (activity == "sailing") {
-			this.bestTemperatureMax = 75;
-			this.bestTemperatureMin = 65;
-
-			// day part
-			this.bestPrecipChance = 0;
-			this.bestCloudCover = 3;
-			this.bestQpf = 0.0;
-			this.bestQpfSnow = 0.0;
-			this.bestTemperatureHeatIndex = 78;
-			this.bestTemperatureWindChill = 77;
-			this.bestWindPhrase = "";
-			this.activityType = "Sailing";
-		}
-		else if (activity == "hiking") {
-			this.bestTemperatureMax = 68;
-			this.bestTemperatureMin = 60;
-
-			// day part
-			this.bestPrecipChance = 0;
-			this.bestCloudCover = 4;
-			this.bestQpf = 0.0;
-			this.bestQpfSnow = 0.0;
-			this.bestTemperatureHeatIndex = 70;
-			this.bestTemperatureWindChill = 70;
-			this.bestWindPhrase = "";
-			this.activityType = "Hiking";
-		}
-		else if (activity == "climbing") {
-			this.bestTemperatureMax = 72;
-			this.bestTemperatureMin = 65;
-
-			// day part
-			this.bestPrecipChance = 0;
-			this.bestCloudCover = 1;
-			this.bestQpf = 0.0;
-			this.bestQpfSnow = 0.0;
-			this.bestTemperatureHeatIndex = 74;
-			this.bestTemperatureWindChill = 73;
-			this.bestWindPhrase = "";
-			this.activityType = "Climbing";
-		}
-		else if (activity == "skiing") {
-			this.bestTemperatureMax = 25;
-			this.bestTemperatureMin = 20;
-
-			// day part
-			this.bestPrecipChance = 0;
-			this.bestCloudCover = 3;
-			this.bestQpf = 0.0;
-			this.bestQpfSnow = 0.25;
-			this.bestTemperatureHeatIndex = 25;
-			this.bestTemperatureWindChill = 25;
-			this.bestWindPhrase = "";
-			this.activityType = "Skiing";
-		}
-		else if (activity == "biking") {
-			this.bestTemperatureMax = 72;
-			this.bestTemperatureMin = 65;
-
-			// day part
-			this.bestPrecipChance = 0;
-			this.bestCloudCover = 3;
-			this.bestQpf = 0.0;
-			this.bestQpfSnow = 0.0;
-			this.bestTemperatureHeatIndex = 74;
-			this.bestTemperatureWindChill = 72;
-			this.bestWindPhrase = "";
-			this.activityType = "Biking";
-		}
+	
+	public static void setBestTemperatureMax(Integer bestTemperatureMax) {
+		OutdoorActivity.bestTemperatureMax = bestTemperatureMax;
 	}
+
+	public static void setBestTemperatureMin(Integer bestTemperatureMin) {
+		OutdoorActivity.bestTemperatureMin = bestTemperatureMin;
+	}
+
+	public static void setBestPrecipChance(Integer bestPrecipChance) {
+		OutdoorActivity.bestPrecipChance = bestPrecipChance;
+	}
+
+	public static void setBestCloudCover(Integer bestCloudCover) {
+		OutdoorActivity.bestCloudCover = bestCloudCover;
+	}
+
+	public static void setBestQpf(Double bestQpf) {
+		OutdoorActivity.bestQpf = bestQpf;
+	}
+
+	public static void setBestQpfSnow(Double bestQpfSnow) {
+		OutdoorActivity.bestQpfSnow = bestQpfSnow;
+	}
+
+	public static void setBestTemperatureHeatIndex(Integer bestTemperatureHeatIndex) {
+		OutdoorActivity.bestTemperatureHeatIndex = bestTemperatureHeatIndex;
+	}
+
+	public static void setBestTemperatureWindChill(Integer bestTemperatureWindChill) {
+		OutdoorActivity.bestTemperatureWindChill = bestTemperatureWindChill;
+	}
+
+	public static void setBestWindPhrase(String bestWindPhrase) {
+		OutdoorActivity.bestWindPhrase = bestWindPhrase;
+	}
+	
+	public static void setActivityType(String activityType) {
+		OutdoorActivity.activityType = activityType;
+	}
+	
+	public static void sailing() {
+		setBestTemperatureMax(75);
+		setBestTemperatureMin(65);
+		setBestPrecipChance(0);
+		setBestCloudCover(3);
+		setBestQpf(0.0);
+		setBestQpfSnow(0.0);
+		setBestTemperatureHeatIndex(78);
+		setBestTemperatureWindChill(77);
+		setActivityType("Sailing");
+	}
+
+	public static void hiking() {
+		setBestTemperatureMax(68);
+		setBestTemperatureMin(60);
+		setBestPrecipChance(0);
+		setBestCloudCover(4);
+		setBestQpf(0.0);
+		setBestQpfSnow(0.0);
+		setBestTemperatureHeatIndex(70);
+		setBestTemperatureWindChill(70);
+		setActivityType("Hiking");
+	}
+	
+	public static void climbing() {
+		setBestTemperatureMax(72);
+		setBestTemperatureMin(65);
+		setBestPrecipChance(0);
+		setBestCloudCover(1);
+		setBestQpf(0.0);
+		setBestQpfSnow(0.0);
+		setBestTemperatureHeatIndex(74);
+		setBestTemperatureWindChill(73);
+		setActivityType("Climbing");
+	}
+
+	public static void skiing() {
+		setBestTemperatureMax(25);
+		setBestTemperatureMin(20);
+		setBestPrecipChance(0);
+		setBestCloudCover(3);
+		setBestQpf(0.0);
+		setBestQpfSnow(0.25);
+		setBestTemperatureHeatIndex(25);
+		setBestTemperatureWindChill(25);
+		setActivityType("Skiing");
+	}
+
+	public static void biking() {
+		setBestTemperatureMax(72);
+		setBestTemperatureMin(65);
+		setBestPrecipChance(0);
+		setBestCloudCover(3);
+		setBestQpf(0.0);
+		setBestQpfSnow(0.0);
+		setBestTemperatureHeatIndex(74);
+		setBestTemperatureWindChill(72);
+		setActivityType("Biking");
+
+	}
+	
+
 }

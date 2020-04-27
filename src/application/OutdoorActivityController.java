@@ -54,7 +54,7 @@ public class OutdoorActivityController implements Initializable {
     // Button "Choose Selected Activity"
     
     @FXML
-    ObservableList<String> outdoorActivityCandidatesList = FXCollections.observableArrayList(oA.outdoorActivityCandidateList);
+    ObservableList<String> outdoorActivityCandidatesList = FXCollections.observableArrayList(MainControllerFX.outdoorActivityCandidateList);
     // List for "Preset list of outdoor activities" ListView
     
     
