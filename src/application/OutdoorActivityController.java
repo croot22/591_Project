@@ -103,6 +103,7 @@ public class OutdoorActivityController implements Initializable {
     	//System.out.println(MainControllerFX.getOutdoorActivity() + " is your activity of choice!");
         Stage stage = (Stage) chooseSelectedActivityBtn.getScene().getWindow();
         stage.close();
+		
     }
 }
 

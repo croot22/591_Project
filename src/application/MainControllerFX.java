@@ -31,6 +31,7 @@ import javafx.scene.text.Text;
 //import javafx.scene.control.TextField;
 //import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 //import javafx.stage.FileChooser.ExtensionFilter;
 
 /**
@@ -116,7 +117,7 @@ public class MainControllerFX implements Initializable {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.chooseActivityBtn.setDisable(true);
+		this.chooseActivityBtn.setDisable(true);		
 		this.setFilesList();
 		addActivitiesToList();
 	}
